@@ -1,0 +1,23 @@
+# lookerjin-harness
+
+本仓库是一个按 Agent Plugins 1.0 组织的可移植个人软件工程插件。AI 是第一消费者，人类文档只是辅助入口。
+
+## 结构约束
+
+- `plugin.json` 是插件身份与 Agent Plugins 版本的唯一标准清单。
+- `skills/*/SKILL.md` 是可移植工作流；只在对应任务需要时加载其 `references/`、`scripts/` 和 `assets/`。
+- `mcp.json` 只声明可移植 MCP；不得提交凭证、API Key 或用户私有配置。
+- 平台特有内容必须放在反向域名命名的顶层扩展目录，不能污染 portable core。
+- 不新增自定义顶层 Profile、Hook、Rule、Command 协议；能归属某个 Skill 的资源放进该 Skill。
+
+## 修改规则
+
+- 修改标准结构前先核对 Agent Plugins / Agent Skills / MCP 当前规范。
+- 修改任何 Skill 后检查 frontmatter、引用路径和脚本入口。
+- 能确定性验证的规则优先写成脚本或测试，不只写自然语言要求。
+- 不把某个 Agent 客户端的配置误写成跨平台标准。
+- 不提交秘密、令牌或机器专属绝对路径。
+
+## 演化原则
+
+只把经过真实项目重复验证的流程提升到 portable core。客户端特有能力先作为 adapter 验证，只有形成跨客户端稳定契约后才考虑提升。

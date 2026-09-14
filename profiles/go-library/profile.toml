@@ -1,0 +1,20 @@
+schema_version = 1
+id = "go-library"
+description = "Reusable Go library with a stable public surface and low infrastructure weight."
+extends = []
+
+[defaults]
+public_api_stability = true
+prefer_stdlib = true
+avoid_cgo_unless_required = true
+framework_light = true
+external_consumer_matters = true
+semver_release = true
+
+[recommended]
+docs = ["README", "public API/compatibility notes when needed"]
+skills = ["dependency-evaluation", "change-review"]
+checks = ["go test ./...", "go vet ./...", "gofmt", "external consumer test when public API matters"]
+
+[avoid]
+items = ["ORM/DI/Web frameworks without demonstrated need", "project-specific runtime abstractions in the library core"]

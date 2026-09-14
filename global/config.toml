@@ -1,0 +1,17 @@
+# lookerjin-harness 的保守配置样例。
+# 不建议直接覆盖 ~/.codex/config.toml；只按需合并。
+#
+# 模型和 reasoning effort 故意不在这里固定：
+# 它们变化快，并且应该根据任务难度由 Codex Desktop 当前会话选择。
+
+project_root_markers = [".git"]
+
+# Context7 是可选 MCP。只有涉及外部库 / SDK / API 当前版本行为时使用。
+# 基础用法无需 API key；如需更高限额，请按 Context7 当前文档配置。
+#
+# [mcp_servers.context7]
+# command = "npx"
+# args = ["-y", "@upstash/context7-mcp"]
+
+# 不在个人默认配置里自动打开高权限 sandbox、外网或跳过审批。
+# 权限应按项目和任务最小化配置。

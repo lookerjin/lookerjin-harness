@@ -1,0 +1,22 @@
+schema_version = 1
+id = "agent-core"
+description = "Agent runtime/core/harness where tool side effects, state, recovery, permissions, and evaluation are first-class."
+extends = ["go-library"]
+
+[defaults]
+untrusted_model_output = true
+tool_side_effects_explicit = true
+persistence_semantics_required = true
+recovery_semantics_required = true
+capability_boundary_required = true
+provider_isolation_required = true
+evaluation_required = true
+unknown_outcomes_must_be_reconciled = true
+
+[recommended]
+docs = ["architecture", "contracts", "state-and-recovery", "security", "evaluation"]
+skills = ["core/project-specific design review", "recovery audit", "tool lifecycle review", "change-review"]
+checks = ["deterministic runtime tests", "fault/recovery tests", "provider smoke tests", "frozen eval fixtures"]
+
+[avoid]
+items = ["generic agent framework owning core domain semantics", "hidden retries", "unaccounted side effects", "model-declared success as the only evidence"]

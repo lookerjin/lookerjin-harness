@@ -1,0 +1,18 @@
+schema_version = 1
+id = "experiment"
+description = "Short-lived, low-cost experiment used to obtain evidence quickly."
+extends = []
+
+[defaults]
+optimize_for_learning = true
+minimal_harness = true
+reversibility_over_polish = true
+long_term_compatibility_optional = true
+
+[recommended]
+docs = ["README or experiment note only when useful"]
+skills = ["root-cause-debug when evidence is ambiguous"]
+checks = ["the smallest test that answers the experiment question"]
+
+[avoid]
+items = ["premature architecture", "full CI/release machinery", "large documentation trees", "production hardening before the hypothesis is validated"]

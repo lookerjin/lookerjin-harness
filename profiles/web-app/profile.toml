@@ -1,0 +1,18 @@
+schema_version = 1
+id = "web-app"
+description = "Web application whose correctness includes real browser behavior."
+extends = []
+
+[defaults]
+browser_verification = true
+console_errors_matter = true
+network_failures_matter = true
+accessibility_should_be_considered = true
+
+[recommended]
+docs = ["README", "user-visible behavior/acceptance criteria when non-trivial"]
+skills = ["change-review", "root-cause-debug"]
+checks = ["unit/component tests as useful", "Codex Browser interactive verification", "E2E only for valuable repeatable regressions"]
+
+[avoid]
+items = ["adding Playwright MCP solely to let Codex browse", "declaring UI complete from build success alone"]

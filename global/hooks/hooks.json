@@ -1,0 +1,32 @@
+{
+  "description": "lookerjin-harness user-level safety and lightweight completion hooks.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.codex/hooks/pre_tool_use_guard.py\"",
+            "commandWindows": "py -3 \"%USERPROFILE%\\.codex\\hooks\\pre_tool_use_guard.py\"",
+            "timeout": 5,
+            "statusMessage": "Checking high-risk shell command"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.codex/hooks/stop_review.py\"",
+            "commandWindows": "py -3 \"%USERPROFILE%\\.codex\\hooks\\stop_review.py\"",
+            "timeout": 15,
+            "statusMessage": "Running lightweight completion review"
+          }
+        ]
+      }
+    ]
+  }
+}

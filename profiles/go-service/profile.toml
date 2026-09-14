@@ -1,0 +1,19 @@
+schema_version = 1
+id = "go-service"
+description = "Long-running Go backend service."
+extends = []
+
+[defaults]
+graceful_shutdown = true
+structured_observability = true
+configuration_boundary = true
+dependency_health_checks = true
+operational_failure_paths_matter = true
+
+[recommended]
+docs = ["README", "runtime/deployment notes", "external dependency contract when material"]
+skills = ["root-cause-debug", "dependency-evaluation", "change-review"]
+checks = ["unit tests", "integration tests for external boundaries", "go vet", "build", "config validation"]
+
+[avoid]
+items = ["distributed-systems abstractions before real scale/availability requirements", "frameworks that hide operational behavior"]

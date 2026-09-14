@@ -40,7 +40,8 @@ lookerjin-harness/
     ├── root-cause-debug/
     ├── dependency-evaluation/
     ├── change-review/
-    └── harness-evolve/
+    ├── harness-evolve/
+    └── harness-doctor/
 ```
 
 Agent Plugins 1.0 的 portable component 只有 Skills 和 MCP Servers。本仓库不自定义第三套插件协议。
@@ -53,6 +54,7 @@ Agent Plugins 1.0 的 portable component 只有 Skills 和 MCP Servers。本仓�
 - `dependency-evaluation`：新增/替换依赖或准备自研通用基础设施时使用。
 - `change-review`：实现结束后的 diff、行为、测试证据、文档同步和未验证项检查。
 - `harness-evolve`：从真实项目的重复摩擦中决定哪些能力应该沉淀、迁移或删除。
+- `harness-doctor`：检查插件 manifest、MCP、Skills、Profiles、引用和目录结构是否自洽。
 
 ## Context7 MCP
 
@@ -82,6 +84,67 @@ skills/project-bootstrap/
 ```
 
 只有初始化或接入项目时才读取这些内容。
+
+## 规则放置与演化
+
+发现新的限制、规则或工作方式时，先判断作用域、生命周期和是否需要机械保证，不要直接写进个人 Harness。
+
+```text
+New Rule / Constraint
+        │
+        ▼
+这是一次性的吗？
+   │         │
+  是         否
+   │         │
+Prompt       ▼
+         属于当前项目？
+          │        │
+         是        不确定 / 可能通用
+          │        │
+          ▼        ▼
+    Project Layer  先在项目运行
+          │              │
+          │         多次重复验证？
+          │          │         │
+          │         否         是
+          │          │         │
+          │        保持局部     ▼
+          │                harness-evolve
+          │                     │
+          ▼                     ▼
+     类型是什么？          Portable Core
+          │
+  ┌───────┼────────┬─────────────┐
+  ▼       ▼        ▼             ▼
+规则     流程      事实          机械约束
+AGENTS   Skill   Docs/Code   Script/CI/Hook
+```
+
+再额外判断一次：
+
+```text
+如果明天换一个 Agent，这条规则还有意义吗？
+
+有   -> 保持在项目层或 portable core
+没有 -> 放到对应 Client Extension / Adapter
+```
+
+推荐的晋升路径：
+
+```text
+Prompt
+  ↓
+Project Rule / Project Skill / Project Script
+  ↓
+Repeated Evidence
+  ↓
+harness-evolve
+  ↓
+Portable Core
+```
+
+不要跳级。已经进入 portable core 的能力如果后来发现只适用于某类项目、某个平台或已经失效，也应该降级、迁移或删除。
 
 ## 平台扩展
 

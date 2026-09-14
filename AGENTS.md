@@ -1,6 +1,6 @@
 # lookerjin-harness
 
-本仓库是一个按 Agent Plugins 1.0 组织的可移植个人软件工程插件。AI 是第一消费者，人类文档只是辅助入口。
+本仓库是一个符合 Agent Plugins 1.0 的可移植个人软件工程插件。AI 是第一消费者，人类文档只是辅助入口。
 
 ## 结构约束
 
@@ -14,6 +14,7 @@
 
 - 修改标准结构前先核对 Agent Plugins / Agent Skills / MCP 当前规范。
 - 修改任何 Skill 后检查 frontmatter、引用路径和脚本入口。
+- 修改插件结构后运行 `harness-doctor` 的 `scripts/doctor.py --json`。
 - 能确定性验证的规则优先写成脚本或测试，不只写自然语言要求。
 - 不把某个 Agent 客户端的配置误写成跨平台标准。
 - 不提交秘密、令牌或机器专属绝对路径。

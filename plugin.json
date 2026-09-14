@@ -3,7 +3,17 @@
   "name": "lookerjin-harness",
   "version": "0.2.0",
   "description": "Portable personal software engineering harness for AI coding agents.",
-  "author": {"name": "lookerjin"},
+  "author": {
+    "name": "lookerjin"
+  },
   "repository": "https://github.com/lookerjin/lookerjin-harness",
-  "keywords": ["software-engineering", "coding-agent", "project-bootstrap", "debugging", "code-review", "agent-skills", "mcp"]
+  "keywords": [
+    "software-engineering",
+    "coding-agent",
+    "project-bootstrap",
+    "debugging",
+    "code-review",
+    "agent-skills",
+    "mcp"
+  ]
 }

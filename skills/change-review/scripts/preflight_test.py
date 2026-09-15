@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Self-test: untracked files appear in preflight untracked_diff."""
+"""Self-test: untracked files are visible without leaking sensitive-looking contents."""
 
 from __future__ import annotations
 
@@ -21,7 +21,10 @@ def main() -> int:
         (root / "tracked.txt").write_text("old\n", encoding="utf-8")
         subprocess.run(["git", "add", "tracked.txt"], cwd=root, check=True)
         subprocess.run(["git", "commit", "-m", "init"], cwd=root, check=True, capture_output=True)
+
         (root / "fresh.go").write_text("package fresh\n", encoding="utf-8")
+        (root / ".env.local").write_text("SECRET_VALUE=do-not-leak\n", encoding="utf-8")
+
         proc = subprocess.run(
             [sys.executable, str(HERE / "preflight.py"), "--root", str(root), "--json"],
             check=True,
@@ -30,12 +33,20 @@ def main() -> int:
         )
         payload = json.loads(proc.stdout)
         by_name = {item["name"]: item for item in payload["checks"]}
-        if "fresh.go" not in by_name["untracked"]["output"]:
-            raise SystemExit("untracked list missing fresh.go")
-        if "package fresh" not in by_name["untracked_diff"]["output"]:
-            raise SystemExit("untracked_diff missing file contents")
+        untracked = by_name["untracked"]["output"]
+        diff = by_name["untracked_diff"]["output"]
+
+        if "fresh.go" not in untracked or ".env.local" not in untracked:
+            raise SystemExit("untracked list missing expected files")
+        if "package fresh" not in diff:
+            raise SystemExit("untracked_diff missing ordinary file contents")
+        if ".env.local" not in diff or "content skipped" not in diff:
+            raise SystemExit("sensitive-looking file was not reported as skipped")
+        if "do-not-leak" in diff:
+            raise SystemExit("sensitive-looking file contents leaked into untracked_diff")
         if by_name["diff_stat"]["output"]:
             raise SystemExit("expected empty diff_stat for untracked-only change")
+
     print("preflight_test ok")
     return 0
 

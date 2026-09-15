@@ -5,7 +5,8 @@ on:
     branches:
       - main
       - refactor/agent-plugin-v2
-      - fix/v2-consistency
+      - "fix/**"
+      - "notes/**"
   pull_request:
 
 jobs:
@@ -18,3 +19,8 @@ jobs:
           python-version: "3.12"
       - name: Run harness doctor
         run: python skills/harness-doctor/scripts/doctor.py --root . --json
+      - name: Self-tests
+        run: |
+          python skills/change-review/scripts/preflight_test.py
+          python skills/project-bootstrap/scripts/check-placeholders_test.py
+

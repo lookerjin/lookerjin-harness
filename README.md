@@ -27,6 +27,12 @@ skills/       -> Agent Skills
 mcp.json      -> MCP Servers
 ```
 
+### OpenAI / Codex
+
+仓库同时提供 `.agents/plugins/marketplace.json` 作为 OpenAI / Codex 的分发适配层。它只把仓库根目录注册为插件，仍然直接复用 `plugin.json`、`skills/` 和 `mcp.json`，不维护第二套插件定义。
+
+从 GitHub 导入 marketplace 时使用仓库根地址，Path 留空；需要测试非默认分支时，在导入界面选择对应 branch、tag 或 commit。
+
 ## 架构
 
 ```text
@@ -34,6 +40,9 @@ lookerjin-harness/
 ├── plugin.json
 ├── mcp.json
 ├── AGENTS.md
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json   # OpenAI / Codex distribution adapter
 └── skills/
     ├── project-bootstrap/
     ├── project-adopt/
@@ -45,6 +54,8 @@ lookerjin-harness/
 ```
 
 Agent Plugins 1.0 的 portable component 只有 Skills 和 MCP Servers。本仓库不自定义第三套插件协议。
+
+`.agents/plugins/marketplace.json` 不是 portable component，只是平台要求固定路径的分发清单；它不得复制或改变 portable core 的语义。
 
 根目录 `AGENTS.md` 只约束如何修改本插件，不会自动成为目标项目的规则。
 
@@ -152,11 +163,13 @@ Portable Core
 
 Hooks、Commands、Agent 定义和客户端权限配置目前不属于 Agent Plugins 1.0 portable core。
 
-需要平台特有能力时，使用 Agent Plugins 规定的 reverse-domain client extension 目录，例如：
+需要平台特有运行能力时，使用 Agent Plugins 规定的 reverse-domain client extension 目录，例如：
 
 ```text
 io.github.lookerjin.codex/
 ```
+
+平台强制路径的分发清单是例外：例如 OpenAI / Codex 使用 `.agents/plugins/marketplace.json` 发现 marketplace。它只负责分发映射，不能改变 `skills/` 与 `mcp.json` 的跨平台语义。
 
 平台扩展不得改变 `skills/` 与 `mcp.json` 的跨平台语义。Skill 正文不要把某个客户端的 Hook 或用户目录写成默认步骤。
 

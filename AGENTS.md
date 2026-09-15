@@ -9,7 +9,8 @@
 - `plugin.json` 是插件身份与 Agent Plugins 版本的唯一标准清单。
 - `skills/*/SKILL.md` 是可移植工作流；只在对应任务需要时加载其 `references/`、`scripts/` 和 `assets/`。
 - `mcp.json` 只声明可移植 MCP；不得提交凭证、API Key 或用户私有配置。
-- 平台特有内容必须放在反向域名命名的顶层扩展目录，不能污染 portable core。
+- 平台特有运行能力必须放在反向域名命名的顶层扩展目录，不能污染 portable core。
+- 平台强制路径的纯分发清单可以作为例外保留在规范要求的位置，例如 `.agents/plugins/marketplace.json`；它只能引用 portable core，不得复制或改写 Skills / MCP 的跨平台语义。
 - 不新增自定义顶层 Profile、Hook、Rule、Command 协议；能归属某个 Skill 的资源放进该 Skill。
 
 ## 修改规则

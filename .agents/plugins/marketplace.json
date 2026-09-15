@@ -1,0 +1,20 @@
+{
+  "name": "lookerjin-harness",
+  "interface": {
+    "displayName": "lookerjin Harness"
+  },
+  "plugins": [
+    {
+      "name": "lookerjin-harness",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

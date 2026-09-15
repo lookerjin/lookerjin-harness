@@ -117,10 +117,10 @@ Prompt       ▼
           ▼                     ▼
      类型是什么？          Portable Core
           │
-  ┌──────┼────────┬────────────┐
+  ┌───────┼────────┬─────────────┐
   ▼       ▼        ▼             ▼
 规则     流程      事实          机械约束
-项目AGENTS   Skill   Docs/Code   Script/CI
+项目AGENTS  Skill   Docs/Code   Script/CI
 ```
 
 再额外判断一次：
@@ -132,7 +132,7 @@ Prompt       ▼
 没有 -> 放到对应 Client Extension / Adapter
 ```
 
-推荐的晃升路径：
+推荐的晋升路径：
 
 ```text
 Prompt

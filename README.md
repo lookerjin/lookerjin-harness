@@ -40,6 +40,7 @@ lookerjin-harness/
 ├── plugin.json
 ├── mcp.json
 ├── AGENTS.md
+├── docs/                       # 仓库文档与 field-test 证据
 ├── .agents/
 │   └── plugins/
 │       └── marketplace.json   # OpenAI / Codex distribution adapter
@@ -55,7 +56,9 @@ lookerjin-harness/
 
 Agent Plugins 1.0 的 portable component 只有 Skills 和 MCP Servers。本仓库不自定义第三套插件协议。
 
-`.agents/plugins/marketplace.json` 不是 portable component，只是平台要求固定路径的分发清单；它不得复制或改变 portable core 的语义。
+`docs/` 只是仓库级文档和实地验证记录，不是 Agent Plugins component，也不参与插件发现。Agent Plugins 1.0 只规定标准组件的固定发现位置，并不要求插件根目录只能包含这些文件。
+
+`.agents/plugins/marketplace.json` 不是 portable component，只是 OpenAI / Codex 的分发清单；它只引用仓库根插件，不复制或改变 portable core 的语义。
 
 根目录 `AGENTS.md` 只约束如何修改本插件，不会自动成为目标项目的规则。
 
@@ -159,19 +162,13 @@ Portable Core
 
 不要跳级。已经进入 portable core 的能力如果后来发现只适用于某类项目、某个平台或已经失效，也应该降级、迁移或删除。
 
-## 平台扩展
+## 平台适配
 
-Hooks、Commands、Agent 定义和客户端权限配置目前不属于 Agent Plugins 1.0 portable core。
+`plugin.json`、`skills/` 和 `mcp.json` 构成跨 Agent 的 portable core。
 
-需要平台特有运行能力时，使用 Agent Plugins 规定的 reverse-domain client extension 目录，例如：
+如果未来某个客户端确实需要专属运行能力，例如 Hook 或客户端权限配置，再按 Agent Plugins 1.0 的 Client Extensions 机制隔离实现；没有真实需求时不提前创建客户端专属扩展。
 
-```text
-io.github.lookerjin.codex/
-```
-
-平台强制路径的分发清单是例外：例如 OpenAI / Codex 使用 `.agents/plugins/marketplace.json` 发现 marketplace。它只负责分发映射，不能改变 `skills/` 与 `mcp.json` 的跨平台语义。
-
-平台扩展不得改变 `skills/` 与 `mcp.json` 的跨平台语义。Skill 正文不要把某个客户端的 Hook 或用户目录写成默认步骤。
+当前仓库的 `.agents/plugins/marketplace.json` 仅用于 OpenAI / Codex 发现和分发插件，不属于 portable core，也不会改变插件运行语义。
 
 ## 使用原则
 

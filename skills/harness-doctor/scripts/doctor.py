@@ -2,15 +2,13 @@
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
 
-try:
-    import tomllib
-except ModuleNotFoundError:
-    try:
-        import tomli as tomllib
-    except ModuleNotFoundError:
-        tomllib = None
+if sys.version_info < (3, 11):
+    raise SystemExit("harness-doctor requires Python 3.11+")
+
+import tomllib
 
 FM = re.compile(r"\A---\s*\n(.*?)\n---", re.S)
 NAME = re.compile(r"^name:\s*(.+?)\s*$", re.M)
@@ -104,27 +102,21 @@ def main():
 
     profile_dir = root / "skills" / "project-bootstrap" / "references" / "profiles"
     if profile_dir.exists():
-        if tomllib is None:
-            errors.append({
-                "code": "PROFILE_PARSE_UNAVAILABLE",
-                "message": "Python <3.11 and tomli missing; cannot parse TOML profiles. Use python3.11+.",
-            })
-        else:
-            profile_ids = set()
-            for path in sorted(profile_dir.glob("*.toml")):
-                try:
-                    data = tomllib.loads(path.read_text(encoding="utf-8"))
-                except Exception as exc:
-                    errors.append({"code": "PROFILE_TOML", "message": f"{path.name}: {exc}"})
-                    continue
-                pid = data.get("id")
-                if not pid:
-                    errors.append({"code": "PROFILE_ID", "message": f"{path.name}: id missing"})
-                elif pid in profile_ids:
-                    errors.append({"code": "DUPLICATE_PROFILE", "message": str(pid)})
-                else:
-                    profile_ids.add(pid)
-                    checks.append({"code": "PROFILE", "message": str(pid)})
+        profile_ids = set()
+        for path in sorted(profile_dir.glob("*.toml")):
+            try:
+                data = tomllib.loads(path.read_text(encoding="utf-8"))
+            except Exception as exc:
+                errors.append({"code": "PROFILE_TOML", "message": f"{path.name}: {exc}"})
+                continue
+            pid = data.get("id")
+            if not pid:
+                errors.append({"code": "PROFILE_ID", "message": f"{path.name}: id missing"})
+            elif pid in profile_ids:
+                errors.append({"code": "DUPLICATE_PROFILE", "message": str(pid)})
+            else:
+                profile_ids.add(pid)
+                checks.append({"code": "PROFILE", "message": str(pid)})
 
     ci_go = root / "skills" / "project-bootstrap" / "assets" / "github" / "ci-go.yml"
     if ci_go.exists():

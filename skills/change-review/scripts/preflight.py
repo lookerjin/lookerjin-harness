@@ -4,12 +4,25 @@
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import json
 import subprocess
 from pathlib import Path
 
 UNTRACKED_FILE_CAP = 80
 UNTRACKED_BYTES_CAP = 256_000
+SENSITIVE_BASENAME_PATTERNS = (
+    ".env",
+    ".env.*",
+    "*.pem",
+    "*.key",
+    "*.p12",
+    "*.pfx",
+    "credentials*",
+    "secrets*",
+    "id_rsa*",
+    "id_ed25519*",
+)
 
 
 def run(cmd: list[str], cwd: Path) -> tuple[int, str]:
@@ -28,6 +41,11 @@ def is_probably_binary(path: Path) -> bool:
     return b"\0" in chunk
 
 
+def is_high_probability_sensitive(path: Path) -> bool:
+    name = path.name.lower()
+    return any(fnmatch.fnmatch(name, pattern) for pattern in SENSITIVE_BASENAME_PATTERNS)
+
+
 def untracked_diff(root: Path) -> tuple[int, str]:
     _, listing = run(["git", "ls-files", "--others", "--exclude-standard"], root)
     files = [line for line in listing.splitlines() if line.strip()]
@@ -40,6 +58,9 @@ def untracked_diff(root: Path) -> tuple[int, str]:
             chunks.append(f"{rel}  (not a regular file)")
             continue
         size = path.stat().st_size
+        if is_high_probability_sensitive(path):
+            chunks.append(f"{rel}  {size} bytes  (sensitive-looking filename; content skipped)")
+            continue
         if size > UNTRACKED_BYTES_CAP or is_probably_binary(path):
             chunks.append(f"{rel}  {size} bytes  (binary or large; content skipped)")
             continue

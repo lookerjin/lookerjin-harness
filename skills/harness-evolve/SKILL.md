@@ -1,11 +1,11 @@
 ---
 name: harness-evolve
-description: Review repeated friction from real development and decide whether it should become a portable Agent Skill, project AGENTS rule, deterministic script, platform adapter, or remain project-local. Use after several development cycles, repeated corrections, recurring CI/debug failures, or when improving this personal Agent Plugin from observed evidence.
+description: Review repeated friction from real development and decide whether it should become a portable Agent Skill, project AGENTS rule, deterministic script, platform adapter, or remain project-local. Use after several development cycles, repeated corrections, recurring CI/debug failures, or when improving this personal Agent Plugin from observed evidence. Do not use without repeated evidence.
 ---
 
 # Harness Evolve
 
-目标是从真实反馈中提炼 Harness，而不是为完整性增加配置。
+目标是从真实反馈中提炼 Harness，而不是为完整性增加配置。没有重复证据时直接停止，不要为了演化而演化。
 
 需要时读取 `references/promotion-policy.md`、`references/surface-routing.md` 和 `references/integrations.md`。
 

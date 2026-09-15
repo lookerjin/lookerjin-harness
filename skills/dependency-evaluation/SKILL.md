@@ -13,7 +13,8 @@ description: Evaluate whether to add, replace, or avoid a third-party software d
 2. 项目已有依赖是否已提供？
 3. 问题属于项目核心领域语义，还是通用基础设施？
 4. 对通用基础设施，搜索当前成熟实现。
-5. 核对：
+5. 涉及外部库当前 API 时，先用 Context7 或官方文档，不凭模型记忆。
+6. 核对并写出：
    - 官方仓库与维护状态
    - 当前稳定版本
    - License
@@ -22,7 +23,6 @@ description: Evaluate whether to add, replace, or avoid a third-party software d
    - CGO / native / platform 要求
    - 供应链和安全风险
    - API 稳定性与替换成本
-6. 涉及外部库当前 API 时优先使用 Context7 或官方文档，不凭模型记忆。
 7. 对关键依赖做最小 PoC 或局部真实运行。
 8. 比较“自研成本 + 长期维护”与“引入依赖成本 + 锁定风险”。
 9. 给出 adopt / defer / reject，并明确证据与边界。

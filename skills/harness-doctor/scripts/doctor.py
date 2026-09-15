@@ -12,7 +12,9 @@ except ModuleNotFoundError:
 FM = re.compile(r"\A---\s*\n(.*?)\n---", re.S)
 NAME = re.compile(r"^name:\s*(.+?)\s*$", re.M)
 DESC = re.compile(r"^description:\s*(.+?)\s*$", re.M)
-MD_LINK = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)\)")
+MD_LINK = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)")
+PLUGIN_NAME = re.compile(r"^[a-z0-9](?:[a-z0-9]|[.-](?![.-]))*[a-z0-9]$|^[a-z0-9]$")
+PLUGIN_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
 LEGACY_ROOTS = ("global", "profiles", "assets", "checks")
 
 
@@ -29,14 +31,23 @@ def main():
 
     plugin_path = root / "plugin.json"
     if not plugin_path.exists():
-        errors.append({"code": "MISSING_PLUGIN", "message": "plugin.json not found"})
+        errors.append({"code": "MISSING_PLUGIN", "message": "plugin.json not found; doctor only checks this plugin repo"})
     else:
         try:
             plugin = json.loads(plugin_path.read_text(encoding="utf-8"))
-            if not plugin.get("name") or not plugin.get("version"):
-                errors.append({"code": "PLUGIN_METADATA", "message": "plugin.json requires name and version"})
+            schema = plugin.get("$schema")
+            if schema != PLUGIN_SCHEMA:
+                errors.append({"code": "PLUGIN_SCHEMA", "message": f"$schema must be {PLUGIN_SCHEMA}"})
             else:
-                checks.append({"code": "PLUGIN", "message": f"plugin {plugin['name']} {plugin['version']}"})
+                checks.append({"code": "PLUGIN_SCHEMA", "message": schema})
+            name = plugin.get("name")
+            if not isinstance(name, str) or not PLUGIN_NAME.match(name) or len(name) > 64:
+                errors.append({"code": "PLUGIN_NAME", "message": "plugin.json name is missing or invalid"})
+            else:
+                checks.append({"code": "PLUGIN_NAME", "message": name})
+            version = plugin.get("version")
+            if version:
+                checks.append({"code": "PLUGIN_VERSION", "message": str(version)})
         except Exception as exc:
             errors.append({"code": "INVALID_PLUGIN_JSON", "message": str(exc)})
 
@@ -44,10 +55,19 @@ def main():
     if mcp_path.exists():
         try:
             mcp = json.loads(mcp_path.read_text(encoding="utf-8"))
-            if not isinstance(mcp.get("mcpServers"), dict):
+            servers = mcp.get("mcpServers")
+            if not isinstance(servers, dict):
                 errors.append({"code": "MCP_SERVERS", "message": "mcpServers must be an object"})
             else:
-                checks.append({"code": "MCP", "message": f"{len(mcp['mcpServers'])} MCP server(s)"})
+                for key, spec in servers.items():
+                    if not isinstance(spec, dict):
+                        errors.append({"code": "MCP_SERVER", "message": f"{key}: server spec must be an object"})
+                        continue
+                    if not spec.get("type"):
+                        errors.append({"code": "MCP_TYPE", "message": f"{key}: type missing"})
+                    if not spec.get("url") and not spec.get("command"):
+                        errors.append({"code": "MCP_ENDPOINT", "message": f"{key}: url or command required"})
+                checks.append({"code": "MCP", "message": f"{len(servers)} MCP server(s)"})
         except Exception as exc:
             errors.append({"code": "INVALID_MCP_JSON", "message": str(exc)})
 
@@ -59,7 +79,7 @@ def main():
         for skill in sorted(p for p in skills.iterdir() if p.is_dir()):
             skill_md = skill / "SKILL.md"
             if not skill_md.exists():
-                warnings.append({"code": "UNDISCOVERABLE_SKILL", "message": f"{skill.name}: SKILL.md missing"})
+                errors.append({"code": "UNDISCOVERABLE_SKILL", "message": f"{skill.name}: SKILL.md missing"})
                 continue
             text = skill_md.read_text(encoding="utf-8")
             fm = FM.search(text)

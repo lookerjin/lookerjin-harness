@@ -12,7 +12,7 @@ except ModuleNotFoundError:
 FM = re.compile(r"\A---\s*\n(.*?)\n---", re.S)
 NAME = re.compile(r"^name:\s*(.+?)\s*$", re.M)
 DESC = re.compile(r"^description:\s*(.+?)\s*$", re.M)
-MD_LINK = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)")
+MD_LINK = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)\)")
 PLUGIN_NAME = re.compile(r"^[a-z0-9](?:[a-z0-9]|[.-](?![.-]))*[a-z0-9]$|^[a-z0-9]$")
 PLUGIN_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
 LEGACY_ROOTS = ("global", "profiles", "assets", "checks")
@@ -91,7 +91,7 @@ def main():
             if not name_m or not desc_m:
                 errors.append({"code": "SKILL_METADATA", "message": f"{skill.name}: name/description missing"})
                 continue
-            actual = name_m.group(1).strip().strip("\"'")
+            actual = name_m.group(1).strip().strip("'\"")
             if actual != skill.name:
                 errors.append({"code": "SKILL_NAME", "message": f"{skill.name}: frontmatter name is {actual}"})
             if actual in seen:

@@ -54,9 +54,9 @@ Agent Plugins 1.0 的 portable component 只有 Skills 和 MCP Servers。本仓�
 - `project-adopt`：把已有项目接入这套工作方式，先理解再最小改造。不要默认改造成插件，也不要默认跑插件 Doctor。
 - `root-cause-debug`：证据 -> 假设 -> 最小实验 -> 根因 -> 修复 -> 回归验证。
 - `dependency-evaluation`：新增/替换依赖或准备自研通用基础设施时使用。
-- `change-review`：先跑预检脚本收集工作区事实，再审查 diff、行为、测试证据和未验证项。
+- `change-review`：先跑预检脚本收集工作区事实（含未跟踪文件 diff），再审查行为、测试证据和未验证项。
 - `harness-evolve`：从真实项目的重复摩擦中决定哪些能力应该沉淀、迁移或删除。没有重复证据就停止。
-- `harness-doctor`：只检查本插件仓库的 manifest、MCP、Skills、Profiles、引用和目录结构。
+- `harness-doctor`：只检查本插件仓库。需要 Python 3.11+；对着业务仓跑会失败。
 
 ## Context7 MCP
 
@@ -170,4 +170,4 @@ io.github.lookerjin.codex/
 - 任务状态保留在 Issue / PR / Roadmap。
 - 同一类事实只保留一个权威来源。
 
-这套插件通过真实项目持续演化，不追求一次设计完整。
+这套插件通过真实项目持续演化，不追求一次设计完整。实地记录见 [docs/field-tests.md](docs/field-tests.md)。

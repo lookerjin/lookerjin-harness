@@ -13,19 +13,21 @@ description: Evaluate whether to add, replace, or avoid a third-party software d
 2. 项目已有依赖是否已提供？
 3. 问题属于项目核心领域语义，还是通用基础设施？
 4. 对通用基础设施，搜索当前成熟实现。
-5. 涉及外部库当前 API 时，先用 Context7 或官方文档，不凭模型记忆。
+5. 涉及外部库当前 API 时，先用 Context7 或官方文档，不凭模型记忆。未引入第三方、只用标准库时，跳过这一步。
 6. 核对并写出：
    - 官方仓库与维护状态
-   - 当前稳定版本
+   - 当前稳定版本（不要把 beta/rc 当成 latest）
    - License
-   - 语言/运行时最低版本
+   - 语言/运行时最低版本，以及引入后是否抬升本仓库 toolchain（例如 `go.mod` 的 `go` 行）。抬升必须是显式决策。
    - 传递依赖
    - CGO / native / platform 要求
    - 供应链和安全风险
    - API 稳定性与替换成本
+   - 客户端默认 retry / timeout / 连接池是否与项目重试政策冲突；adopt 时必须显式配置或写明接受默认
 7. 对关键依赖做最小 PoC 或局部真实运行。
 8. 比较“自研成本 + 长期维护”与“引入依赖成本 + 锁定风险”。
 9. 给出 adopt / defer / reject，并明确证据与边界。
+10. 写明验证等级：替身（mock/fake/miniredis/sqlmock）通过，不等于真实外部系统已验证。
 
 ## 触发提醒
 

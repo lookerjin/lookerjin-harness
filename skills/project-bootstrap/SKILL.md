@@ -79,7 +79,8 @@ description: Bootstrap a new or nearly-empty software project into a right-sized
 1. 检查新文件内部引用是否存在。
 2. 检查项目 Skill frontmatter 与触发条件。
 3. 验证脚本至少能通过语法/帮助路径运行。
-4. 运行项目已有门禁或等价检查。
-5. 报告 confirmed / inferred / unknown / 未验证。
+4. 如果生成了 `.github/workflows/*`，运行 `python skills/project-bootstrap/scripts/check-placeholders.py --root <project>`（目标仓里改用该脚本的安装路径）。`REPLACE_WITH_FULL_COMMIT_SHA` 残留视为失败。
+5. 运行项目已有门禁或等价检查。Go Makefile 在还没有 package 时也应通过。
+6. 报告 confirmed / inferred / unknown / 未验证。未跑真实外部依赖时标未运行，不要把 mock/miniredis/sqlmock 写成外部边界已验证。
 
 不要对目标项目运行本插件的 `harness-doctor`。Bootstrap 完成后不要自动开始无关业务实现。

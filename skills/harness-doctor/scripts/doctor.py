@@ -7,7 +7,10 @@ from pathlib import Path
 try:
     import tomllib
 except ModuleNotFoundError:
-    tomllib = None
+    try:
+        import tomli as tomllib
+    except ModuleNotFoundError:
+        tomllib = None
 
 FM = re.compile(r"\A---\s*\n(.*?)\n---", re.S)
 NAME = re.compile(r"^name:\s*(.+?)\s*$", re.M)
@@ -102,7 +105,10 @@ def main():
     profile_dir = root / "skills" / "project-bootstrap" / "references" / "profiles"
     if profile_dir.exists():
         if tomllib is None:
-            warnings.append({"code": "PROFILE_UNVERIFIED", "message": "Python <3.11; TOML profiles not parsed"})
+            errors.append({
+                "code": "PROFILE_PARSE_UNAVAILABLE",
+                "message": "Python <3.11 and tomli missing; cannot parse TOML profiles. Use python3.11+.",
+            })
         else:
             profile_ids = set()
             for path in sorted(profile_dir.glob("*.toml")):
@@ -119,6 +125,16 @@ def main():
                 else:
                     profile_ids.add(pid)
                     checks.append({"code": "PROFILE", "message": str(pid)})
+
+    ci_go = root / "skills" / "project-bootstrap" / "assets" / "github" / "ci-go.yml"
+    if ci_go.exists():
+        if "REPLACE_WITH_FULL_COMMIT_SHA" not in ci_go.read_text(encoding="utf-8"):
+            errors.append({
+                "code": "CI_PLACEHOLDER_MISSING",
+                "message": "ci-go.yml must keep REPLACE_WITH_FULL_COMMIT_SHA so generated workflows cannot ship unpinned actions",
+            })
+        else:
+            checks.append({"code": "CI_PLACEHOLDER", "message": "ci-go.yml keeps pin placeholders"})
 
     for path in root.rglob("*.md"):
         if ".git" in path.parts:

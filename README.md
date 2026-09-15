@@ -1,62 +1,12 @@
 # lookerjin-harness
 
-个人 AI 开发 Harness，用来把跨项目复用的开发规则、Skills、Hooks、Profiles、验证脚本和项目初始化流程沉淀成一套可持续演化的工程系统。
+一个面向 AI Coding Agent 的个人软件工程插件，按 Agent Plugins 1.0 组织。
 
-它不是项目模板，也不要求所有项目使用同一套技术栈。核心目标是：**让 AI 在进入一个项目时知道长期规则、按需加载工作流、调用确定性工具完成验证，并把项目事实和执行状态放在正确的位置。**
-
-## 架构
-
-```text
-lookerjin-harness/
-├── global/
-│   ├── AGENTS.md          # 跨项目长期规则
-│   ├── config.toml        # Codex 配置基线
-│   ├── hooks/             # 用户级机械约束与收口检查
-│   └── rules/             # Harness 自身的职责边界
-│
-├── skills/                # 跨项目可复用工作流
-│   ├── project-bootstrap/
-│   ├── project-adopt/
-│   ├── root-cause-debug/
-│   ├── dependency-evaluation/
-│   ├── change-review/
-│   └── harness-evolve/
-│
-├── profiles/              # 不同项目类型的默认决策集合
-│   ├── go-library/
-│   ├── go-service/
-│   ├── agent-core/
-│   ├── web-app/
-│   └── experiment/
-│
-├── assets/                # 可按需复制到项目中的工程资产
-│   ├── agents/
-│   ├── github/
-│   ├── makefile/
-│   └── scripts/
-│
-└── checks/
-    └── harness-doctor/    # Harness 自检
-```
-
-职责保持简单：
-
-```text
-长期规则       -> AGENTS.md
-任务流程       -> Skill
-机械约束       -> Hook
-确定性执行     -> Script / Makefile / CI
-项目事实       -> Docs / Code / Config
-任务状态       -> GitHub Issue / PR / Roadmap
-外部能力       -> MCP / Plugin / Browser
-项目默认决策   -> Profile
-```
+核心目标是把跨项目可复用的工程方法沉淀成可移植 Skills，把外部文档能力通过 MCP 提供；平台特有能力只作为可选扩展，不进入 portable core。
 
 ## 安装
 
-### 推荐：直接交给 AI
-
-把仓库地址发给 Codex 或其他具备本地文件和终端能力的 Coding Agent：
+推荐直接把仓库地址交给 Agent：
 
 ```text
 https://github.com/lookerjin/lookerjin-harness
@@ -65,198 +15,169 @@ https://github.com/lookerjin/lookerjin-harness
 然后告诉它：
 
 ```text
-安装并接入这个个人 Harness。
-
-先阅读仓库 README 和安装脚本，检查当前环境与已有 Codex 配置。
-不要覆盖我已有的 AGENTS.md、config.toml、hooks.json 或 Skills。
-先执行 dry-run，说明会新增什么、哪些地方有冲突；确认没有破坏性覆盖后完成安装。
-安装后运行 Harness Doctor，并报告已安装、跳过、冲突和未验证项。
+安装这个 Agent Plugin，并验证 skills 和 MCP 是否可用。
+如果当前客户端不原生支持 Agent Plugins 1.0，就按 plugin.json、skills/ 和 mcp.json 的标准结构适配到当前客户端；不要修改 portable core。
 ```
 
-AI 应完成的流程：
+支持 Agent Plugins 的客户端应从根目录发现：
 
 ```text
-读取仓库
-  ↓
-检查当前环境
-  ↓
-检查 ~/.codex 和 ~/.agents
-  ↓
-执行安装 dry-run
-  ↓
-处理或报告冲突
-  ↓
-安装个人层
-  ↓
-运行 Harness Doctor
-  ↓
-报告最终状态
+plugin.json   -> 插件身份与规范版本
+skills/       -> Agent Skills
+mcp.json      -> MCP Servers
 ```
 
-安装脚本默认不会覆盖已有文件。
+### OpenAI / Codex
 
-### 手动安装
+仓库同时提供 `.agents/plugins/marketplace.json` 作为 OpenAI / Codex 的分发适配层。它只把仓库根目录注册为插件，仍然直接复用 `plugin.json`、`skills/` 和 `mcp.json`，不维护第二套插件定义。
 
-先预览：
+从 GitHub 导入 marketplace 时使用仓库根地址，Path 留空；需要测试非默认分支时，在导入界面选择对应 branch、tag 或 commit。
 
-```bash
-python assets/scripts/install-user.py
-```
-
-确认后执行：
-
-```bash
-python assets/scripts/install-user.py --apply
-```
-
-默认行为：
-
-- `global/AGENTS.md` -> `~/.codex/AGENTS.md`
-- `global/config.toml` -> `~/.codex/config.toml`
-- `global/hooks/` -> `~/.codex/hooks/` 与 `~/.codex/hooks.json`
-- `skills/*` -> `~/.agents/skills/*`
-- 已存在的目标文件不会被覆盖
-- Unix 默认优先使用 Skill 符号链接，Windows 默认复制
-
-安装后可运行：
-
-```bash
-python checks/harness-doctor/doctor.py --root .
-```
-
-## 怎么用
-
-### 新项目
-
-在新项目目录中让 Codex 使用：
+## 架构
 
 ```text
-$project-bootstrap
-```
-
-它会先扫描项目和用户描述，建立 Project Intake，并把关键判断标记为：
-
-- `confirmed`：有直接证据确认
-- `inferred`：根据现有证据推断
-- `unknown`：当前无法可靠确定且可能影响设计
-- `N/A`：当前项目不适用
-
-然后选择合适的 Profile，只创建项目真正需要的 Harness：AGENTS、Docs、项目级 Skills、Hooks、Makefile、Scripts、CI 等。
-
-### 已有项目
-
-```text
-$project-adopt
-```
-
-流程是：
-
-```text
-scan
-  ↓
-理解现有工程体系
-  ↓
-gap analysis
-  ↓
-minimal adoption
-```
-
-不会机械覆盖已有项目规范，也不会为了统一目录而重构项目。
-
-### 日常开发
-
-```text
-$root-cause-debug
-```
-
-用于系统化排障：证据 -> 假设 -> 最小实验 -> 根因 -> 修复 -> 回归验证。
-
-```text
-$dependency-evaluation
-```
-
-用于新增依赖、自研基础设施或技术选型前的评估。
-
-```text
-$change-review
-```
-
-用于实现结束后的 diff、测试证据、未追踪文件、文档同步和未验证项检查。
-
-```text
-$harness-evolve
-```
-
-用于回顾真实开发过程，把已经稳定重复出现的规则或流程提升到个人 Harness，同时清理失效或重复能力。
-
-## Profiles
-
-Profile 不是 starter repo，而是一组默认决策。
-
-例如：
-
-```text
-go-library
-    +
-agent-core
-```
-
-可以组合成一个强调公共 API、状态持久化、恢复、安全边界、Provider 隔离和评测能力的 Agent Core 项目。
-
-当前 Profiles：
-
-- `go-library`：可复用 Go 库
-- `go-service`：长期运行的 Go 后端服务
-- `agent-core`：Agent Runtime / Core / Harness
-- `web-app`：需要真实浏览器验证的 Web 应用
-- `experiment`：短生命周期、低成本验证项目
-
-真实项目证据始终高于 Profile 默认值。
-
-## 项目级 Harness
-
-个人 Harness 只保存跨项目复用的能力。
-
-进入具体项目后，项目自己的规则和流程仍然放在项目仓库中：
-
-```text
-project/
+lookerjin-harness/
+├── plugin.json
+├── mcp.json
 ├── AGENTS.md
-├── .agents/skills/
-├── .codex/
-├── docs/
-├── scripts/
-├── Makefile
-└── .github/
+├── docs/                       # 仓库文档与 field-test 证据
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json   # OpenAI / Codex distribution adapter
+└── skills/
+    ├── project-bootstrap/
+    ├── project-adopt/
+    ├── root-cause-debug/
+    ├── dependency-evaluation/
+    ├── change-review/
+    ├── harness-evolve/
+    └── harness-doctor/
 ```
 
-原则是：
+Agent Plugins 1.0 的 portable component 只有 Skills 和 MCP Servers。本仓库不自定义第三套插件协议。
 
-- 个人层描述“我通常怎么开发”
-- 项目层描述“这个项目必须怎么运行”
-- 能机械验证的事情尽量不要只靠模型记住
-- 同一类事实只保留一个权威来源
+`docs/` 只是仓库级文档和实地验证记录，不是 Agent Plugins component，也不参与插件发现。Agent Plugins 1.0 只规定标准组件的固定发现位置，并不要求插件根目录只能包含这些文件。
 
-## 外部能力
+`.agents/plugins/marketplace.json` 不是 portable component，只是 OpenAI / Codex 的分发清单；它只引用仓库根插件，不复制或改变 portable core 的语义。
 
-默认保持精简：
+根目录 `AGENTS.md` 只约束如何修改本插件，不会自动成为目标项目的规则。
 
-- GitHub：Issue、PR、CI 和远端状态
-- Context7：外部库、SDK、API 和版本文档
-- Codex Browser / CDP：交互式 Web 验证
+## Skills
 
-只有真实项目出现明确需求时，再引入额外 MCP、代码索引、任务系统或 Token 优化工具。
+- `project-bootstrap`：为新项目建立最小可演化 Harness。先列出将创建的文件，再写入。
+- `project-adopt`：把已有项目接入这套工作方式，先理解再最小改造。不要默认改造成插件，也不要默认跑插件 Doctor。
+- `root-cause-debug`：证据 -> 假设 -> 最小实验 -> 根因 -> 修复 -> 回归验证。
+- `dependency-evaluation`：新增/替换依赖或准备自研通用基础设施时使用。
+- `change-review`：先跑预检脚本收集工作区事实（含未跟踪文件 diff），再审查行为、测试证据和未验证项。
+- `harness-evolve`：从真实项目的重复摩擦中决定哪些能力应该沉淀、迁移或删除。没有重复证据就停止。
+- `harness-doctor`：只检查本插件仓库。需要 Python 3.11+；对着业务仓跑会失败。
 
-## 演化
+## Context7 MCP
 
-这套 Harness 不是一次设计完成的。
+`mcp.json` 声明 Context7 的远程 Streamable HTTP 服务：
 
-新的规则或流程进入个人层之前，优先满足至少一个条件：
+```text
+https://mcp.context7.com/mcp
+```
 
-1. 已经在多个项目重复出现
-2. 同一个项目被重复人工纠正多次
-3. 属于高风险问题的确定性防护
-4. 能明显减少重复操作或认知负担
-5. 可以定义清晰的触发条件、输入、输出和验证方法
+插件不保存 API Key。需要更高额度或认证能力时，由当前 Agent 客户端自己的认证机制管理凭证。
 
-先在真实项目中运行，再决定是否沉淀。
+## Project Bootstrap Resources
+
+Profile、工程默认值和项目模板属于 `project-bootstrap` Skill 的渐进式资源，而不是自定义顶层协议：
+
+```text
+skills/project-bootstrap/
+├── SKILL.md
+├── references/
+│   ├── intake-checklist.md
+│   ├── engineering-defaults.md
+│   └── profiles/
+└── assets/
+    ├── AGENTS.repo.template.md
+    ├── github/
+    └── makefile/
+```
+
+`engineering-defaults.md` 是项目规则素材的唯一来源。只有初始化项目时才读取这些内容，并按项目裁剪后写入目标仓库 `AGENTS.md`。
+
+## 规则放置与演化
+
+发现新的限制、规则或工作方式时，先判断作用域、生命周期和是否需要机械保证，不要直接写进 portable core。
+
+```text
+New Rule / Constraint
+        │
+        ▼
+这是一次性的吗？
+   │         │
+  是         否
+   │         │
+Prompt       ▼
+         属于当前项目？
+          │        │
+         是        不确定 / 可能通用
+          │        │
+          ▼        ▼
+    Project Layer  先在项目运行
+          │              │
+          │         多次重复验证？
+          │          │         │
+          │         否         是
+          │          │         │
+          │        保持局部     ▼
+          │                harness-evolve
+          │                     │
+          ▼                     ▼
+     类型是什么？          Portable Core
+          │
+  ┌───────┼────────┬─────────────┐
+  ▼       ▼        ▼             ▼
+规则     流程      事实          机械约束
+项目AGENTS  Skill   Docs/Code   Script/CI
+```
+
+再额外判断一次：
+
+```text
+如果明天换一个 Agent，这条规则还有意义吗？
+
+有   -> 保持在项目层或 portable core
+没有 -> 放到对应 Client Extension / Adapter
+```
+
+推荐的晋升路径：
+
+```text
+Prompt
+  ↓
+Project Rule / Project Skill / Project Script
+  ↓
+Repeated Evidence
+  ↓
+harness-evolve
+  ↓
+Portable Core
+```
+
+不要跳级。已经进入 portable core 的能力如果后来发现只适用于某类项目、某个平台或已经失效，也应该降级、迁移或删除。
+
+## 平台适配
+
+`plugin.json`、`skills/` 和 `mcp.json` 构成跨 Agent 的 portable core。
+
+如果未来某个客户端确实需要专属运行能力，例如 Hook 或客户端权限配置，再按 Agent Plugins 1.0 的 Client Extensions 机制隔离实现；没有真实需求时不提前创建客户端专属扩展。
+
+当前仓库的 `.agents/plugins/marketplace.json` 仅用于 OpenAI / Codex 发现和分发插件，不属于 portable core，也不会改变插件运行语义。
+
+## 使用原则
+
+- 项目长期规则进入项目 `AGENTS.md`。
+- 特定任务流程进入 Agent Skill。
+- 可确定性执行的检查进入项目 Script / Makefile / CI。
+- 外部当前知识通过 MCP 获取。
+- 项目事实保留在项目 Docs / Code / Config。
+- 任务状态保留在 Issue / PR / Roadmap。
+- 同一类事实只保留一个权威来源。
+
+这套插件通过真实项目持续演化，不追求一次设计完整。实地记录见 [docs/field-tests.md](docs/field-tests.md)。

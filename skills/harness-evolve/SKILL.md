@@ -1,54 +1,33 @@
 ---
 name: harness-evolve
-description: Review repeated friction from real development and decide whether it should become a durable AGENTS rule, Skill, Hook, script, profile default, or remain project-local. Use after several development cycles, repeated corrections, recurring CI/debug failures, or when the user wants to improve their personal harness from observed evidence.
+description: Review repeated friction from real development and decide whether it should become a portable Agent Skill, project AGENTS rule, deterministic script, platform adapter, or remain project-local. Use after several development cycles, repeated corrections, recurring CI/debug failures, or when improving this personal Agent Plugin from observed evidence. Do not use without repeated evidence.
 ---
 
 # Harness Evolve
 
-目标是从真实反馈中提炼 Harness，而不是为完整性增加配置。
+目标是从真实反馈中提炼 Harness，而不是为完整性增加配置。没有重复证据时直接停止，不要为了演化而演化。
+
+需要时读取 `references/promotion-policy.md`、`references/surface-routing.md` 和 `references/integrations.md`。
 
 ## 输入证据
 
-按需查看：
+按需查看用户重复纠正、Git/PR/Issue/CI 失败模式、项目规则与 Skills、现有插件能力，以及多项目共同模式。
 
-- 最近反复出现的用户纠正。
-- Git / PR / Issue / CI 失败模式。
-- 项目 `AGENTS.md`、`.agents/skills`、hooks、scripts。
-- 已有个人 Harness，避免重复。
-- 多项目共同模式。
+## 路由
 
-## 分类
-
-每个候选改进先路由：
-
-- 始终成立的长期规则 → AGENTS
-- 特定任务的可复用流程 → Skill
-- 机械安全/生命周期约束 → Hook / permission / policy
-- 确定性重复执行 → Script / Makefile / CI
-- 项目事实 → Docs
+- 跨平台、特定任务可复用流程 → Agent Skill
+- 项目长期规则 → 项目 `AGENTS.md`
+- 可确定性执行 → Script / Makefile / CI
+- 外部系统或当前外部知识 → MCP
+- 客户端特有 Hook / Command / Agent / 权限配置 → 反向域名 client extension / adapter
+- 项目事实 → Docs / code / config
 - 当前状态 → Issue / PR / Roadmap
-- 外部系统/当前外部知识 → MCP / Plugin
+- 一次性要求 → 当前线程
+
+不要创建 Agent Plugins 1.0 没有定义的自定义 portable component。
 
 ## Promotion Gate
 
-个人 Harness 候选至少满足：
+候选至少满足一个条件：跨项目重复、同项目多次纠正、高风险防重复、显著减少重复劳动，或已经能明确 trigger/input/output/verification。
 
-- 跨两个项目出现；或
-- 同一项目被纠正 2～3 次；或
-- 属于高风险事故防重复；或
-- 能显著减少重复操作；或
-- 已能写清 trigger / input / output / verification。
-
-## 反向检查
-
-同时寻找应该删除的东西：
-
-- 已被模型原生能力稳定覆盖的通用提示。
-- 重复 source of truth。
-- 误触发频繁的 Skill。
-- 误拦截明显的 Hook。
-- 没人使用的模板或脚本。
-
-## 输出
-
-先给候选变更和证据，再修改 Harness。不要把一次性经验直接提升到个人层。
+同时主动删除重复 source of truth、低价值通用提示、误触发 Skill、误拦截 adapter 和无人使用资源。

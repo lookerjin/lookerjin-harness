@@ -46,15 +46,17 @@ lookerjin-harness/
 
 Agent Plugins 1.0 的 portable component 只有 Skills 和 MCP Servers。本仓库不自定义第三套插件协议。
 
+根目录 `AGENTS.md` 只约束如何修改本插件，不会自动成为目标项目的规则。
+
 ## Skills
 
-- `project-bootstrap`：为新项目建立最小可演化 Harness。
-- `project-adopt`：把已有项目接入这套工作方式，先理解再最小改造。
+- `project-bootstrap`：为新项目建立最小可演化 Harness。先列出将创建的文件，再写入。
+- `project-adopt`：把已有项目接入这套工作方式，先理解再最小改造。不要默认改造成插件，也不要默认跑插件 Doctor。
 - `root-cause-debug`：证据 -> 假设 -> 最小实验 -> 根因 -> 修复 -> 回归验证。
 - `dependency-evaluation`：新增/替换依赖或准备自研通用基础设施时使用。
-- `change-review`：实现结束后的 diff、行为、测试证据、文档同步和未验证项检查。
-- `harness-evolve`：从真实项目的重复摩擦中决定哪些能力应该沉淀、迁移或删除。
-- `harness-doctor`：检查插件 manifest、MCP、Skills、Profiles、引用和目录结构是否自洽。
+- `change-review`：先跑预检脚本收集工作区事实，再审查 diff、行为、测试证据和未验证项。
+- `harness-evolve`：从真实项目的重复摩擦中决定哪些能力应该沉淀、迁移或删除。没有重复证据就停止。
+- `harness-doctor`：只检查本插件仓库的 manifest、MCP、Skills、Profiles、引用和目录结构。
 
 ## Context7 MCP
 
@@ -83,11 +85,11 @@ skills/project-bootstrap/
     └── makefile/
 ```
 
-只有初始化或接入项目时才读取这些内容。
+`engineering-defaults.md` 是项目规则素材的唯一来源。只有初始化项目时才读取这些内容，并按项目裁剪后写入目标仓库 `AGENTS.md`。
 
 ## 规则放置与演化
 
-发现新的限制、规则或工作方式时，先判断作用域、生命周期和是否需要机械保证，不要直接写进个人 Harness。
+发现新的限制、规则或工作方式时，先判断作用域、生命周期和是否需要机械保证，不要直接写进 portable core。
 
 ```text
 New Rule / Constraint
@@ -118,7 +120,7 @@ Prompt       ▼
   ┌───────┼────────┬─────────────┐
   ▼       ▼        ▼             ▼
 规则     流程      事实          机械约束
-AGENTS   Skill   Docs/Code   Script/CI/Hook
+项目AGENTS  Skill   Docs/Code   Script/CI
 ```
 
 再额外判断一次：
@@ -156,7 +158,7 @@ Hooks、Commands、Agent 定义和客户端权限配置目前不属于 Agent Plu
 io.github.lookerjin.codex/
 ```
 
-平台扩展不得改变 `skills/` 与 `mcp.json` 的跨平台语义。
+平台扩展不得改变 `skills/` 与 `mcp.json` 的跨平台语义。Skill 正文不要把某个客户端的 Hook 或用户目录写成默认步骤。
 
 ## 使用原则
 

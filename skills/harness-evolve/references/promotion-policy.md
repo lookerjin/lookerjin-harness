@@ -1,8 +1,8 @@
 # Harness Promotion Policy
 
-个人 Harness 只保存已经通过真实开发证明有复用价值的东西。
+portable core 只保存已经通过真实开发证明有复用价值的东西。
 
-## 可以提升到个人层的条件
+## 可以提升的条件
 
 至少满足一项：
 
@@ -19,13 +19,16 @@
   -> 当前线程
 
 项目反复出现
-  -> Repo Skill / Repo AGENTS / Script
+  -> Repo Skill / Repo AGENTS / Script / CI
 
 跨项目再次出现
-  -> 个人 Harness 候选
+  -> portable core 候选
 
 真实验证有效
-  -> 个人 Skill / Global AGENTS / Global Hook
+  -> portable Skill / MCP
+
+仅对某个客户端成立
+  -> reverse-domain client extension
 ```
 
 ## 降级或删除
@@ -35,5 +38,5 @@
 - 新模型已经稳定覆盖，Skill 只剩通用提示。
 - Skill 触发频繁但很少改变结果。
 - 规则与其他层重复并产生冲突。
-- Hook 误拦截成本高于保护价值。
+- adapter 误拦截成本高于保护价值。
 - 脚本维护成本超过它减少的重复劳动。

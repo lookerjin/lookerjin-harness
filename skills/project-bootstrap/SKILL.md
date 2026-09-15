@@ -24,15 +24,17 @@ description: Bootstrap a new or nearly-empty software project into a right-sized
 
 ## 2. 选择 Profile
 
-只在需要时读取 `references/profiles/`。Profile 是默认决策，不是强制模板，现实项目证据优先。
+只在需要时读取 `references/profiles/`。Profile 是默认决策，不是待办清单，现实项目证据优先。
 
 可组合多个 Profile，例如 `go-library + agent-core`。
 
-## 3. 应用工程默认值
+## 3. 裁剪工程默认值
 
-需要生成项目长期规则时，读取 `references/engineering-defaults.md` 和 `assets/AGENTS.repo.template.md`，只保留当前项目真实适用的部分。
+需要生成项目长期规则时，读取 `references/engineering-defaults.md` 和 `assets/AGENTS.repo.template.md`。
 
-不要把个人偏好复制成多个 source of truth。
+- `engineering-defaults.md` 是项目规则素材的唯一来源。
+- 模板只提供结构；写入目标 `AGENTS.md` 时从 defaults 裁剪，不要在模板里维护第三份规则。
+- 只保留当前项目真实适用的部分，不把个人偏好复制成多个 source of truth。
 
 ## 4. 建立 Source of Truth
 
@@ -45,18 +47,22 @@ description: Bootstrap a new or nearly-empty software project into a right-sized
 
 不要创建阶段性快照或互相覆盖的规则文件。
 
-## 5. 生成最小 Harness
+## 5. 先列出文件清单，再生成
 
 按需要创建，而不是全部创建：
 
 - `AGENTS.md`
 - README / 必要长期 docs
 - 项目级 Agent Skills
-- 当前客户端支持的低歧义安全 adapter（如果确实需要）
 - Makefile / scripts
 - GitHub Issue / PR / CI
 
-模板资源在 `assets/` 下，只在匹配项目需求时使用。
+写入任何文件之前，先输出将要创建或覆盖的路径清单和原因。没有这份清单不要开始写文件。
+
+模板资源在 `assets/` 下：
+
+- 语言/平台不匹配时，禁止复制对应资产。例如非 Go 项目不要复制 `makefile/Makefile.go` 或 `github/ci-go.yml`。
+- 平台特有 adapter 不是 bootstrap 默认产出物。
 
 如果只是实验项目，允许只创建极少文件。
 
@@ -64,7 +70,7 @@ description: Bootstrap a new or nearly-empty software project into a right-sized
 
 能用测试、脚本、权限、平台安全机制或 CI 可靠表达的约束，不只写成自然语言要求。
 
-平台特有能力必须被识别为平台特有能力，不把 Codex Hook、Claude Hook 等描述成跨平台标准。
+平台特有能力必须被识别为平台特有能力，不把某个客户端的 Hook 或用户目录描述成跨平台标准。
 
 ## 7. 验证
 
@@ -76,4 +82,4 @@ description: Bootstrap a new or nearly-empty software project into a right-sized
 4. 运行项目已有门禁或等价检查。
 5. 报告 confirmed / inferred / unknown / 未验证。
 
-Bootstrap 完成后不要自动开始无关业务实现。
+不要对目标项目运行本插件的 `harness-doctor`。Bootstrap 完成后不要自动开始无关业务实现。

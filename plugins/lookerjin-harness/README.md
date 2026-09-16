@@ -1,18 +1,18 @@
 # lookerjin-harness
 
-一个面向 AI Coding Agent 的 Developer Domain Harness，按 Agent Plugins 1.0 组织。
+一个面向 AI Coding Agent 的 Developer Domain Harness，以 Codex Plugin 形式分发。
 
 它负责跨项目可复用的软件工程工作流、验证方式和演化方法；具体语言、框架或工具的专业知识优先交给独立 Expert Plugin，而不是继续膨胀本 Harness。
 
 本插件位于 Marketplace 仓库的：
 
 ```text
-plugins/developer/lookerjin-harness/
+plugins/lookerjin-harness/
 ```
 
 ## 定位
 
-`lookerjin-harness` 是 Developer 领域的元插件 / Domain Harness。这里的“元插件”是架构角色，不是新的 Agent Plugins 协议类型。
+`lookerjin-harness` 是 Developer 领域的元插件 / Domain Harness。这里的“元插件”是架构角色，不是新的协议类型。
 
 它主要回答：
 
@@ -29,7 +29,11 @@ plugins/developer/lookerjin-harness/
 
 ```text
 lookerjin-harness/
-├── plugin.json
+├── .codex-plugin/
+│   └── plugin.json
+├── assets/
+│   ├── logo.svg
+│   └── composer-icon.svg
 ├── mcp.json
 ├── AGENTS.md
 ├── docs/
@@ -43,9 +47,11 @@ lookerjin-harness/
     └── harness-doctor/
 ```
 
-Agent Plugins 1.0 的 portable component 只有 Skills 和 MCP Servers。本插件不自定义第三套插件协议。
+`.codex-plugin/plugin.json` 是本插件唯一的 Codex manifest。根目录不再维护第二份 `plugin.json`，避免重复事实和版本漂移。
 
-`docs/` 只是插件级文档和实地验证记录，不是 Agent Plugins component，也不参与插件发现。
+`assets/` 是插件级展示资源目录，供 Codex manifest 中的 `logo`、`composerIcon` 等字段引用。
+
+`docs/` 只是插件级文档和实地验证记录，不参与插件发现。
 
 根目录 `AGENTS.md` 只约束如何修改本插件，不会自动成为目标项目的规则。
 
@@ -71,7 +77,7 @@ https://mcp.context7.com/mcp
 
 ## Project Bootstrap Resources
 
-Profile、工程默认值和项目模板属于 `project-bootstrap` Skill 的渐进式资源，而不是自定义顶层协议：
+Profile、工程默认值和项目模板属于 `project-bootstrap` Skill 的渐进式资源：
 
 ```text
 skills/project-bootstrap/
@@ -119,7 +125,7 @@ Prompt       ▼
                            │         │
                            ▼         ▼
                       Expert Plugin  再判断是否进入
-                      / Tool / MCP   Harness portable core
+                      / Tool / MCP   Harness core
 ```
 
 Harness 应优先拥有“怎么做事”的稳定方法，而不是拥有所有“具体怎么实现”的专业知识。

@@ -1,8 +1,8 @@
 # lookerjin agent market
 
-本仓库是一个面向个人 Agent 工作流的 Marketplace / Distribution 仓库。
+本仓库是一个面向个人 Agent 工作流的 Codex Marketplace / Distribution 仓库。
 
-目标不是把所有能力塞进一个超级插件，而是维护一组彼此独立、按需安装的 Agent Plugins。Marketplace 只负责发现、分发、组合和版本治理；具体领域由各 Plugin 自己的名称、描述、分类和能力表达。
+目标不是把所有能力塞进一个超级插件，而是维护一组彼此独立、按需安装的 Plugins。Marketplace 只负责发现、分发、组合和版本治理；具体领域由各 Plugin 自己的名称、描述、分类和能力表达。
 
 ## 当前结构
 
@@ -15,7 +15,9 @@ lookerjin-harness/
 │   └── workflows/
 ├── plugins/
 │   └── lookerjin-harness/
-│       ├── plugin.json
+│       ├── .codex-plugin/
+│       │   └── plugin.json
+│       ├── assets/
 │       ├── mcp.json
 │       ├── AGENTS.md
 │       ├── docs/
@@ -26,6 +28,8 @@ lookerjin-harness/
 ```
 
 自有插件统一平铺在 `plugins/<plugin-name>/` 下。第三方插件原则上保持其独立仓库，通过 Marketplace remote source 引用，不复制进本仓库。
+
+每个 Codex 插件只保留 `.codex-plugin/plugin.json` 作为 manifest；展示资源统一放在插件根级 `assets/`，由 manifest 使用插件相对路径引用。
 
 ## 领域分类
 
@@ -100,12 +104,11 @@ Upstream
 
 `.github/workflows/marketplace.yml` 负责 Marketplace 和本地插件检查；`.github/workflows/remote-plugins.yml` 负责远端插件契约巡检。
 
-## 协议边界
+## 边界
 
 - Marketplace 是分发与组合层；
 - Plugin 是能力包边界；
-- Skills / MCP 是 Agent Plugins 1.0 portable components；
-- `Domain Harness`、`Expert Plugin` 是架构角色，不是新的协议类型；
+- `Domain Harness`、`Expert Plugin` 是本仓库的架构角色，不是新的协议类型；
 - 领域分类是人的视图，不是目录协议；
 - 不自定义 Plugin 依赖、继承或 Plugin-to-Plugin 调用协议。
 

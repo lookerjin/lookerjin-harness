@@ -1,0 +1,37 @@
+{
+  "name": "lookerjin-harness",
+  "version": "0.2.2",
+  "description": "Portable personal software engineering harness for AI coding agents.",
+  "author": {
+    "name": "lookerjin",
+    "url": "https://github.com/lookerjin"
+  },
+  "homepage": "https://github.com/lookerjin/lookerjin-harness",
+  "repository": "https://github.com/lookerjin/lookerjin-harness",
+  "license": "Apache-2.0",
+  "keywords": [
+    "software-engineering",
+    "coding-agent",
+    "project-bootstrap",
+    "debugging",
+    "code-review",
+    "agent-skills",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json",
+  "interface": {
+    "displayName": "lookerjin Harness",
+    "shortDescription": "Personal software engineering workflows for AI coding agents",
+    "longDescription": "A personal software engineering harness for AI coding agents. It provides reusable workflows for project bootstrap and adoption, evidence-first root-cause debugging, dependency evaluation, change review, self-checks, and evidence-driven harness evolution.",
+    "developerName": "lookerjin",
+    "category": "Developer Tools",
+    "capabilities": [],
+    "websiteURL": "https://github.com/lookerjin/lookerjin-harness",
+    "defaultPrompt": [
+      "Bootstrap an evolvable engineering harness for this project.",
+      "Debug this issue with an evidence-first root-cause workflow.",
+      "Review the current changes and flag risks before I merge."
+    ]
+  }
+}

@@ -8,7 +8,7 @@
       "name": "lookerjin-harness",
       "source": {
         "source": "local",
-        "path": "./plugins/developer/lookerjin-harness"
+        "path": "./plugins/lookerjin-harness"
       },
       "policy": {
         "installation": "AVAILABLE",

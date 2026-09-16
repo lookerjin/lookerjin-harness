@@ -1,183 +1,121 @@
-# lookerjin-harness
+# lookerjin agent market
 
-一个面向 AI Coding Agent 的个人软件工程插件，按 Agent Plugins 1.0 组织。
+本仓库是一个面向个人 Agent 工作流的 Marketplace / Distribution 仓库。
 
-核心目标是把跨项目可复用的工程方法沉淀成可移植 Skills，把外部文档能力通过 MCP 提供；平台特有能力只作为可选扩展，不进入 portable core。
+目标不是把所有能力塞进一个超级插件，而是按领域组合独立插件：每个成熟领域可以有自己的 Harness 负责该领域的工作流、判断与验证，再由专家插件提供更具体的语言、框架、工具或创作能力。
 
-## 安装
-
-推荐直接把仓库地址交给 Agent：
-
-```text
-https://github.com/lookerjin/lookerjin-harness
-```
-
-然后告诉它：
-
-```text
-安装这个 Agent Plugin，并验证 skills 和 MCP 是否可用。
-如果当前客户端不原生支持 Agent Plugins 1.0，就按 plugin.json、skills/ 和 mcp.json 的标准结构适配到当前客户端；不要修改 portable core。
-```
-
-支持 Agent Plugins 的客户端应从根目录发现：
-
-```text
-plugin.json   -> 插件身份与规范版本
-skills/       -> Agent Skills
-mcp.json      -> MCP Servers
-```
-
-### OpenAI / Codex
-
-仓库同时提供 `.agents/plugins/marketplace.json` 作为 OpenAI / Codex 的分发适配层。它只把仓库根目录注册为插件，仍然直接复用 `plugin.json`、`skills/` 和 `mcp.json`，不维护第二套插件定义。
-
-从 GitHub 导入 marketplace 时使用仓库根地址，Path 留空；需要测试非默认分支时，在导入界面选择对应 branch、tag 或 commit。
-
-## 架构
+## 当前结构
 
 ```text
 lookerjin-harness/
-├── plugin.json
-├── mcp.json
-├── AGENTS.md
-├── docs/                       # 仓库文档与 field-test 证据
 ├── .agents/
 │   └── plugins/
-│       └── marketplace.json   # OpenAI / Codex distribution adapter
-└── skills/
-    ├── project-bootstrap/
-    ├── project-adopt/
-    ├── root-cause-debug/
-    ├── dependency-evaluation/
-    ├── change-review/
-    ├── harness-evolve/
-    └── harness-doctor/
+│       └── marketplace.json
+├── .github/
+│   └── workflows/
+├── plugins/
+│   └── developer/
+│       └── lookerjin-harness/
+│           ├── plugin.json
+│           ├── mcp.json
+│           ├── AGENTS.md
+│           ├── docs/
+│           └── skills/
+└── README.md
 ```
 
-Agent Plugins 1.0 的 portable component 只有 Skills 和 MCP Servers。本仓库不自定义第三套插件协议。
+当前只有 `Developer` 领域已经形成稳定 Harness，因此只创建实际存在的目录，不提前创建 Creator、Research 或 Experimental 的空壳。
 
-`docs/` 只是仓库级文档和实地验证记录，不是 Agent Plugins component，也不参与插件发现。Agent Plugins 1.0 只规定标准组件的固定发现位置，并不要求插件根目录只能包含这些文件。
-
-`.agents/plugins/marketplace.json` 不是 portable component，只是 OpenAI / Codex 的分发清单；它只引用仓库根插件，不复制或改变 portable core 的语义。
-
-根目录 `AGENTS.md` 只约束如何修改本插件，不会自动成为目标项目的规则。
-
-## Skills
-
-- `project-bootstrap`：为新项目建立最小可演化 Harness。先列出将创建的文件，再写入。
-- `project-adopt`：把已有项目接入这套工作方式，先理解再最小改造。不要默认改造成插件，也不要默认跑插件 Doctor。
-- `root-cause-debug`：证据 -> 假设 -> 最小实验 -> 根因 -> 修复 -> 回归验证。
-- `dependency-evaluation`：新增/替换依赖或准备自研通用基础设施时使用。
-- `change-review`：先跑预检脚本收集工作区事实（含未跟踪文件 diff），再审查行为、测试证据和未验证项。
-- `harness-evolve`：从真实项目的重复摩擦中决定哪些能力应该沉淀、迁移或删除。没有重复证据就停止。
-- `harness-doctor`：只检查本插件仓库。需要 Python 3.11+；对着业务仓跑会失败。
-
-## Context7 MCP
-
-`mcp.json` 声明 Context7 的远程 Streamable HTTP 服务：
+## 领域模型
 
 ```text
-https://mcp.context7.com/mcp
+Marketplace
+├── Developer
+│   ├── Domain Harness
+│   └── Expert Plugins
+├── Creator
+│   ├── Domain Harness
+│   └── Expert Plugins
+├── Research
+│   ├── Domain Harness
+│   └── Expert Plugins
+└── Experimental
+    └── 尚未形成稳定工作流的实验能力
 ```
 
-插件不保存 API Key。需要更高额度或认证能力时，由当前 Agent 客户端自己的认证机制管理凭证。
+领域是组织和治理概念，不是新的 Agent Plugins 协议类型。
 
-## Project Bootstrap Resources
+### Domain Harness
 
-Profile、工程默认值和项目模板属于 `project-bootstrap` Skill 的渐进式资源，而不是自定义顶层协议：
+Domain Harness 负责该领域中相对稳定的工作方式，例如：
+
+- 如何理解任务与上下文；
+- 如何推进工作流；
+- 如何验证结果；
+- 什么时候需要调用专业能力；
+- 什么时候应该停止扩大范围。
+
+Harness 不应该成为领域知识大全。
+
+### Expert Plugin
+
+专家插件负责具体专业能力，例如：
+
+- Developer：Go、Python、TypeScript、数据库、安全、前端等；
+- Creator：图像生成、视频生成、剪辑、配音、发布等；
+- Research：检索、论文阅读、资料分析等。
+
+优先集成成熟、活跃、边界清楚的第三方插件，而不是重复实现。第三方插件原则上保持独立来源，由 Marketplace 负责发现、组合和版本治理，不复制进本仓库成为自有实现。
+
+## 当前 Developer Harness
+
+`plugins/developer/lookerjin-harness` 是当前已有的软件工程 Domain Harness。
+
+它负责通用 AI Coding 工程流程，包括：
+
+- 项目初始化与接入；
+- 根因调试；
+- 依赖评估；
+- 变更审查；
+- Harness 自检与演化。
+
+它不负责承载某门语言或某个框架的完整专业知识。此类能力应优先由独立 Expert Plugin 提供。
+
+## 演化原则
+
+新增能力时按下面顺序判断：
 
 ```text
-skills/project-bootstrap/
-├── SKILL.md
-├── references/
-│   ├── intake-checklist.md
-│   ├── engineering-defaults.md
-│   └── profiles/
-└── assets/
-    ├── AGENTS.repo.template.md
-    ├── github/
-    └── makefile/
+新能力 / 重复摩擦
+      ↓
+属于哪个领域？
+      ↓
+是否已经存在成熟第三方能力？
+   ┌──┴──┐
+   是     否
+   ↓       ↓
+优先集成   再判断是否值得自研
+      ↓
+它是领域工作流，还是具体专业能力？
+   ┌──────────┴──────────┐
+   ↓                     ↓
+Domain Harness       Expert Plugin
 ```
 
-`engineering-defaults.md` 是项目规则素材的唯一来源。只有初始化项目时才读取这些内容，并按项目裁剪后写入目标仓库 `AGENTS.md`。
+只有当一个领域出现稳定工作流、重复判断和多个专业能力需要协调时，才创建对应 Domain Harness。
 
-## 规则放置与演化
+## OpenAI / Codex
 
-发现新的限制、规则或工作方式时，先判断作用域、生命周期和是否需要机械保证，不要直接写进 portable core。
+`.agents/plugins/marketplace.json` 是 OpenAI / Codex 的 Marketplace 分发清单。
 
-```text
-New Rule / Constraint
-        │
-        ▼
-这是一次性的吗？
-   │         │
-  是         否
-   │         │
-Prompt       ▼
-         属于当前项目？
-          │        │
-         是        不确定 / 可能通用
-          │        │
-          ▼        ▼
-    Project Layer  先在项目运行
-          │              │
-          │         多次重复验证？
-          │          │         │
-          │         否         是
-          │          │         │
-          │        保持局部     ▼
-          │                harness-evolve
-          │                     │
-          ▼                     ▼
-     类型是什么？          Portable Core
-          │
-  ┌───────┼────────┬─────────────┐
-  ▼       ▼        ▼             ▼
-规则     流程      事实          机械约束
-项目AGENTS  Skill   Docs/Code   Script/CI
-```
+本仓库中的自有插件使用本地子目录作为 source；未来引入第三方插件时优先引用其独立 GitHub 来源，不复制第三方实现。
 
-再额外判断一次：
+## 协议边界
 
-```text
-如果明天换一个 Agent，这条规则还有意义吗？
+- Marketplace 是分发与组合层；
+- Plugin 是能力包边界；
+- Skills / MCP 是 Agent Plugins 1.0 portable components；
+- `Domain Harness`、`Expert Plugin` 是本仓库的架构角色，不是新的协议类型；
+- 不自定义 Plugin 依赖、Plugin 继承或 Plugin-to-Plugin 调用协议。
 
-有   -> 保持在项目层或 portable core
-没有 -> 放到对应 Client Extension / Adapter
-```
-
-推荐的晋升路径：
-
-```text
-Prompt
-  ↓
-Project Rule / Project Skill / Project Script
-  ↓
-Repeated Evidence
-  ↓
-harness-evolve
-  ↓
-Portable Core
-```
-
-不要跳级。已经进入 portable core 的能力如果后来发现只适用于某类项目、某个平台或已经失效，也应该降级、迁移或删除。
-
-## 平台适配
-
-`plugin.json`、`skills/` 和 `mcp.json` 构成跨 Agent 的 portable core。
-
-如果未来某个客户端确实需要专属运行能力，例如 Hook 或客户端权限配置，再按 Agent Plugins 1.0 的 Client Extensions 机制隔离实现；没有真实需求时不提前创建客户端专属扩展。
-
-当前仓库的 `.agents/plugins/marketplace.json` 仅用于 OpenAI / Codex 发现和分发插件，不属于 portable core，也不会改变插件运行语义。
-
-## 使用原则
-
-- 项目长期规则进入项目 `AGENTS.md`。
-- 特定任务流程进入 Agent Skill。
-- 可确定性执行的检查进入项目 Script / Makefile / CI。
-- 外部当前知识通过 MCP 获取。
-- 项目事实保留在项目 Docs / Code / Config。
-- 任务状态保留在 Issue / PR / Roadmap。
-- 同一类事实只保留一个权威来源。
-
-这套插件通过真实项目持续演化，不追求一次设计完整。实地记录见 [docs/field-tests.md](docs/field-tests.md)。
+先通过真实使用验证，再扩展结构。不要为了目录完整提前创建没有实际能力的领域或插件。

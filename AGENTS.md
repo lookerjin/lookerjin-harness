@@ -1,38 +1,59 @@
-# lookerjin-harness
+# lookerjin agent market
 
-本仓库是一个符合 Agent Plugins 1.0 的可移植个人软件工程插件。AI 是第一消费者，人类文档只是辅助入口。
+本文件只约束 Marketplace 仓库本身的维护方式。具体插件的长期规则由各插件目录内自己的 `AGENTS.md` 负责。
 
-本文件只约束如何修改这个插件仓库。目标项目的开发原则不写在这里；生成项目规则时只从 `skills/project-bootstrap/references/engineering-defaults.md` 裁剪。
+## 仓库定位
+
+- 本仓库是 Agent Plugin 的分发与组合层，不是一个超级插件。
+- 按领域组织能力，例如 Developer、Creator、Research、Experimental。
+- 一个成熟领域可以拥有自己的 Domain Harness；Harness 负责领域工作流、判断与验证，不承载所有专业知识。
+- 具体语言、框架、工具和创作能力优先由独立 Expert Plugin 提供。
+- `Domain Harness` 与 `Expert Plugin` 是架构角色，不是新的 Agent Plugins 协议类型。
 
 ## 结构约束
 
-- `plugin.json` 是插件身份与 Agent Plugins 版本的唯一标准清单。
-- `skills/*/SKILL.md` 是可移植工作流；只在对应任务需要时加载其 `references/`、`scripts/` 和 `assets/`。
-- `mcp.json` 只声明可移植 MCP；不得提交凭证、API Key 或用户私有配置。
-- 平台特有运行能力必须放在反向域名命名的顶层扩展目录，不能污染 portable core。
-- 平台强制路径的纯分发清单可以作为例外保留在规范要求的位置，例如 `.agents/plugins/marketplace.json`；它只能引用 portable core，不得复制或改写 Skills / MCP 的跨平台语义。
-- 不新增自定义顶层 Profile、Hook、Rule、Command 协议；能归属某个 Skill 的资源放进该 Skill。
+- `.agents/plugins/marketplace.json` 是 OpenAI / Codex Marketplace 分发清单。
+- 自有插件放在 `plugins/<domain>/<plugin-name>/` 下，并保持完整、独立的 Plugin 边界。
+- 第三方插件原则上保持独立来源，通过 Marketplace 引用，不把第三方实现复制进本仓库伪装成自有插件。
+- 不为了目录完整提前创建空领域、空 Harness 或占位插件。
+- 同一类事实只保留一个权威来源；插件内部规则不要重复抄到仓库根。
+
+## 能力归属
+
+新增能力时依次判断：
+
+1. 属于哪个领域；
+2. 是否已有成熟、活跃、边界清楚的第三方实现；
+3. 是领域级稳定工作流，还是具体专业能力；
+4. 如果只是实验性能力，先保持实验状态，不急于提升为 Domain Harness 或 Core 能力。
+
+优先级：
+
+```text
+成熟第三方能力 -> 集成
+稳定领域工作流 -> Domain Harness
+具体专业能力   -> Expert Plugin
+外部执行能力   -> Tool / MCP / App
+```
+
+## 第三方集成
+
+- 优先复用成熟开源，不重复实现已有能力。
+- Marketplace 负责来源、组合和版本治理；不要求本仓库拥有底层实现。
+- 引入第三方插件前至少确认来源、许可证、维护状态、能力边界和实际可运行性。
+- 默认不要跟随不可控的上游漂移；重要第三方能力应优先固定到经过验证的版本或 ref。
 
 ## 修改规则
 
-- 修改标准结构前先核对 Agent Plugins / Agent Skills / MCP 当前规范。
-- 修改任何 Skill 后检查 frontmatter、引用路径和脚本入口。
-- 修改插件结构后运行 `python skills/harness-doctor/scripts/doctor.py --root . --json`。
-- 能确定性验证的规则优先写成脚本或测试，不只写自然语言要求。
-- 不把某个 Agent 客户端的配置误写成跨平台标准。
+- 修改 Marketplace 结构前先核对 OpenAI 当前 Marketplace 行为与 Agent Plugins 当前规范。
+- 不新增自定义 Plugin 依赖、继承或 Plugin-to-Plugin 调用协议。
+- 不把 OpenAI / Codex 特有分发字段误写成 Agent Plugins portable standard。
+- 修改某个插件时，遵守该插件目录内自己的 `AGENTS.md`。
+- 修改 Developer Harness 后运行其 doctor 与相关自测。
 - 不提交秘密、令牌或机器专属绝对路径。
-- 同一类事实只保留一个权威来源。
-
-## 有限重试与人工升级
-
-这些规则只适用于维护本仓库时的 Agent 行为。
-
-- 不把“完全自主完成”当作目标；目标是自主完成能合理完成的部分，并在外部边界处请求最小人工协助。
-- 普通可恢复失败最多尝试 3 次；同类失败连续出现 2 次后，先重新判断根因，不继续无目的变换调用方式撞同一边界。
-- 权限不足、平台能力缺失、安全策略拒绝、登录/OAuth、需要用户身份或其他明确外部边界，确认一次后就应停止盲目重试。
-- 不为了避免请求用户协助而引入明显更复杂、风险更高或维护成本更大的绕路方案。
-- 需要用户协助时必须说明：当前阻塞点、已经验证过什么、用户需要执行的最小具体动作，以及用户完成后 Agent 会继续做什么。
 
 ## 演化原则
 
-只把经过真实项目重复验证的流程提升到 portable core。客户端特有能力先作为 adapter 验证，只有形成跨客户端稳定契约后才考虑提升。
+先运行，再根据真实摩擦演化。
+
+只有当一个领域已经出现稳定工作流、重复判断和多个专业能力需要协调时，才新增 Domain Harness。只有经过实际验证的第三方能力才进入长期 Marketplace 组合。

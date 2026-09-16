@@ -1,14 +1,14 @@
 {
-  "name": "lookerjin-harness",
+  "name": "lookerjin-agent-market",
   "interface": {
-    "displayName": "lookerjin Harness"
+    "displayName": "lookerjin Agent Market"
   },
   "plugins": [
     {
       "name": "lookerjin-harness",
       "source": {
         "source": "local",
-        "path": "./"
+        "path": "./plugins/lookerjin-harness"
       },
       "policy": {
         "installation": "AVAILABLE",

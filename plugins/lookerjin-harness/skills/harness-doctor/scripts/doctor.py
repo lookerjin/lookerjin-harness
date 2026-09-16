@@ -15,8 +15,28 @@ NAME = re.compile(r"^name:\s*(.+?)\s*$", re.M)
 DESC = re.compile(r"^description:\s*(.+?)\s*$", re.M)
 MD_LINK = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)\)")
 PLUGIN_NAME = re.compile(r"^[a-z0-9](?:[a-z0-9]|[.-](?![.-]))*[a-z0-9]$|^[a-z0-9]$")
-PLUGIN_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
-LEGACY_ROOTS = ("global", "profiles", "assets", "checks")
+LEGACY_ROOTS = ("global", "profiles", "checks")
+
+
+def resolve_plugin_relative(root: Path, raw: object, label: str, errors: list[dict]) -> Path | None:
+    if not isinstance(raw, str) or not raw.strip():
+        errors.append({"code": "PLUGIN_PATH", "message": f"{label} must be a non-empty plugin-relative path"})
+        return None
+    if not raw.startswith("./"):
+        errors.append({"code": "PLUGIN_PATH", "message": f"{label} must start with ./"})
+        return None
+
+    target = (root / raw).resolve()
+    try:
+        target.relative_to(root)
+    except ValueError:
+        errors.append({"code": "PLUGIN_PATH", "message": f"{label} escapes plugin root: {raw}"})
+        return None
+
+    if not target.exists():
+        errors.append({"code": "PLUGIN_PATH", "message": f"{label} does not exist: {raw}"})
+        return None
+    return target
 
 
 def main():
@@ -29,28 +49,56 @@ def main():
     errors = []
     warnings = []
     checks = []
+    plugin = {}
 
-    plugin_path = root / "plugin.json"
+    plugin_path = root / ".codex-plugin" / "plugin.json"
     if not plugin_path.exists():
-        errors.append({"code": "MISSING_PLUGIN", "message": "plugin.json not found; doctor only checks this plugin repo"})
+        errors.append({"code": "MISSING_PLUGIN", "message": ".codex-plugin/plugin.json not found; doctor only checks this Codex plugin"})
     else:
         try:
             plugin = json.loads(plugin_path.read_text(encoding="utf-8"))
-            schema = plugin.get("$schema")
-            if schema != PLUGIN_SCHEMA:
-                errors.append({"code": "PLUGIN_SCHEMA", "message": f"$schema must be {PLUGIN_SCHEMA}"})
-            else:
-                checks.append({"code": "PLUGIN_SCHEMA", "message": schema})
+            checks.append({"code": "CODEX_MANIFEST", "message": str(plugin_path.relative_to(root))})
+
             name = plugin.get("name")
             if not isinstance(name, str) or not PLUGIN_NAME.match(name) or len(name) > 64:
-                errors.append({"code": "PLUGIN_NAME", "message": "plugin.json name is missing or invalid"})
+                errors.append({"code": "PLUGIN_NAME", "message": "Codex plugin name is missing or invalid"})
             else:
                 checks.append({"code": "PLUGIN_NAME", "message": name})
+
             version = plugin.get("version")
-            if version:
-                checks.append({"code": "PLUGIN_VERSION", "message": str(version)})
+            if not isinstance(version, str) or not version.strip():
+                errors.append({"code": "PLUGIN_VERSION", "message": "Codex plugin version is missing"})
+            else:
+                checks.append({"code": "PLUGIN_VERSION", "message": version})
+
+            for field in ("skills", "mcpServers"):
+                raw = plugin.get(field)
+                if raw is not None and resolve_plugin_relative(root, raw, field, errors):
+                    checks.append({"code": "PLUGIN_PATH", "message": f"{field} -> {raw}"})
+
+            interface = plugin.get("interface", {})
+            if not isinstance(interface, dict):
+                errors.append({"code": "PLUGIN_INTERFACE", "message": "interface must be an object"})
+            else:
+                for field in ("logo", "logoDark", "composerIcon"):
+                    raw = interface.get(field)
+                    if raw is not None and resolve_plugin_relative(root, raw, f"interface.{field}", errors):
+                        checks.append({"code": "PLUGIN_ASSET", "message": f"{field} -> {raw}"})
+
+                screenshots = interface.get("screenshots")
+                if screenshots is not None:
+                    if not isinstance(screenshots, list):
+                        errors.append({"code": "PLUGIN_INTERFACE", "message": "interface.screenshots must be an array"})
+                    else:
+                        for index, raw in enumerate(screenshots):
+                            if resolve_plugin_relative(root, raw, f"interface.screenshots[{index}]", errors):
+                                checks.append({"code": "PLUGIN_ASSET", "message": f"screenshot -> {raw}"})
         except Exception as exc:
             errors.append({"code": "INVALID_PLUGIN_JSON", "message": str(exc)})
+
+    legacy_plugin_path = root / "plugin.json"
+    if legacy_plugin_path.exists():
+        errors.append({"code": "DUPLICATE_MANIFEST", "message": "root plugin.json is deprecated here; keep only .codex-plugin/plugin.json"})
 
     mcp_path = root / "mcp.json"
     if mcp_path.exists():

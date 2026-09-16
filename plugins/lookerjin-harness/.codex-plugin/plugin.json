@@ -28,6 +28,8 @@
     "category": "Developer Tools",
     "capabilities": [],
     "websiteURL": "https://github.com/lookerjin/lookerjin-harness",
+    "logo": "./.codex-plugin/assets/logo.svg",
+    "composerIcon": "./.codex-plugin/assets/composer-icon.svg",
     "defaultPrompt": [
       "Bootstrap an evolvable engineering harness for this project.",
       "Debug this issue with an evidence-first root-cause workflow.",

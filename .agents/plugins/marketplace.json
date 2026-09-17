@@ -19,7 +19,7 @@
     {
       "name": "modern-go-guidelines",
       "source": {
-        "source": "localgit-subdir",
+        "source": "git-subdir",
         "url": "JetBrains/go-modern-guidelines",
         "path": "./plugin",
         "ref": "main"

@@ -1,6 +1,6 @@
 # lookerjin-harness
 
-一个面向 AI Coding Agent 的 Developer Domain Harness，以 Codex Plugin 形式分发。
+一个面向 AI Coding Agent 的软件工程 Domain Harness，以 Codex Plugin 形式分发。
 
 它负责跨项目可复用的软件工程工作流、验证方式和演化方法；具体语言、框架或工具的专业知识优先交给独立 Expert Plugin，而不是继续膨胀本 Harness。
 
@@ -12,7 +12,7 @@ plugins/lookerjin-harness/
 
 ## 定位
 
-`lookerjin-harness` 是 Developer 领域的元插件 / Domain Harness。这里的“元插件”是架构角色，不是新的协议类型。
+`lookerjin-harness` 负责软件工程领域的任务路由、能力组合、验收与反馈。Domain Harness 是架构角色，不是新的协议类型；它在本领域收敛专业能力的结果。
 
 它主要回答：
 
@@ -71,7 +71,7 @@ lookerjin-harness/
 - `project-adopt`：把已有项目接入这套工作方式，先理解再最小改造。不要默认改造成插件，也不要默认跑插件 Doctor。
 - `root-cause-debug`：证据 -> 假设 -> 最小实验 -> 根因 -> 修复 -> 回归验证。
 - `dependency-evaluation`：新增/替换依赖或准备自研通用基础设施时使用。
-- `change-review`：先跑预检脚本收集工作区事实（含未跟踪文件 diff），再审查行为、测试证据和未验证项。
+- `change-review`：领域变更验收入口。预检后按需使用专业审查，核对范围、行为、测试证据和未验证项；OCR 组合约定按需读取，不重复维护专业规则。
 - `harness-evolve`：从真实项目的重复摩擦中决定哪些能力应该沉淀、迁移、集成或删除。没有重复证据就停止。
 - `harness-eval`：相同任务与隔离产物的版本盲评；附准备快照的脚本，脚本本身不执行 Agent 或评分。
 - `harness-doctor`：只检查本插件目录。需要 Python 3.11+；对着业务仓跑会失败。
@@ -157,7 +157,9 @@ Harness 应优先拥有“怎么做事”的稳定方法，而不是拥有所有
 
 Developer 领域的专业插件由 Marketplace / Client / Agent Environment 组合使用。例如现代 Go、数据库、安全或前端能力可以作为独立 Expert Plugin 与本 Harness 共存。
 
-Harness 负责通用工作流；Expert Plugin 负责专业能力；Tool / MCP 负责执行或外部知识访问。
+Harness 负责软件工程领域工作流和验收；Expert Plugin 负责专业能力；Tool / MCP 负责执行或外部知识访问。
+
+市场中的 `open-code-review-codex` 是独立的专业审查插件。默认优先委托模式，当前 Agent 使用 OCR 文件选择与规则完成审查；完整模式需要已选择并配置好的外部模型。Change Review 保留覆盖核对、项目真实验证和 findings 最终判断。CLI 不可用时保持可用的领域审查并报告缺口。详细约定见 [OCR 适配](skills/change-review/references/open-code-review.md)，运行证据见 [field-tests](docs/field-tests.md)。
 
 ## 使用原则
 

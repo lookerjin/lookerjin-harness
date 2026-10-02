@@ -4,13 +4,14 @@
 
 ## 架构图
 
-客户端主 Agent 负责理解任务、调用工具和交付结果；Harness 提供任务路由、工作流与证据标准；目标项目保存具体代码、规则和验证配方。下图表达职责和信息关系，Skill 之间的连线不代表独立服务或 Plugin-to-Plugin 调用协议。
+客户端主 Agent 负责理解任务、调用工具和交付结果；软件工程 Domain Harness 提供领域任务路由、能力组合、验收与证据标准；目标项目保存具体代码、规则和验证配方。专业知识与专业审查由独立插件提供，领域负责人核对其结果并收敛。下图表达职责和信息关系，Skill 之间的连线不代表独立服务或 Plugin-to-Plugin 调用协议。
 
 ```mermaid
 flowchart TD
     U["用户：目标、约束、授权"] --> A["客户端主 Agent：理解、执行、交付"]
     M["Marketplace：安装与分发"] -.-> R
     M -.-> E["Expert Plugins：专业知识"]
+    M -.-> O["Open Code Review：专业审查 Skill 与 CLI"]
     E -->|按需提供知识| A
 
     subgraph H["lookerjin-harness：Skill 指令层"]
@@ -21,23 +22,26 @@ flowchart TD
 
     A -->|读取匹配流程| R
     A -->|明确的小任务可直接使用| S
+    A -->|按需选择审查模式| O
+    O -->|覆盖清单、规则、findings| A
     A --> T["执行工具：终端、浏览器、MCP"]
     T -->|读写与运行| P["目标项目：代码、项目规则、脚本、验证配方"]
     P -->|事实、运行结果、原始证据| A
     F["Harness 维护：doctor、eval、evolve"] -.->|检查、比较、改进| H
 ```
 
-Context7 是本插件配置的外部文档 MCP；其他执行工具由客户端提供。Expert Plugin 由 Marketplace 和客户端按需组合，不是本插件的强制依赖。`pstack` 是设计参考来源，未接入为运行依赖。
+Context7 是本插件配置的外部文档 MCP；其他执行工具由客户端提供。专家与审查插件由 Marketplace 和客户端按需组合，不是本插件的强制依赖。OCR 默认优先委托模式，主 Agent 完成推理；完整模式使用已选择的外部模型。专业 findings 不替代领域验收或项目运行证据；详细约定以 [OCR 适配](../skills/change-review/references/open-code-review.md) 为准。`pstack` 是设计参考来源，未接入为运行依赖。
 
 ## 泳道用户旅程图
 
-用户通过自然语言描述目标，主 Agent 选择匹配流程并按需读取能力。Harness 泳道表示读取指令和规则；项目与工具泳道表示实际执行。读规则不等于已运行对应能力，具体结果仍须有实际证据。
+用户通过自然语言描述目标，主 Agent 选择匹配流程并按需读取能力。Harness 泳道表示读取领域流程；OCR 泳道表示使用专业审查能力，委托模式的推理仍由主 Agent 完成；项目与工具泳道表示实际执行。读规则不等于已运行对应能力，具体结果仍须有实际证据。
 
 ```mermaid
 sequenceDiagram
     participant U as 用户
     participant A as 主 Agent
     participant H as Harness 流程
+    participant O as OCR 专业审查
     participant P as 项目与工具
 
     U->>A: 提出任务、期望结果和约束
@@ -74,6 +78,11 @@ sequenceDiagram
         end
 
         A->>H: 使用 change-review
+        opt 专业审查可用且有必要
+            A->>O: 固定范围、排除敏感文件并使用所选模式
+            O-->>A: 返回覆盖、排除项、失败状态与 findings
+        end
+        A->>A: 补查未覆盖内容、核对证据并判断 findings
         A->>P: 检查最终差异与验证覆盖，修复问题并复验
         P-->>A: 返回最终审查与验证依据
         A-->>U: 交付改动、验证结果、未验证项或阻塞
@@ -102,6 +111,7 @@ sequenceDiagram
 | 具体项目怎么运行与验证 | 项目现有 scripts / CI / 验证配方 |
 | 自动经验晋升门槛 | [promotion-policy](../skills/harness-evolve/references/promotion-policy.md) |
 | 行为比较方法 | [harness-eval](../skills/harness-eval/SKILL.md) |
+| 领域验收与 OCR 组合 | [change-review](../skills/change-review/SKILL.md) / [OCR 适配](../skills/change-review/references/open-code-review.md) |
 | 实际实验结果 | [field-tests](field-tests.md) |
 
 AGENTS 继续约束插件维护，Project Bootstrap 的 engineering-defaults 继续提供目标项目规则素材；不把执行契约复制成另一份全局原则。

@@ -7,6 +7,8 @@ description: Route a software engineering task from intent to verifiable outcome
 
 把任务推进到可检查的结果。只加载匹配的 Playbook 和当前阶段需要的能力。
 
+本入口属于软件工程 Domain Harness，负责领域任务路由、验收和能力组合。具体语言知识与专业审查优先复用当前客户端的专家插件/工具；不在这里维护对应规则库、安装流程或专用执行引擎。专业结果通过 Change Review 核对覆盖、行为证据并收敛，不重复运行已经覆盖同一目标的流程。
+
 ## 路由
 
 先明确用户要的是解释、行为变化、行为保持、决策实验还是持续执行。不要把“看看为什么”变成自动修复。

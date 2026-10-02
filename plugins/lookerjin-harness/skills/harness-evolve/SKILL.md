@@ -7,11 +7,15 @@ description: Review repeated friction from real development and decide whether i
 
 目标是从真实反馈中提炼 Harness，而不是为完整性增加配置。没有重复证据时直接停止，不要为了演化而演化。
 
-需要时读取 `references/promotion-policy.md`、`references/surface-routing.md` 和 `references/integrations.md`。
+晋升门槛以 [promotion-policy](references/promotion-policy.md) 为唯一来源；按需读取 [surface-routing](references/surface-routing.md) 和 [integrations](references/integrations.md)。
 
 ## 输入证据
 
 按需查看用户重复纠正、Git/PR/Issue/CI 失败模式、项目规则与 Skills、现有插件能力，以及多项目共同模式。
+
+只读取当前任务明确相关且可访问的 transcript 或已有原始产物，不全盘扫描其他会话或客户端用户目录；没有 transcript 时用有来源的会话摘要，不虚构调用轨迹。
+
+为候选记录问题、独立发生的项目/周期、证据位置、影响、已尝试处理和反例。同一次失败的日志、CI 与聊天摘要是一个事件，不算三次重复；区分 Skill 缺失、误触发、未遵循、工具不可用与项目特有约束，再决定修改位置。
 
 ## 路由
 
@@ -28,6 +32,6 @@ description: Review repeated friction from real development and decide whether i
 
 ## Promotion Gate
 
-候选至少满足一个条件：跨项目重复、同项目多次纠正、高风险防重复、显著减少重复劳动，或已经能明确 trigger/input/output/verification。
+按 Promotion Policy 核对重复证据和复用边界。触发器写得清楚、文档更漂亮不等于已证明有效；行为变化使用 [harness-eval](../harness-eval/SKILL.md) 比较原始结果，无法运行时明确未验证，不自动晋升。
 
 同时主动删除重复 source of truth、低价值通用提示、误触发 Skill、误拦截 adapter 和无人使用资源。

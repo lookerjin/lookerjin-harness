@@ -30,8 +30,17 @@ python skills/change-review/scripts/preflight.py --root . --json
 5. 检查测试是否覆盖真实行为，而不是镜像实现。
 6. 检查应该同步的 docs / config / migration / examples。
 7. 使用项目既有快速/完整门禁，验证范围与改动相称。
-8. 明确区分：已验证 / 部分验证 / 未运行 / 无法确认。
+8. 按 [execution-contract](../engineering-run/references/execution-contract.md) 区分 `VERIFIED` / `NOT_VERIFIED` / `INCONCLUSIVE`，说明入口、证据与未覆盖边界；整体存在缺口时报告部分验证。
 9. 输出 findings 优先；没有问题时明确说明证据范围。
+
+## 3. 按需独立审查
+
+普通修改由当前 Agent 直接审查。复杂、高风险或有争议的变更，可在当前环境允许时使用独立审查；没有子 Agent 或多模型时做顺序审查并说明独立性限制。
+
+- 固定同一 diff/源码状态，提供目标、约束、必要上下文与验收证据，不传父 Agent 的预期结论。审查者只读，不自行应用修改。
+- 按当前风险选少量有信息增量的视角，或用同一标准独立审查。合并相同 finding，记录一致与分歧。
+- 父 Agent 逐项核对真实触发路径和证据，归为处理 / 待权衡 / 记录 / 驳回，并写原因；多人同意只是信号，单人发现的真实问题也要处理。
+- 修改后重跑受影响验证，审查结论绑定最终 diff；审查旧版本不能覆盖后来的改动。
 
 ## 禁止
 

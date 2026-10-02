@@ -57,6 +57,8 @@ description: Bootstrap a new or nearly-empty software project into a right-sized
 - Makefile / scripts
 - GitHub Issue / PR / CI
 
+已有可运行行为且缺少真实入口配方时，按需使用 [verification-bootstrap](../verification-bootstrap/SKILL.md)。空项目只记录缺口，不生成假命令或宣称行为验证完成。
+
 写入任何文件之前，先输出将要创建或覆盖的路径清单和原因。没有这份清单不要开始写文件。
 
 模板资源在 `assets/` 下：

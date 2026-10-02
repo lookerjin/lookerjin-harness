@@ -16,10 +16,12 @@ description: Adopt an existing software repository into this portable engineerin
    - 已存在但冲突/过时
    - 缺失但有价值
    - 对项目不适用
+   特别核对真实入口的启动、驱动、观察、隔离与清理配方。单测和 CI 存在不自动代表真实入口已覆盖；列出已运行与无法到达的路径。
 4. 只提出最小接入方案。
 5. 保留项目原有命名和成熟流程，除非它们确实造成问题。
 6. 不自动新增大量目录、模板或空文件。
 7. 如果需要新增项目 Skill，让它引用既有项目事实，不复制事实。
+   已有有效验证配方就复用；缺失且有价值时调用 [verification-bootstrap](../verification-bootstrap/SKILL.md)，按项目约定建立最小配方并实际跑一条代表性路径。无法运行时进入 deferred/unresolved，不能标为已验证接入。
 8. 不默认新增 Hook、客户端扩展或平行验证体系。只有当前客户端确实支持、且缺口属于低歧义机械约束时，才可以建议可选 adapter。
 9. 不要对目标项目运行 `harness-doctor`。那个脚本只检查本插件仓库。
 10. 按 `references/gap-output.md` 输出 adopted / retained / deferred / unresolved。

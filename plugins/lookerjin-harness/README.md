@@ -17,6 +17,7 @@ plugins/lookerjin-harness/
 它主要回答：
 
 - 项目应该怎样初始化或接入；
+- 一类工程任务应该怎样从意图推进到可信结果；
 - 问题应该怎样定位根因；
 - 新依赖应该怎样评估；
 - 变更应该怎样审查和验证；
@@ -38,12 +39,17 @@ lookerjin-harness/
 ├── AGENTS.md
 ├── docs/
 └── skills/
+    ├── engineering-run/
+    ├── system-understand/
+    ├── design-explore/
+    ├── verification-bootstrap/
     ├── project-bootstrap/
     ├── project-adopt/
     ├── root-cause-debug/
     ├── dependency-evaluation/
     ├── change-review/
     ├── harness-evolve/
+    ├── harness-eval/
     └── harness-doctor/
 ```
 
@@ -57,13 +63,28 @@ lookerjin-harness/
 
 ## Skills
 
+- `engineering-run`：任务入口。按意图选择 investigate / feature / bug-fix / refactor / prototype / long-run；Playbook 是该 Skill 的 references，不是顶层协议。
+- `system-understand`：追踪入口、转换、状态与依赖；涉及隐藏约束时按需查询决策历史。
+- `design-explore`：比较结构不同的方案，用共同标准与低成本实验收敛；不要求多模型或多 Agent。
+- `verification-bootstrap`：复用或建立项目级 launch/drive/observe/cleanup 配方，实际跑一条代表性路径；未运行的配方保留 draft 标记。
 - `project-bootstrap`：为新项目建立最小可演化 Harness。先列出将创建的文件，再写入。
 - `project-adopt`：把已有项目接入这套工作方式，先理解再最小改造。不要默认改造成插件，也不要默认跑插件 Doctor。
 - `root-cause-debug`：证据 -> 假设 -> 最小实验 -> 根因 -> 修复 -> 回归验证。
 - `dependency-evaluation`：新增/替换依赖或准备自研通用基础设施时使用。
 - `change-review`：先跑预检脚本收集工作区事实（含未跟踪文件 diff），再审查行为、测试证据和未验证项。
 - `harness-evolve`：从真实项目的重复摩擦中决定哪些能力应该沉淀、迁移、集成或删除。没有重复证据就停止。
+- `harness-eval`：相同任务与隔离产物的版本盲评；附准备快照的脚本，脚本本身不执行 Agent 或评分。
 - `harness-doctor`：只检查本插件目录。需要 Python 3.11+；对着业务仓跑会失败。
+
+## 执行与证据
+
+入口路由 → Playbook → 所需能力 → 项目真实验证 → 变更审查。简单任务直接用具体 Skill，复杂任务才加载更多阶段。共同证据语义与授权边界由 [execution-contract](skills/engineering-run/references/execution-contract.md) 定义。
+
+Harness 定义如何推进和什么算证据；项目层保存具体运行事实与配方；Expert Plugin 提供专业知识；MCP/工具提供外部能力。子 Agent、多模型和并行取决于当前客户端能力与规则，没有这些也可以顺序完成。
+
+Doctor 检查结构，Eval 检查行为，Evolve 判断经验是否值得长期保留。三者不能互相替代。新执行层是本次明确设计的待验证候选，不能因为结构检查或少量夹具通过就声称已跨项目验证。
+
+设计参考与取舍见 [docs/execution-core.md](docs/execution-core.md)，实际运行记录仍统一保存在 [docs/field-tests.md](docs/field-tests.md)。
 
 ## Context7 MCP
 

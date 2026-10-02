@@ -2,6 +2,96 @@
 
 本次扩展保持现有 Plugin、Marketplace 和 Expert Plugin 边界。新增的执行逻辑使用普通 Skill 和按需 references，不引入独立 runtime、Hook、顶层协议或插件间依赖。
 
+## 架构图
+
+客户端主 Agent 负责理解任务、调用工具和交付结果；Harness 提供任务路由、工作流与证据标准；目标项目保存具体代码、规则和验证配方。下图表达职责和信息关系，Skill 之间的连线不代表独立服务或 Plugin-to-Plugin 调用协议。
+
+```mermaid
+flowchart TD
+    U["用户：目标、约束、授权"] --> A["客户端主 Agent：理解、执行、交付"]
+    M["Marketplace：安装与分发"] -.-> R
+    M -.-> E["Expert Plugins：专业知识"]
+    E -->|按需提供知识| A
+
+    subgraph H["lookerjin-harness：Skill 指令层"]
+        R["engineering-run：任务路由"] --> B["六类 Playbook：调查、功能、修复、重构、原型、长任务"]
+        B --> S["能力 Skills：理解、设计、调试、验证、审查"]
+        C["执行契约：授权、验收、证据标准"] --> B
+    end
+
+    A -->|读取匹配流程| R
+    A -->|明确的小任务可直接使用| S
+    A --> T["执行工具：终端、浏览器、MCP"]
+    T -->|读写与运行| P["目标项目：代码、项目规则、脚本、验证配方"]
+    P -->|事实、运行结果、原始证据| A
+    F["Harness 维护：doctor、eval、evolve"] -.->|检查、比较、改进| H
+```
+
+Context7 是本插件配置的外部文档 MCP；其他执行工具由客户端提供。Expert Plugin 由 Marketplace 和客户端按需组合，不是本插件的强制依赖。`pstack` 是设计参考来源，未接入为运行依赖。
+
+## 泳道用户旅程图
+
+用户通过自然语言描述目标，主 Agent 选择匹配流程并按需读取能力。Harness 泳道表示读取指令和规则；项目与工具泳道表示实际执行。读规则不等于已运行对应能力，具体结果仍须有实际证据。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant A as 主 Agent
+    participant H as Harness 流程
+    participant P as 项目与工具
+
+    U->>A: 提出任务、期望结果和约束
+    A->>P: 读取项目规则、代码与现有状态
+    P-->>A: 返回事实、入口和验证条件
+    A->>H: 匹配 Playbook 或直接选用 Skill
+    H-->>A: 提供阶段、验收标准和授权边界
+
+    alt 只读调查
+        A->>P: 跟踪调用、状态与相关证据
+        P-->>A: 返回行为证据
+        A-->>U: 解释现状、结论与未知项
+    else 需要修改项目
+        opt 需要比较设计方案
+            A->>H: 使用 design-explore
+            A->>P: 做低成本实验并比较方案
+            P-->>A: 返回实验观察
+        end
+
+        A->>P: 实现修改或修复
+
+        opt 缺少可用验证入口
+            A->>H: 使用 verification-bootstrap
+            A->>P: 建立并实际跑通验证路径
+        end
+
+        A->>P: 启动、驱动行为、观察、清理并保存证据
+        P-->>A: 返回实际结果与原始记录
+
+        loop 验收未通过、可恢复且预算允许
+            A->>H: 调试原因或调整方案
+            A->>P: 修复后从同一入口复跑
+            P-->>A: 返回新的验证证据
+        end
+
+        A->>H: 使用 change-review
+        A->>P: 检查最终差异与验证覆盖，修复问题并复验
+        P-->>A: 返回最终审查与验证依据
+        A-->>U: 交付改动、验证结果、未验证项或阻塞
+
+        opt 推送、发布等操作需要新的授权
+            A-->>U: 展示具体可审阅结果并请求授权
+            U->>A: 确认操作范围
+            A->>P: 执行获准操作
+            A-->>U: 返回操作结果
+        end
+    end
+```
+
+- 验收证据区分 `VERIFIED`、`NOT_VERIFIED` 和 `INCONCLUSIVE`；构建成功或 HTTP 200 不能单独证明完整行为。遇到外部阻塞或无法继续验证时，交付当前结果和最小解除动作。
+- 长任务按 Units 推进，先完整执行和验证一个代表性 Unit，再扩大范围；最终复验整体完成条件。子 Agent、多模型和并行取决于当前客户端能力与授权。
+- Doctor、Eval、Evolve 属于维护流程，按相应触发条件使用，不在每个任务结束后自动运行，也不自动晋升经验。
+- 图展示当前 Skill 定义的职责与路径；跨客户端自动触发仍未实测。实际运行覆盖和限制以 [field-tests](field-tests.md) 为准。
+
 ## 权威位置
 
 | 内容 | 位置 |

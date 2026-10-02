@@ -71,6 +71,8 @@ Harness 不应该成为领域知识大全。具体语言、框架、工具和创
 
 它不承载某门语言或框架的完整专业知识。此类能力优先由独立 Expert Plugin 提供。
 
+软件工程 Harness 的架构图、泳道用户旅程和执行层设计见 [执行层说明](plugins/lookerjin-harness/docs/execution-core.md)。
+
 ## 第三方插件
 
 优先集成成熟、活跃、边界清楚的第三方插件，而不是重复实现。

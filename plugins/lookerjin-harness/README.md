@@ -84,7 +84,7 @@ Harness 定义如何推进和什么算证据；项目层保存具体运行事实
 
 Doctor 检查结构，Eval 检查行为，Evolve 判断经验是否值得长期保留。三者不能互相替代。新执行层是本次明确设计的待验证候选，不能因为结构检查或少量夹具通过就声称已跨项目验证。
 
-设计参考与取舍见 [docs/execution-core.md](docs/execution-core.md)，实际运行记录仍统一保存在 [docs/field-tests.md](docs/field-tests.md)。
+架构图、泳道用户旅程以及设计参考与取舍见 [docs/execution-core.md](docs/execution-core.md)，实际运行记录仍统一保存在 [docs/field-tests.md](docs/field-tests.md)。
 
 ## Context7 MCP
 

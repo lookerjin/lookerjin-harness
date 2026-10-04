@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - "refactor/**"
+      - "feat/**"
       - "fix/**"
       - "notes/**"
   pull_request:
@@ -40,3 +41,4 @@ jobs:
         run: |
           python skills/change-review/scripts/preflight_test.py
           python skills/project-bootstrap/scripts/check-placeholders_test.py
+          python skills/harness-eval/scripts/prepare_test.py

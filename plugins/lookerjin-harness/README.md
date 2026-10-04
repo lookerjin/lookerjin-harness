@@ -1,6 +1,6 @@
 # lookerjin-harness
 
-一个面向 AI Coding Agent 的 Developer Domain Harness，以 Codex Plugin 形式分发。
+一个面向 AI Coding Agent 的软件工程 Domain Harness，以 Codex Plugin 形式分发。
 
 它负责跨项目可复用的软件工程工作流、验证方式和演化方法；具体语言、框架或工具的专业知识优先交给独立 Expert Plugin，而不是继续膨胀本 Harness。
 
@@ -12,11 +12,12 @@ plugins/lookerjin-harness/
 
 ## 定位
 
-`lookerjin-harness` 是 Developer 领域的元插件 / Domain Harness。这里的“元插件”是架构角色，不是新的协议类型。
+`lookerjin-harness` 负责软件工程领域的任务路由、能力组合、验收与反馈。Domain Harness 是架构角色，不是新的协议类型；它在本领域收敛专业能力的结果。
 
 它主要回答：
 
 - 项目应该怎样初始化或接入；
+- 一类工程任务应该怎样从意图推进到可信结果；
 - 问题应该怎样定位根因；
 - 新依赖应该怎样评估；
 - 变更应该怎样审查和验证；
@@ -38,12 +39,17 @@ lookerjin-harness/
 ├── AGENTS.md
 ├── docs/
 └── skills/
+    ├── engineering-run/
+    ├── system-understand/
+    ├── design-explore/
+    ├── verification-bootstrap/
     ├── project-bootstrap/
     ├── project-adopt/
     ├── root-cause-debug/
     ├── dependency-evaluation/
     ├── change-review/
     ├── harness-evolve/
+    ├── harness-eval/
     └── harness-doctor/
 ```
 
@@ -57,13 +63,28 @@ lookerjin-harness/
 
 ## Skills
 
+- `engineering-run`：任务入口。按意图选择 investigate / feature / bug-fix / refactor / prototype / long-run；Playbook 是该 Skill 的 references，不是顶层协议。
+- `system-understand`：追踪入口、转换、状态与依赖；涉及隐藏约束时按需查询决策历史。
+- `design-explore`：比较结构不同的方案，用共同标准与低成本实验收敛；不要求多模型或多 Agent。
+- `verification-bootstrap`：复用或建立项目级 launch/drive/observe/cleanup 配方，实际跑一条代表性路径；未运行的配方保留 draft 标记。
 - `project-bootstrap`：为新项目建立最小可演化 Harness。先列出将创建的文件，再写入。
 - `project-adopt`：把已有项目接入这套工作方式，先理解再最小改造。不要默认改造成插件，也不要默认跑插件 Doctor。
 - `root-cause-debug`：证据 -> 假设 -> 最小实验 -> 根因 -> 修复 -> 回归验证。
 - `dependency-evaluation`：新增/替换依赖或准备自研通用基础设施时使用。
-- `change-review`：先跑预检脚本收集工作区事实（含未跟踪文件 diff），再审查行为、测试证据和未验证项。
+- `change-review`：领域变更验收入口。预检后按需使用专业审查，核对范围、行为、测试证据和未验证项；OCR 组合约定按需读取，不重复维护专业规则。
 - `harness-evolve`：从真实项目的重复摩擦中决定哪些能力应该沉淀、迁移、集成或删除。没有重复证据就停止。
+- `harness-eval`：相同任务与隔离产物的版本盲评；附准备快照的脚本，脚本本身不执行 Agent 或评分。
 - `harness-doctor`：只检查本插件目录。需要 Python 3.11+；对着业务仓跑会失败。
+
+## 执行与证据
+
+入口路由 → Playbook → 所需能力 → 项目真实验证 → 变更审查。简单任务直接用具体 Skill，复杂任务才加载更多阶段。共同证据语义与授权边界由 [execution-contract](skills/engineering-run/references/execution-contract.md) 定义。
+
+Harness 定义如何推进和什么算证据；项目层保存具体运行事实与配方；Expert Plugin 提供专业知识；MCP/工具提供外部能力。子 Agent、多模型和并行取决于当前客户端能力与规则，没有这些也可以顺序完成。
+
+Doctor 检查结构，Eval 检查行为，Evolve 判断经验是否值得长期保留。三者不能互相替代。新执行层是本次明确设计的待验证候选，不能因为结构检查或少量夹具通过就声称已跨项目验证。
+
+架构图、泳道用户旅程以及设计参考与取舍见 [docs/execution-core.md](docs/execution-core.md)，实际运行记录仍统一保存在 [docs/field-tests.md](docs/field-tests.md)。
 
 ## Context7 MCP
 
@@ -136,7 +157,9 @@ Harness 应优先拥有“怎么做事”的稳定方法，而不是拥有所有
 
 Developer 领域的专业插件由 Marketplace / Client / Agent Environment 组合使用。例如现代 Go、数据库、安全或前端能力可以作为独立 Expert Plugin 与本 Harness 共存。
 
-Harness 负责通用工作流；Expert Plugin 负责专业能力；Tool / MCP 负责执行或外部知识访问。
+Harness 负责软件工程领域工作流和验收；Expert Plugin 负责专业能力；Tool / MCP 负责执行或外部知识访问。
+
+市场中的 `open-code-review-codex` 是独立的专业审查插件。默认优先委托模式，当前 Agent 使用 OCR 文件选择与规则完成审查；完整模式需要已选择并配置好的外部模型。Change Review 保留覆盖核对、项目真实验证和 findings 最终判断。CLI 不可用时保持可用的领域审查并报告缺口。详细约定见 [OCR 适配](skills/change-review/references/open-code-review.md)，运行证据见 [field-tests](docs/field-tests.md)。
 
 ## 使用原则
 

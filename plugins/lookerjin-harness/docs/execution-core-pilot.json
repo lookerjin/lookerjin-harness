@@ -1,0 +1,419 @@
+{
+  "kind": "synthetic-cli-pilot",
+  "date": "2026-10-02",
+  "upstream_commit": "fae2c6ed95821bd85f614a73e4842e13229fa5e5",
+  "baseline_harness_commit": "b5cb2758366eb772c46da09e69f49fa267b1cf54",
+  "fixture_commit": "d0b9505acd6e84705f823ba5bf1fa93cbc148bdb",
+  "initial_assignments": {
+    "cedar": {
+      "variant": "baseline",
+      "skills_sha256": "690f34a47a78990169f033b8c90c783d41f3ccdded8649b0e897376a102851f2"
+    },
+    "birch": {
+      "variant": "candidate",
+      "skills_sha256": "e8e788a563be6026199c0d45328445931b3a42a5a12f8f56d96dd45008018699"
+    }
+  },
+  "parent_reproduction": {
+    "command_shapes": {
+      "before": [
+        "python",
+        "<baseline-source-copy>",
+        "--store",
+        "<isolated-store>",
+        "put/get",
+        "number",
+        "0"
+      ],
+      "after": [
+        "python",
+        "shelf.py",
+        "--store",
+        "<isolated-store>",
+        "put/get",
+        "number",
+        "<JSON-value>"
+      ]
+    },
+    "results": {
+      "cedar": {
+        "before": {
+          "put_exit": 0,
+          "get_exit": 2,
+          "stderr": "missing key\n"
+        },
+        "after": [
+          {
+            "value": "0",
+            "passed": true,
+            "exit": 0,
+            "stdout": "0\n"
+          },
+          {
+            "value": "false",
+            "passed": true,
+            "exit": 0,
+            "stdout": "false\n"
+          },
+          {
+            "value": "null",
+            "passed": true,
+            "exit": 0,
+            "stdout": "null\n"
+          },
+          {
+            "value": "\"\"",
+            "passed": true,
+            "exit": 0,
+            "stdout": "\"\"\n"
+          },
+          {
+            "value": "[]",
+            "passed": true,
+            "exit": 0,
+            "stdout": "[]\n"
+          },
+          {
+            "value": "{}",
+            "passed": true,
+            "exit": 0,
+            "stdout": "{}\n"
+          },
+          {
+            "value": "1",
+            "passed": true,
+            "exit": 0,
+            "stdout": "1\n"
+          },
+          {
+            "value": "\"你好\"",
+            "passed": true,
+            "exit": 0,
+            "stdout": "\"你好\"\n"
+          },
+          {
+            "value": "{\"x\":1}",
+            "passed": true,
+            "exit": 0,
+            "stdout": "{\"x\": 1}\n"
+          }
+        ],
+        "missing": {
+          "exit": 2,
+          "stdout": "",
+          "stderr": "missing key\n"
+        }
+      },
+      "birch": {
+        "before": {
+          "put_exit": 0,
+          "get_exit": 2,
+          "stderr": "missing key\n"
+        },
+        "after": [
+          {
+            "value": "0",
+            "passed": true,
+            "exit": 0,
+            "stdout": "0\n"
+          },
+          {
+            "value": "false",
+            "passed": true,
+            "exit": 0,
+            "stdout": "false\n"
+          },
+          {
+            "value": "null",
+            "passed": true,
+            "exit": 0,
+            "stdout": "null\n"
+          },
+          {
+            "value": "\"\"",
+            "passed": true,
+            "exit": 0,
+            "stdout": "\"\"\n"
+          },
+          {
+            "value": "[]",
+            "passed": true,
+            "exit": 0,
+            "stdout": "[]\n"
+          },
+          {
+            "value": "{}",
+            "passed": true,
+            "exit": 0,
+            "stdout": "{}\n"
+          },
+          {
+            "value": "1",
+            "passed": true,
+            "exit": 0,
+            "stdout": "1\n"
+          },
+          {
+            "value": "\"你好\"",
+            "passed": true,
+            "exit": 0,
+            "stdout": "\"你好\"\n"
+          },
+          {
+            "value": "{\"x\":1}",
+            "passed": true,
+            "exit": 0,
+            "stdout": "{\"x\": 1}\n"
+          }
+        ],
+        "missing": {
+          "exit": 2,
+          "stdout": "",
+          "stderr": "missing key\n"
+        }
+      },
+      "willow_worktree_clean": true
+    }
+  },
+  "independent_judgment": {
+    "product_behavior": "both fixes equivalent and correct on this fixture",
+    "artifacts": "birch adds repeatable CLI regression tests and verification notes; cedar keeps only a minimal source diff",
+    "original_worker_execution": "historical execution not independently confirmable from project-local artifacts; not scored as verified",
+    "judge_recheck": "both pass exact JSON and missing-key behavior; birch baseline has seven test failures and fixed version passes three methods",
+    "cleanup": "judge explicitly removed its own remaining temporary directories and confirmed absence; initial contradictory cleanup observation not attributed to product"
+  },
+  "verification_bootstrap_parent_recheck": {
+    "surface": "public CLI",
+    "actions": 21,
+    "VERIFIED": 15,
+    "NOT_VERIFIED": 6,
+    "INCONCLUSIVE": 0,
+    "exit_code": 1,
+    "cleanup_confirmed": true,
+    "evidence_preserved": true,
+    "product_source_unchanged": true,
+    "failures": [
+      "get 0",
+      "get false",
+      "get null",
+      "get empty string",
+      "get empty array",
+      "get empty object"
+    ]
+  },
+  "readonly_pilot": {
+    "product_worktree_unchanged": true,
+    "cli_execution": "not run; source-based explanation"
+  },
+  "scope_limits": [
+    "small synthetic fixture, not production field evidence",
+    "one pair, inherited same model/tools; no overall superiority inference",
+    "context separation in shared filesystem, not access-control isolation",
+    "design-explore, multi-unit long-run, external service verification and cross-client automatic triggering not run",
+    "no measured per-model tokens or cost"
+  ],
+  "evidence_preservation_followup": {
+    "kind": "single fresh-context forward test, not a new paired comparison",
+    "skills_sha256": "2c77e1ac8c90214e323fe5a32741971e66d81ed2b1f3131073aa8fd8e3761658",
+    "before": {
+      "cwd": "<project>",
+      "runs": [
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-r98qpe5z/shelf.json",
+            "put",
+            "zero",
+            "0"
+          ],
+          "exit_code": 0,
+          "stdout": "saved\n",
+          "stderr": "",
+          "store_text": "{\"zero\": 0}\n"
+        },
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-r98qpe5z/shelf.json",
+            "get",
+            "zero"
+          ],
+          "exit_code": 2,
+          "stdout": "",
+          "stderr": "missing key\n",
+          "store_text": "{\"zero\": 0}\n"
+        },
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-r98qpe5z/shelf.json",
+            "put",
+            "one",
+            "1"
+          ],
+          "exit_code": 0,
+          "stdout": "saved\n",
+          "stderr": "",
+          "store_text": "{\"zero\": 0, \"one\": 1}\n"
+        },
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-r98qpe5z/shelf.json",
+            "get",
+            "one"
+          ],
+          "exit_code": 0,
+          "stdout": "1\n",
+          "stderr": "",
+          "store_text": "{\"zero\": 0, \"one\": 1}\n"
+        },
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-r98qpe5z/shelf.json",
+            "get",
+            "absent"
+          ],
+          "exit_code": 2,
+          "stdout": "",
+          "stderr": "missing key\n",
+          "store_text": "{\"zero\": 0, \"one\": 1}\n"
+        }
+      ]
+    },
+    "after": {
+      "cwd": "<project>",
+      "runs": [
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-4znsp26g/shelf.json",
+            "put",
+            "zero",
+            "0"
+          ],
+          "exit_code": 0,
+          "stdout": "saved\n",
+          "stderr": "",
+          "store_text": "{\"zero\": 0}\n"
+        },
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-4znsp26g/shelf.json",
+            "get",
+            "zero"
+          ],
+          "exit_code": 0,
+          "stdout": "0\n",
+          "stderr": "",
+          "store_text": "{\"zero\": 0}\n"
+        },
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-4znsp26g/shelf.json",
+            "put",
+            "one",
+            "1"
+          ],
+          "exit_code": 0,
+          "stdout": "saved\n",
+          "stderr": "",
+          "store_text": "{\"zero\": 0, \"one\": 1}\n"
+        },
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-4znsp26g/shelf.json",
+            "get",
+            "one"
+          ],
+          "exit_code": 0,
+          "stdout": "1\n",
+          "stderr": "",
+          "store_text": "{\"zero\": 0, \"one\": 1}\n"
+        },
+        {
+          "command": [
+            "python",
+            "-B",
+            "shelf.py",
+            "--store",
+            "<project>/.verify-zero-4znsp26g/shelf.json",
+            "get",
+            "absent"
+          ],
+          "exit_code": 2,
+          "stdout": "",
+          "stderr": "missing key\n",
+          "store_text": "{\"zero\": 0, \"one\": 1}\n"
+        }
+      ]
+    },
+    "before_tests": {
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "<project>",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) ... \n  test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value=0) ... FAIL\n  test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value=False) ... FAIL\n  test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value=None) ... FAIL\n  test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value='') ... FAIL\n  test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value=[]) ... FAIL\n  test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value={}) ... FAIL\ntest_missing_key_with_and_without_existing_store (test_shelf.ShelfCliTests.test_missing_key_with_and_without_existing_store) ... ok\n\n======================================================================\nFAIL: test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value=0)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<project>/tests/test_shelf.py\", line 41, in test_existing_json_values_round_trip\n    self.assertEqual((result.returncode, result.stdout, result.stderr), (0, serialized + \"\\n\", \"\"))\nAssertionError: Tuples differ: (2, '', 'missing key\\n') != (0, '0\\n', '')\n\nFirst differing element 0:\n2\n0\n\n- (2, '', 'missing key\\n')\n+ (0, '0\\n', '')\n\n======================================================================\nFAIL: test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value=False)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<project>/tests/test_shelf.py\", line 41, in test_existing_json_values_round_trip\n    self.assertEqual((result.returncode, result.stdout, result.stderr), (0, serialized + \"\\n\", \"\"))\nAssertionError: Tuples differ: (2, '', 'missing key\\n') != (0, 'false\\n', '')\n\nFirst differing element 0:\n2\n0\n\n- (2, '', 'missing key\\n')\n+ (0, 'false\\n', '')\n\n======================================================================\nFAIL: test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value=None)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<project>/tests/test_shelf.py\", line 41, in test_existing_json_values_round_trip\n    self.assertEqual((result.returncode, result.stdout, result.stderr), (0, serialized + \"\\n\", \"\"))\nAssertionError: Tuples differ: (2, '', 'missing key\\n') != (0, 'null\\n', '')\n\nFirst differing element 0:\n2\n0\n\n- (2, '', 'missing key\\n')\n+ (0, 'null\\n', '')\n\n======================================================================\nFAIL: test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value='')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<project>/tests/test_shelf.py\", line 41, in test_existing_json_values_round_trip\n    self.assertEqual((result.returncode, result.stdout, result.stderr), (0, serialized + \"\\n\", \"\"))\nAssertionError: Tuples differ: (2, '', 'missing key\\n') != (0, '\"\"\\n', '')\n\nFirst differing element 0:\n2\n0\n\n- (2, '', 'missing key\\n')\n+ (0, '\"\"\\n', '')\n\n======================================================================\nFAIL: test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value=[])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<project>/tests/test_shelf.py\", line 41, in test_existing_json_values_round_trip\n    self.assertEqual((result.returncode, result.stdout, result.stderr), (0, serialized + \"\\n\", \"\"))\nAssertionError: Tuples differ: (2, '', 'missing key\\n') != (0, '[]\\n', '')\n\nFirst differing element 0:\n2\n0\n\n- (2, '', 'missing key\\n')\n+ (0, '[]\\n', '')\n\n======================================================================\nFAIL: test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) (value={})\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<project>/tests/test_shelf.py\", line 41, in test_existing_json_values_round_trip\n    self.assertEqual((result.returncode, result.stdout, result.stderr), (0, serialized + \"\\n\", \"\"))\nAssertionError: Tuples differ: (2, '', 'missing key\\n') != (0, '{}\\n', '')\n\nFirst differing element 0:\n2\n0\n\n- (2, '', 'missing key\\n')\n+ (0, '{}\\n', '')\n\n----------------------------------------------------------------------\nRan 2 tests in 0.678s\n\nFAILED (failures=6)\n"
+    },
+    "after_tests": {
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "<project>",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_existing_json_values_round_trip (test_shelf.ShelfCliTests.test_existing_json_values_round_trip) ... ok\ntest_missing_key_with_and_without_existing_store (test_shelf.ShelfCliTests.test_missing_key_with_and_without_existing_store) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.750s\n\nOK\n"
+    },
+    "parent_test_rerun": "2 tests pass",
+    "parent_cleanup_check": [],
+    "normalization": "Workspace and interpreter paths replaced with neutral markers; outputs and exit codes retained.",
+    "limit": "Saved raw records improve inspectability; this is not an authenticated audit of the worker tool trace."
+  }
+}

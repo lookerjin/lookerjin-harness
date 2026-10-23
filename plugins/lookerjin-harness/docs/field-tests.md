@@ -33,7 +33,7 @@ Redis Stream → MySQL + OpenTelemetry。`stdouttrace@v1.46` 把 Go 从 1.23 抬
 
 ## 005 轻量执行层 / synthetic CLI pilot
 
-2026-10-02。先拉取并固定 pstack 0.15.5 的 `fae2c6ed95821bd85f614a73e4842e13229fa5e5`，再在现有 Harness 上实现候选。设计来源和边界见 [execution-core](execution-core.md)，父 Agent 的独立复跑记录与比较限制见 [execution-core-pilot.json](execution-core-pilot.json)。这是标准库 JSON CLI 夹具，不是真实生产项目证据。
+2026-10-02。在当时的 Harness 上实现执行层候选。该轮父 Agent 的独立复跑记录与比较限制见 [execution-core-pilot.json](execution-core-pilot.json)。这是标准库 JSON CLI 夹具，不是真实生产项目证据。
 
 - Doctor：12 个 Skill 可发现，零错误、零警告；Marketplace、既有 preflight/placeholder 自测通过。
 - Eval 准备脚本：6 组 CLI 集成自测通过，覆盖同快照/不同版本、独立修改、已有输出拒绝、路径冲突、symlink、submodule 与非法 ref。
@@ -59,3 +59,15 @@ Redis Stream → MySQL + OpenTelemetry。`stdouttrace@v1.46` 把 Go 从 1.23 抬
 - 集成前执行层分支 `f7d7fef` 相对 `b5cb275` 的默认 OCR preview：29 个变更文件仅 3 个进入审查范围，25 个因扩展名、1 个因默认路径过滤被排除；其中的 Skill/文档必须由领域审查覆盖。
 
 限制：本轮检查的是包装、预览、规则解析和组合边界；没有调用外部模型，没有运行完整 OCR 推理审查、安装后自动触发或真实业务验收，也没有做有效发现/误报/成本的配对评估。主 Agent 补查 Markdown 等遗漏仍是任务中的审查要求，不由 preview 自动完成。跟随 main 刷新后的上游状态不属于这次已验证范围。
+
+## 007 自适应六阶段 / 本项目实现检查
+
+0.3.0，基线 `0a88761160161352a1fbc24a1630966411e86963`。本轮验证针对当前分支实现，原始命令、退出码、输出和受检文件指纹见 [adaptive-lifecycle-checks.json](adaptive-lifecycle-checks.json)。
+
+- Marketplace 校验通过；Doctor 发现 14 个 Skill，零错误、零警告。
+- 新增 29 个脚本测试全部通过：计划检查 9、证据检查 13、Doctor 7。覆盖环依赖、未知依赖、提前执行、阻塞状态、真实 CLI 运行后代码变化导致旧证据失效、必要验收缺失、文件损坏/删除、符号链接与路径逃逸、活跃断链、目录漂移及私有入口元数据缺失。
+- 既有 preflight、placeholder 自测及 Eval prepare 的 6 个测试通过。没有降低既有门槛或移除失败断言。
+- 实际运行 Eval prepare，将基线 12 个 Skill 和当前 14 个 Skill 注入同一项目快照的独立副本；两份安装资源引用均完整，产品 diff 干净，远端配置为空。这里只验证包装与快照准备，没有运行独立 Agent。
+- 两张原生 draw.io XML 均可解析，节点 ID 唯一，连接端点存在；分别是架构与用户旅程，不把 XML 结构有效说成已在所有客户端验证显示。
+
+限制：脚本通过证明声明范围内的机械行为，不证明 Agent 会自动选择最佳路径。独立 Agent 的追问/选路、跨会话恢复、宿主显式调用元数据的执行、真实外部项目及形式化模型验证本轮 NOT_RUN。该版本是用户明确提出的架构候选，尚不宣称跨项目收益。

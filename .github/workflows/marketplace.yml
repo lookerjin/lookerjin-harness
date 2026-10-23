@@ -42,3 +42,6 @@ jobs:
           python skills/change-review/scripts/preflight_test.py
           python skills/project-bootstrap/scripts/check-placeholders_test.py
           python skills/harness-eval/scripts/prepare_test.py
+          python skills/engineering-run/scripts/check-plan_test.py
+          python skills/verification-run/scripts/check-evidence_test.py
+          python skills/harness-doctor/scripts/doctor_test.py

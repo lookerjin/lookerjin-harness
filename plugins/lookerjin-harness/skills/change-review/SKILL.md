@@ -37,7 +37,7 @@ Open Code Review 的可用性、委托/完整模式选择、敏感文件排除�
 4. 检查错误路径、边界条件和副作用；使用专业审查时核对 findings 的真实触发路径并补查未覆盖风险，不重复完整运行相同专业审查，也不把专家报告当最终结论。
 5. 检查测试是否覆盖真实行为，而不是镜像实现。
 6. 检查应该同步的 docs / config / migration / examples。
-7. 使用项目既有快速/完整门禁，验证范围与改动相称。
+7. 通过 [Verification Run](../verification-run/SKILL.md) 使用项目既有快速/完整门禁，验证范围与改动相称；已有绑定当前产物和影响范围的有效证据直接复用。检查门槛、断言、skip 与忽略项是否被削弱，并核对最终 diff 后的证据适用性。
 8. 按 [execution-contract](../engineering-run/references/execution-contract.md) 区分 `VERIFIED` / `NOT_VERIFIED` / `INCONCLUSIVE`，说明入口、证据与未覆盖边界；整体存在缺口时报告部分验证。
 9. 输出 findings 优先；没有问题时明确说明证据范围。
 
@@ -52,5 +52,5 @@ Open Code Review 的可用性、委托/完整模式选择、敏感文件排除�
 
 ## 禁止
 
-- 不自动 commit、push 或创建 PR。
+- 本 Skill 不授予 commit、push 或 PR 权限；已有用户授权由工程任务继续执行，不重复询问。
 - 不把无关历史问题混入本次修改。

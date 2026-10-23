@@ -16,3 +16,5 @@ description: Explore structurally different designs before implementing a conseq
 7. 实现中出现重复同类绕路、所有权泄露或接口需要频繁逃逸时，回到事实与候选比较。单个边界条件不足以证明架构错误；不要无限重设计或顺手重写无关部分。
 
 交付所选方案、关键取舍、实验结果与可检查的验收。方案草图不是功能验证，最终组合仍需真实行为验证。
+
+涉及用户路线或实质取舍的未知，交给 [Decision Dialogue](../decision-dialogue/SKILL.md) 处理当前已就绪问题；可用低成本实验回答的技术假设自己验证。将决定返回当前工程阶段，不为了完整性展开无关提问。

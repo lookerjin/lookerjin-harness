@@ -18,7 +18,7 @@ description: Bootstrap a new or nearly-empty software project into a right-sized
 - `unknown`
 - `N/A`
 
-只追问会明显改变架构、安全、外部行为、长期维护成本、不可逆选择或继续执行所必需的 `unknown`。
+只追问会明显改变架构、安全、外部行为、长期维护成本、不可逆选择或继续执行所必需的 `unknown`。多个决定有依赖时使用 [Decision Dialogue](../decision-dialogue/SKILL.md)，先解决前置问题并复用已有答案；真人观察更有效时按 [协作契约](../engineering-run/references/collaboration.md) 提出最小请求。
 
 详细检查域见 `references/intake-checklist.md`。
 

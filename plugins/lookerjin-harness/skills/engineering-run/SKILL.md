@@ -1,36 +1,34 @@
 ---
 name: engineering-run
-description: Route a software engineering task from intent to verifiable outcome using a right-sized playbook and existing skills. Use for implementing features, investigating systems, fixing defects, preserving behavior during refactors, exploring prototypes, or carrying a multi-step task to completion. For a narrow task already owned by a specific skill, use that skill directly. Do not use for casual discussion or as authorization to commit, push, publish, or create PRs.
+description: Carry a software engineering goal through the shortest sufficient path to a verified delivery. Use for features, fixes, refactors, investigations, prototypes, or sustained implementation. Adapt six lifecycle stages to existing facts and risk; use a narrow specialist skill directly when it already owns the task. Does not expand authorization or automatically evolve the harness.
 ---
 
 # Engineering Run
 
-把任务推进到可检查的结果。只加载匹配的 Playbook 和当前阶段需要的能力。
+以用户目标为主线，选择当前最有价值的动作。六阶段是内部状态模型，不是六项必做仪式，也不是六个 Skill。
 
-本入口属于软件工程 Domain Harness，负责领域任务路由、验收和能力组合。具体语言知识与专业审查优先复用当前客户端的专家插件/工具；不在这里维护对应规则库、安装流程或专用执行引擎。专业结果通过 Change Review 核对覆盖、行为证据并收敛，不重复运行已经覆盖同一目标的流程。
+## 建立任务契约
 
-## 路由
+读取适用项目规则与直接相关事实，沿用用户已有修改和授权。用一句目标加必要的范围、验收、验证入口、交付目标建立 [执行契约](references/execution-contract.md)。简单任务在当前会话表达即可；复杂任务复用项目计划，避免另外建立一份事实库。
 
-先明确用户要的是解释、行为变化、行为保持、决策实验还是持续执行。不要把“看看为什么”变成自动修复。
+把四个维度分开：
 
-| 用户目标 | 读取 | 完成条件 |
-|---|---|---|
-| 理解、诊断、比较，未要求修改 | [investigate](references/playbooks/investigate.md) | 有证据的解释与边界 |
-| 新增或改变行为 | [feature](references/playbooks/feature.md) | 验收行为得到验证 |
-| 修复已报告缺陷 | [bug-fix](references/playbooks/bug-fix.md) | 原触发路径不再失败 |
-| 保持行为，改变结构 | [refactor](references/playbooks/refactor.md) | 原行为契约保持 |
-| 用低成本实验做决策 | [prototype](references/playbooks/prototype.md) | 观察结果足以选取或放弃方向 |
-| 多个相依步骤或批量任务 | [long-run](references/playbooks/long-run.md) | 可检查的整体完成条件成立 |
+| 维度 | 选择 |
+|---|---|
+| Lifecycle：当前需要解决什么阶段问题 | Brainstorm / Design / Plan / Execute / Verify / Ship |
+| Track：目标是什么 | Feature / Bug Fix / Refactor / Investigate |
+| Mode：怎么推进 | 默认直接执行；按需组合 Prototype / Long Run / Parallel / Subagent |
+| Capability：需要谁或什么 | 现有领域 Skill、专家能力、Human、MCP、工具 |
 
-混合任务选一个主 Playbook；`long-run` 只协调 Units，各 Unit 使用更具体的流程。初始化、接入、依赖评估、评审、演化和评估直接交给现有对应 Skill，不绕一遍本入口。发现目标变了，说明变化并重新路由。
+按 [生命周期](references/lifecycle.md) 选择入口、跳过已满足的阶段并允许回退；按 [任务与执行方式](references/tracks-and-modes.md) 选择一个主 Track 和必要 Mode。只加载当前问题所需资源，不逐项调用整个目录。
 
-## 推进
+## 推进与切换
 
-1. 读取适用项目规则和直接相关事实，记录用户已有修改与授权范围。
-2. 写出一句目标、修改范围、验收行为和验证入口。复杂任务使用短计划；已知原因的小改动直接执行，省略不产生信息的步骤。
-3. 读取 [execution-contract](references/execution-contract.md)，选定 Playbook，调用或读取当前阶段需要的 Skill。工具不可用时顺序执行并说明限制；不假装能力已运行。
-4. 每次推进依赖运行或源码证据。门槛不满足时回到能获取缺失信息的阶段；有明确外部阻塞时报告最小解除动作。
-5. 做完修改后执行项目验证和 [change-review](../change-review/SKILL.md)，修复发现的问题，再运行受影响检查。
-6. 汇报结果、关键证据、未验证项和剩余阻塞。没有外部授权时，交付可审查的本地结果。
+1. 先识别决定下一动作的不确定性：仓库可回答的自己查；用户掌握的关键决定交给 [decision-dialogue](../decision-dialogue/SKILL.md)。真人观察、操作或判断更有效时按 [协作契约](references/collaboration.md) 请求最小帮助，继续不依赖回答的工作。
+2. 已有充分事实的小改直接 Execute → Verify。实质结构选择使用 Design Explore；需要理解已有关系用 System Understand；缺陷机制交给 Root Cause Debug；依赖选型交给 Dependency Evaluation。工程规则缺失才用 Project Bootstrap / Adopt。
+3. 大任务拆成可独立验收的 Unit，先走通一条纵向切片再扩展。按依赖取就绪项，未验证的前置不能当作完成；可选用 [check-plan.py](scripts/check-plan.py) 检查依赖与记录结构。它不替代任务判断，也不要求小任务写 JSON。
+4. Execute 与 [verification-run](../verification-run/SKILL.md) 交替。没有可用配方才用 Verification Bootstrap；验证指出实现错误回 Execute，假设错误回 Design，目标冲突回 Brainstorm。重跑受影响范围，不清空已证实的无关结果。
+5. 用 Change Review 检查实际 diff、质量底线、证据适用性和未覆盖风险。修复后补验受影响项。按 [连续性](references/continuity.md) 保存可恢复状态。
+6. Ship 达成用户实际要求的交付状态：可交接 / commit / push / PR / deploy / release；只执行已经授权的部分。有关键缺口则明确部分交付。现实反馈作为新任务进入合适阶段，先判断现象和影响范围。
 
-已有事实足够时跳过重复调查；不要为形式完整先读取全部 Playbook。多 Agent、多模型和并行是当前客户端提供的可选执行方式，不是完成任务的前提，也不通过这里授予启动权限。
+交付完成不自动调用 Harness Evolve。只有用户明确要求改进自身方法时才进入私有演化流程。

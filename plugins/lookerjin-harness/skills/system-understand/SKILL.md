@@ -23,3 +23,5 @@ description: Trace an unfamiliar or cross-cutting subsystem from real entry poin
 ## 交付
 
 用最短合适形式说明入口 → 关键转换 → 状态/依赖 → 可观察结果，列出受影响边界、证据路径与未知项。只把长期有复用价值的事实写入项目已有权威位置，不默认新增架构快照或复制配置。
+
+复用既有知识或跨会话摘要时核对其观察时间、源码版本和适用范围；历史事实不能自动代表当前实现。新证据修正原结论时记录替代关系，按 [连续性](../engineering-run/references/continuity.md) 回到项目现有事实位置。

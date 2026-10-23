@@ -1,6 +1,6 @@
 {
   "name": "lookerjin-harness",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Portable personal software engineering harness for AI coding agents.",
   "author": {
     "name": "lookerjin",
@@ -23,7 +23,7 @@
   "interface": {
     "displayName": "lookerjin Harness",
     "shortDescription": "Personal software engineering workflows for AI coding agents",
-    "longDescription": "A personal software engineering harness for AI coding agents. It provides reusable workflows for project bootstrap and adoption, evidence-first root-cause debugging, dependency evaluation, change review, self-checks, and evidence-driven harness evolution.",
+    "longDescription": "A personal software engineering harness with an adaptive six-stage lifecycle, dependency-aware decision dialogue, project verification, evidence checks, and explicitly requested method evolution.",
     "developerName": "lookerjin",
     "category": "Developer Tools",
     "capabilities": [],

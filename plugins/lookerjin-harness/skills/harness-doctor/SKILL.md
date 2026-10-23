@@ -43,3 +43,7 @@ python3.11 skills/harness-doctor/scripts/doctor.py --root . --json
 - Doctor 只做本插件的低歧义结构检查。
 - 不扫描秘密内容，不执行项目业务测试，不替代安全审查。
 - 不因为 Doctor 通过就宣称功能正确。
+
+## 自适应执行结构检查
+
+Doctor 将活跃 Skill 与插件 README 的本地断链视为错误，核对 README 目录与可发现 Skill 一致、Python helper 可解析、私有演化入口的显式调用元数据。历史文档断链仍报告 warning，不能用 Doctor 通过声称脚本行为、六阶段路由或宿主权限已经验证。相关负例自测见 [doctor_test.py](scripts/doctor_test.py)。

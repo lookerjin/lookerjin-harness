@@ -16,7 +16,7 @@ description: Diagnose a reproducible or evidence-bearing software failure by gat
 5. 一次尽量只改变一个变量。
 6. 根据实验结果淘汰或提升假设。
 7. 用运行证据说明触发条件如何通过具体机制导致症状；源码可直接证明的确定性错误可以使用直接证据。只在证据足以支持 root cause 后做最小修复；被证伪假设引入的临时修改要撤回。
-8. 修复后从同一入口、可比配置与输入复跑原始触发路径；验证配方缺失时使用 [verification-bootstrap](../verification-bootstrap/SKILL.md)。在项目允许的证据位置保留修复前失败与修复后结果，包含本次实际命令、退出码及必要原始输出（CLI 的 stdout/stderr、UI 的动作与状态等），不要只写“已通过”的总结。廉价且有回归价值时补能先失败后通过的行为用例；不为此擅自提交。
+8. 通过 [Verification Run](../verification-run/SKILL.md) 从同一入口、可比配置与输入复跑原始触发路径；验证配方缺失时使用 [verification-bootstrap](../verification-bootstrap/SKILL.md)。在项目允许的证据位置保留修复前失败与修复后结果，包含本次实际命令、退出码及必要原始输出（CLI 的 stdout/stderr、UI 的动作与状态等），不要只写“已通过”的总结。廉价且有回归价值时补能先失败后通过的行为用例；不为此擅自提交。
 9. 再检查是否引入新回归。
 10. 汇报：
    - root cause

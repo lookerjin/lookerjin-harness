@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "plugin_version": "0.3.0",
+  "base_commit": "0a88761160161352a1fbc24a1630966411e86963",
+  "checks": [
+    {
+      "command": [
+        "python",
+        "scripts/validate_marketplace.py"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "seconds": 0.035,
+      "stdout": "marketplace ok: lookerjin-agent-market (3 plugins)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "skills/harness-doctor/scripts/doctor.py",
+        "--root",
+        ".",
+        "--json"
+      ],
+      "cwd": "plugins/lookerjin-harness",
+      "exit_code": 0,
+      "seconds": 0.06,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"errors\": [],\n  \"warnings\": [],\n  \"checks\": [\n    {\n      \"code\": \"CODEX_MANIFEST\",\n      \"message\": \".codex-plugin/plugin.json\"\n    },\n    {\n      \"code\": \"PLUGIN_NAME\",\n      \"message\": \"lookerjin-harness\"\n    },\n    {\n      \"code\": \"PLUGIN_VERSION\",\n      \"message\": \"0.3.0\"\n    },\n    {\n      \"code\": \"PLUGIN_PATH\",\n      \"message\": \"skills -> ./skills/\"\n    },\n    {\n      \"code\": \"PLUGIN_PATH\",\n      \"message\": \"mcpServers -> ./mcp.json\"\n    },\n    {\n      \"code\": \"PLUGIN_ASSET\",\n      \"message\": \"logo -> ./assets/logo.svg\"\n    },\n    {\n      \"code\": \"PLUGIN_ASSET\",\n      \"message\": \"composerIcon -> ./assets/composer-icon.svg\"\n    },\n    {\n      \"code\": \"MCP\",\n      \"message\": \"1 MCP server(s)\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"change-review\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"decision-dialogue\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"dependency-evaluation\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"design-explore\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"engineering-run\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-doctor\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-eval\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-evolve\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"project-adopt\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"project-bootstrap\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"root-cause-debug\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"system-understand\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"verification-bootstrap\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"verification-run\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"agent-core\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"experiment\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"go-library\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"go-service\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"web-app\"\n    },\n    {\n      \"code\": \"CI_PLACEHOLDER\",\n      \"message\": \"ci-go.yml keeps pin placeholders\"\n    },\n    {\n      \"code\": \"LAYOUT\",\n      \"message\": \"no deprecated top-level directories\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "skills/change-review/scripts/preflight_test.py"
+      ],
+      "cwd": "plugins/lookerjin-harness",
+      "exit_code": 0,
+      "seconds": 0.093,
+      "stdout": "preflight_test ok\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "skills/project-bootstrap/scripts/check-placeholders_test.py"
+      ],
+      "cwd": "plugins/lookerjin-harness",
+      "exit_code": 0,
+      "seconds": 0.085,
+      "stdout": "no REPLACE_WITH_FULL_COMMIT_SHA in generated workflows\ncheck-placeholders_test ok\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "skills/harness-eval/scripts/prepare_test.py"
+      ],
+      "cwd": "plugins/lookerjin-harness",
+      "exit_code": 0,
+      "seconds": 0.92,
+      "stdout": "",
+      "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.846s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "skills/engineering-run/scripts/check-plan_test.py"
+      ],
+      "cwd": "plugins/lookerjin-harness",
+      "exit_code": 0,
+      "seconds": 0.131,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.064s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "skills/verification-run/scripts/check-evidence_test.py"
+      ],
+      "cwd": "plugins/lookerjin-harness",
+      "exit_code": 0,
+      "seconds": 0.166,
+      "stdout": "",
+      "stderr": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.093s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "skills/harness-doctor/scripts/doctor_test.py"
+      ],
+      "cwd": "plugins/lookerjin-harness",
+      "exit_code": 0,
+      "seconds": 0.515,
+      "stdout": "",
+      "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.438s\n\nOK\n"
+    }
+  ],
+  "scope": "本项目结构、脚本行为与本地 CLI 集成；不代表独立 Agent 行为评估或产品跨项目收益。",
+  "not_run": [
+    "independent-agent adaptive routing and decision dialogue",
+    "cross-session behavioral recovery",
+    "host enforcement of explicit invocation metadata",
+    "real external application or formal model verification"
+  ],
+  "python_version": "3.12.14",
+  "package_smoke": {
+    "status": "pass",
+    "checks": [
+      {
+        "variant": "candidate",
+        "skill_count": 14,
+        "broken_resource_references": [],
+        "clean_product_diff": true,
+        "no_remotes": true
+      },
+      {
+        "variant": "baseline",
+        "skill_count": 12,
+        "broken_resource_references": [],
+        "clean_product_diff": true,
+        "no_remotes": true
+      }
+    ],
+    "agents_run": false
+  },
+  "drawio_structure": {
+    "architecture": {
+      "vertices": 56,
+      "edges": 38
+    },
+    "journey": {
+      "vertices": 43,
+      "edges": 43
+    },
+    "duplicate_ids": false,
+    "missing_endpoints": false,
+    "viewer_rendering_verified": false
+  },
+  "input_sha256": {
+    "plugins/lookerjin-harness/.codex-plugin/plugin.json": "90e5c66e2406cb432c4c7e053963f0db7e6edbc1990a05beb24bea956c4c1858",
+    "plugins/lookerjin-harness/AGENTS.md": "78c8e9fda0a68998841f67fe3711438e87e7b007019d3a52a082dbf684ce0369",
+    "plugins/lookerjin-harness/README.md": "1d3ad22d5231dd066dd8a9c549511da709b7d7710a8ff065750f738a16f1c952",
+    "plugins/lookerjin-harness/docs/architecture-refactor.drawio": "18dcb6766b8520ea345989d30939b9835f831756ce03cd2ccb399b09467cebe9",
+    "plugins/lookerjin-harness/docs/architecture-refactor.md": "da610daebe16c3e4a7d92d2c74cda34f4e5643cf11a3b9553037fb9d82071a91",
+    "plugins/lookerjin-harness/docs/execution-core-pilot.json": "94a5f6a4ce4902095ff6716e5b94636fbf588f7a7e401254ac7fa341da54638c",
+    "plugins/lookerjin-harness/docs/execution-core.md": "55679e459bb89c1611f0ccd13d358468136a461e01a5dbbe89804fc11a0abc48",
+    "plugins/lookerjin-harness/docs/field-tests.md": "f3e020e223ac40dfd3a123e78f02efa9a05a0682810aadf872638852717a768a",
+    "plugins/lookerjin-harness/docs/ocr-integration-pilot.json": "1e74d3734efcdd82214f19f2b87b3411dad3dcf7d7261128837b974c86c721c2",
+    "plugins/lookerjin-harness/docs/user-journey.drawio": "59167ff5336ff1c3b248acf7bd13883fcf912f9ecf4ffebaa4fad0b15b7f3b01",
+    "plugins/lookerjin-harness/mcp.json": "21626312e7da1ba83bc29b679e05bd8a98af23f96884675c7b4118d1fc12c89d",
+    "plugins/lookerjin-harness/skills/change-review/SKILL.md": "e04fab83d6608340f21b0916d5cfbb446f4fb9e16d0c1d2f13bac6da69036b41",
+    "plugins/lookerjin-harness/skills/change-review/references/open-code-review.md": "db5ceb225675a832434c454e77a6c169f521e5a4abe382e6472cf0b2527264e1",
+    "plugins/lookerjin-harness/skills/change-review/scripts/preflight.py": "2afe9aa03205c6e5744ac2f3b8ac5d0ba200c1d6c7d1ba4c183814519a68aba9",
+    "plugins/lookerjin-harness/skills/change-review/scripts/preflight_test.py": "e003646e52521bf85722b79ef6f64dccb4fe671bc04555b74e742fcaaf50d1b3",
+    "plugins/lookerjin-harness/skills/decision-dialogue/SKILL.md": "fc8be8e1779b1c5ffca41a00ac66839995927940ff7c437179c5778983e2f878",
+    "plugins/lookerjin-harness/skills/decision-dialogue/references/frontier.md": "c8ccf8fd9b166f6b8660527f2dc61d0e24bb3a0dbc0e5fce46e616d455e2648e",
+    "plugins/lookerjin-harness/skills/dependency-evaluation/SKILL.md": "d5ecd4c7ea7618edc910f901654b9270b22ed564c84fb90f868358a4371b5215",
+    "plugins/lookerjin-harness/skills/design-explore/SKILL.md": "9d34d7da92d569cec8185f182259219958088b05e306bec9d2c78d2c2275a704",
+    "plugins/lookerjin-harness/skills/engineering-run/SKILL.md": "80dad8cc143919be7464ba99b74056b2ed1dd5e9b1dabb6e4f7683f14ce2798c",
+    "plugins/lookerjin-harness/skills/engineering-run/references/collaboration.md": "ae71d45b8c5ee8cd73b0b9a7e0ab62bfa83115a6141a8d18d4078b0bbdca04dc",
+    "plugins/lookerjin-harness/skills/engineering-run/references/continuity.md": "d2dbef607144d0c3572a6995a2b098a44223df40e11abc6bc384c8e0808fd0d7",
+    "plugins/lookerjin-harness/skills/engineering-run/references/execution-contract.md": "2cb6484c45a89ce31de39980bdd4866fa7a4c0bb2288f728a72105bd399856f2",
+    "plugins/lookerjin-harness/skills/engineering-run/references/lifecycle.md": "4e13fc9a601354f4ad2622b6bdb5936ecb25761f0b6dff7720972ec81f43c5b0",
+    "plugins/lookerjin-harness/skills/engineering-run/references/plan-format.md": "ac3d370c42c91240c8e5a2c4c0ab4926565c0e0dea3ccaa9ea2b97e94b4fb10c",
+    "plugins/lookerjin-harness/skills/engineering-run/references/tracks-and-modes.md": "20e3ec4586fea4b921a47a5b1e43d12e6523408941f150eee9975d4a4bdd0eaa",
+    "plugins/lookerjin-harness/skills/engineering-run/scripts/check-plan.py": "9e48c0b4980b88c568c337dee6ca5ef51ec1f97cca9350abf7fe5577f8ceb576",
+    "plugins/lookerjin-harness/skills/engineering-run/scripts/check-plan_test.py": "163daa359c3a0aefae769d1a1892e3ba9669335c85061942ccb8dc29cea69cc1",
+    "plugins/lookerjin-harness/skills/harness-doctor/SKILL.md": "332a1594a92b481b2f86dd6f87a61b60c2be262914f5834ca54fdc5b266682b0",
+    "plugins/lookerjin-harness/skills/harness-doctor/scripts/doctor.py": "10a733bb8b4fad7e150103936350309a4795c0319112d0db688afd5474bccfeb",
+    "plugins/lookerjin-harness/skills/harness-doctor/scripts/doctor_test.py": "45dbefc3fcf910936df35e486404031b2b95143b094a36249886b37a1fdd8a51",
+    "plugins/lookerjin-harness/skills/harness-eval/SKILL.md": "b327395fa36708c5872340b69b1ca6b58c3c4bd6a5ebb7b0deb32e94df9ea5d5",
+    "plugins/lookerjin-harness/skills/harness-eval/references/cases.md": "4a4828d6a59e4d64d5b63369c147fd389108f10e783d0ee86d00e6ed1ab87faa",
+    "plugins/lookerjin-harness/skills/harness-eval/references/protocol.md": "112e610b2f16ca5e1060f0cf40833f56326def112d3241506dbfa36ecebd1875",
+    "plugins/lookerjin-harness/skills/harness-eval/scripts/prepare.py": "2c1840e4f74a345b9157d56636985b27651f4c2336bb651b2354159a1fb82b11",
+    "plugins/lookerjin-harness/skills/harness-eval/scripts/prepare_test.py": "18cadc20d77f900f9589d6fa85edc731949f15e02870e0f34b359dd724362a04",
+    "plugins/lookerjin-harness/skills/harness-evolve/SKILL.md": "e37712afcbac7b75e62ba8eba58e711d752be1dcbbc92e8e1d3e705faae10e1c",
+    "plugins/lookerjin-harness/skills/harness-evolve/agents/openai.yaml": "9bbb097fe8cb317699bb8e067e781860f8c4619e9908f7afe2ae2a3791fa6253",
+    "plugins/lookerjin-harness/skills/harness-evolve/references/integrations.md": "1c5497947c009d778aac898ece8ff504c5e4376a21c66bfa82b0e9865c2e4829",
+    "plugins/lookerjin-harness/skills/harness-evolve/references/promotion-policy.md": "bd44eeff9aa9513024a0c61d7a313906fc2b5f69a40ecc725297da4ab1449ece",
+    "plugins/lookerjin-harness/skills/harness-evolve/references/surface-routing.md": "2fa33723b855120f1553277c95b7aba490f7ed2f43d51fbf8cd50c0aa41d4a29",
+    "plugins/lookerjin-harness/skills/project-adopt/SKILL.md": "11751073d316f4249e4f931ea71b4531386529d0ada6344a18b4877b0ff8361e",
+    "plugins/lookerjin-harness/skills/project-adopt/references/gap-output.md": "a341215b3d6cbb31214fed9bab4add689019f690fe8b82ea818cdd96b33bc03f",
+    "plugins/lookerjin-harness/skills/project-bootstrap/SKILL.md": "4d5dd2efbbb54d460875acecd9fe6567aa6151146b4368da077d0d2e19766db0",
+    "plugins/lookerjin-harness/skills/project-bootstrap/assets/AGENTS.repo.template.md": "bbfff6c0db46a28a73f30a768bb2e804e5ad147dd04d90a306adb5956adfd123",
+    "plugins/lookerjin-harness/skills/project-bootstrap/assets/github/PULL_REQUEST_TEMPLATE.md": "83a08dac180bbc5162943afb5bca2f4837b5fc54e413717e488f178a6d1d5ba3",
+    "plugins/lookerjin-harness/skills/project-bootstrap/assets/github/issue-feature.md": "b2aa8f15fa39ec7c9f04d4290114d7e757efc05ce316d3c3b4b9a5193f4c854b",
+    "plugins/lookerjin-harness/skills/project-bootstrap/references/engineering-defaults.md": "c111308dbd534607573c1bf7922094cb41f9b480d9b899853d5e81e396c81eaa",
+    "plugins/lookerjin-harness/skills/project-bootstrap/references/intake-checklist.md": "72d66d7120d55cf741e30dbc38027316a6905c5ff735d118673568de06de193d",
+    "plugins/lookerjin-harness/skills/project-bootstrap/references/profiles/schema.md": "d572d8d9e3c2d607d2b6e22933ade80795ab9eddebcfa61de407e8ba86d1dc3f",
+    "plugins/lookerjin-harness/skills/project-bootstrap/scripts/check-placeholders.py": "8d546c49654f6964881798a8cbb231bb00bbe1a37bb399757be63f109b2e49b6",
+    "plugins/lookerjin-harness/skills/project-bootstrap/scripts/check-placeholders_test.py": "7d6849e8d51b8e5139dcffd2a1f0f7e00f03e16ab8796674916ce83f94cea758",
+    "plugins/lookerjin-harness/skills/root-cause-debug/SKILL.md": "df0c2e30d9c28aafdbe8353148a7f85a69bf593099dfd9aae56f3d39e52f3d1e",
+    "plugins/lookerjin-harness/skills/system-understand/SKILL.md": "072e1d52b7051519b4258553d340902cd465b6b2a1632c5c2aa36c3947c48560",
+    "plugins/lookerjin-harness/skills/verification-bootstrap/SKILL.md": "e032f34f7369d914a96a1a00e5249ed451a4fc089cd248070eb4fdeb8b68226e",
+    "plugins/lookerjin-harness/skills/verification-bootstrap/references/recipe-shape.md": "19e817dfb52e97b39654f52d65af506d2ec24e2966b285ddaf80a10369f8f4a9",
+    "plugins/lookerjin-harness/skills/verification-run/SKILL.md": "4838ff5276545c9e8739b89aa480f89a4abbcfb03a8eb0ad468a6fdf24d651b1",
+    "plugins/lookerjin-harness/skills/verification-run/references/evidence-format.md": "dab3ffdf7a1c9fc7ce843653577893f19e060b27d483d1fa94da5fe15fbc769b",
+    "plugins/lookerjin-harness/skills/verification-run/references/formal-checks.md": "c5f0f5ca9c0a99cbecda31d835ca6759d56bbced28173b057ce2789deabb3dd8",
+    "plugins/lookerjin-harness/skills/verification-run/references/maintenance.md": "704ce455f18fbd1f8c71b5050f59a21c2190300171271d2c00f6797c1e51a5c7",
+    "plugins/lookerjin-harness/skills/verification-run/scripts/check-evidence.py": "54c98931f6092de2ac22fbed4a9b94c40a2fb30979ecb11d606a843189bcc248",
+    "plugins/lookerjin-harness/skills/verification-run/scripts/check-evidence_test.py": "8024d35ea6fc9b3d5430446b860590b5fa4874847c8da641fdce00347a6c49f6",
+    ".github/workflows/marketplace.yml": "c254a0a626e2b95aa9d4abb873ee25c1d0128204ac71087cf3dc0975182f65e6"
+  }
+}

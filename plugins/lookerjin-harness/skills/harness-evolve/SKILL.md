@@ -1,11 +1,14 @@
 ---
 name: harness-evolve
-description: Review repeated friction from real development and decide whether it should become a portable Agent Skill, project AGENTS rule, deterministic script, platform adapter, or remain project-local. Use after several development cycles, repeated corrections, recurring CI/debug failures, or when improving this personal Agent Plugin from observed evidence. Do not use without repeated evidence.
+description: Improve the harness only when the user explicitly requests method evolution, distillation, or a harness design change. Evaluate observed friction or an explicitly requested design candidate; never auto-trigger after delivery, repeated failures, or a context checkpoint.
+disable-model-invocation: true
 ---
 
 # Harness Evolve
 
-目标是从真实反馈中提炼 Harness，而不是为完整性增加配置。没有重复证据时直接停止，不要为了演化而演化。
+只有用户显式要求才进入。交付、反复失败和会话恢复都不自动授权修改以后 Agent 的工作方式。用户明确提出的设计可作为候选实现并验证；缺少重复场景证据时标明候选，不声称已获跨项目验证。
+
+流程：Evidence → Eval → Distill → Evolve → Doctor。先核对证据，再评估具体行为，提炼最小方法，实施后做结构与相关自测；可按当前已有证据跳过重复工作。它独立于六阶段交付，不是第七阶段。
 
 晋升门槛以 [promotion-policy](references/promotion-policy.md) 为唯一来源；按需读取 [surface-routing](references/surface-routing.md) 和 [integrations](references/integrations.md)。
 

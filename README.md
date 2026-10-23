@@ -63,7 +63,7 @@ Harness 不应该成为领域知识大全。具体语言、框架、工具和创
 当前 `plugins/lookerjin-harness` 是软件工程领域的 Harness，负责：
 
 - 项目初始化与接入；
-- 任务路由与可验证的 Playbook；
+- 自适应六阶段、任务路由与可验证执行；
 - 系统理解、方案探索和项目真实入口验证；
 - 根因调试；
 - 依赖评估；
@@ -81,11 +81,11 @@ Harness 不应该成为领域知识大全。具体语言、框架、工具和创
 ```text
 Marketplace
 ├── Local Owned Plugin
-├── Remote Upstream Plugin
+├── Remote Independent Plugin
 └── Remote Fork Plugin
 ```
 
-- 原样使用上游：直接通过 Marketplace remote source 引用；
+- 使用独立插件：直接通过 Marketplace remote source 引用；
 - 需要定制：优先 fork 到独立仓库，再让 Marketplace 指向 fork；
 - 只有真正由本仓库维护的插件才放进 `plugins/`。
 
@@ -99,7 +99,7 @@ Marketplace
 | `modern-go-guidelines` | Go Expert Plugin | Go 专业开发指导 |
 | `open-code-review-codex` | 专业审查 Plugin | OCR 文件选择、语言规则和缺陷审查；另需可运行的 `ocr` CLI |
 
-OCR 原样引用上游 `plugins/open-code-review`，按用户选择跟随 `main`，具体来源以 Marketplace 清单为准。市场提供可选安装入口，不自动安装 CLI 或调用付费模型；委托模式优先，完整模式按已选择的模型、范围与预算使用。插件包和 CLI 分别更新，刷新后检查入口与实际兼容性；验证记录中的 commit 只表示当次检查对象。领域审查分工与使用边界见 [Change Review 的 OCR 适配](plugins/lookerjin-harness/skills/change-review/references/open-code-review.md)。实际验证见 [field-tests](plugins/lookerjin-harness/docs/field-tests.md)。
+OCR 引用独立维护的 `plugins/open-code-review`，按用户选择跟随 `main`，具体来源以 Marketplace 清单为准。市场提供可选安装入口，不自动安装 CLI 或调用付费模型；委托模式优先，完整模式按已选择的模型、范围与预算使用。插件包和 CLI 分别更新，刷新后检查入口与实际兼容性；验证记录中的 commit 只表示当次检查对象。领域审查分工与使用边界见 [Change Review 的 OCR 适配](plugins/lookerjin-harness/skills/change-review/references/open-code-review.md)。实际验证见 [field-tests](plugins/lookerjin-harness/docs/field-tests.md)。
 
 ## CI 边界
 
@@ -113,7 +113,7 @@ Local Plugin
 Remote Plugin
 → 验证远端引用契约
 
-Upstream
+Independent Plugin Repository
 → 负责第三方插件自己的完整测试
 ```
 

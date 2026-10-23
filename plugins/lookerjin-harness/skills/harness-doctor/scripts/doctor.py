@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import ast
 import json
 import re
 import sys
@@ -183,7 +184,32 @@ def main():
         for raw in MD_LINK.findall(text):
             target = raw.split("#", 1)[0]
             if target and not (path.parent / target).resolve().exists():
-                warnings.append({"code": "LOCAL_LINK", "message": f"{path.relative_to(root)} -> {raw}"})
+                # Active instructions must not silently route to a missing file.
+                active = path.is_relative_to(skills) or path == root / "README.md"
+                (errors if active else warnings).append({"code": "LOCAL_LINK", "message": f"{path.relative_to(root)} -> {raw}"})
+
+    evolve = skills / "harness-evolve"
+    if evolve.exists():
+        metadata = (evolve / "SKILL.md").read_text(encoding="utf-8") if (evolve / "SKILL.md").exists() else ""
+        frontmatter = FM.search(metadata)
+        if not frontmatter or not re.search(r"^disable-model-invocation:\s*true\s*$", frontmatter.group(1), re.M):
+            errors.append({"code": "PRIVATE_EVOLUTION", "message": "harness-evolve must disable model invocation in frontmatter"})
+        policy = evolve / "agents" / "openai.yaml"
+        policy_text = policy.read_text(encoding="utf-8") if policy.exists() else ""
+        if not re.search(r"^policy:\s*\n[ \t]+allow_implicit_invocation:\s*false\s*$", policy_text, re.M):
+            errors.append({"code": "PRIVATE_EVOLUTION", "message": "harness-evolve requires policy.allow_implicit_invocation: false"})
+
+    readme = root / "README.md"
+    if readme.exists():
+        catalog = set(re.findall(r"\]\(skills/([^/]+)/SKILL\.md\)", readme.read_text(encoding="utf-8")))
+        if catalog != seen:
+            errors.append({"code": "SKILL_CATALOG", "message": f"README skill catalog mismatch: missing={sorted(seen-catalog)}, extra={sorted(catalog-seen)}"})
+
+    for path in skills.rglob("*.py"):
+        try:
+            ast.parse(path.read_text(encoding="utf-8"), filename=str(path.relative_to(root)))
+        except (SyntaxError, UnicodeError, OSError) as exc:
+            errors.append({"code": "SCRIPT_SYNTAX", "message": str(exc)})
 
     legacy = [name for name in LEGACY_ROOTS if (root / name).exists()]
     if legacy:

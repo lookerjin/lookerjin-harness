@@ -9,7 +9,7 @@ description: Execute an existing project verification recipe against the real ca
 
 ## 日常 Run
 
-1. 固定目标验收、受影响入口、当前源码/产物与环境前提。由真实调用链映射影响范围，包含共享状态、错误、并发与副作用；不能只按改过的文件挑测试。已有有效证据可复用并说明适用性。
+1. 固定目标验收、受影响入口、当前源码/产物与环境前提。由真实调用链映射影响范围，包含共享状态、错误、并发与副作用；不能只按改过的文件挑测试。已有有效证据可复用并说明适用性。若已有 [局部地图](../system-understand/references/code-navigation.md)，先查新鲜度，再反向查询改动节点、连接已有验收 ID；过期、截断或仅 imports 的结果不能证明调用者覆盖，补查动态边界与共享状态。简单任务不为选择测试而强制建图。
 2. 读项目的 [配方结构](../verification-bootstrap/references/recipe-shape.md)，确认前提与正确实例；实际 Launch → Drive → Observe。断言内容、状态转换与副作用，不能只看 exit 0 / HTTP 200 / 构建成功。
 3. 先做代表性路径，失败时辨别产品缺陷、配方漂移、环境阻塞、观察不足。产品缺陷返回 Execute / Root Cause Debug；只修本次必要配方缺口不扩大产品范围。针对实际失败保留原始记录。
 4. 正常与失败退出都清理自己拥有的实例/数据，证据必须在清理后存在。不得杀共享服务或覆盖用户数据。

@@ -2,6 +2,8 @@
 
 Engineering Run 将目标、验收与已有授权映射为最短充分路径。六阶段允许跳过、回退和局部交付；领域能力按需调用，专业能力通过当前客户端接入。
 
+日常入口是“问用法”和“直接说目标”，分别由 Help 和适合当前任务的技能处理；窄任务可直接进入专业技能，跨步骤任务由 Engineering Run 推进。[入口行为](../skills/help/SKILL.md) 包含自然语言、宿主技能调用和已安装文件读取的适配边界，不新增斜杠别名协议。
+
 - [架构与具体文件职责](architecture-refactor.md)
 - [架构图：原生 draw.io](architecture-refactor.drawio)
 - [用户旅程：原生 draw.io](user-journey.drawio)
@@ -17,6 +19,6 @@ Ship 由实际目标与授权决定。CI、运行或用户反馈重新进入交�
 
 ## 本次结构变更
 
-能力从 12 个收敛为 14 个：增加 Decision Dialogue 与 Verification Run，删除六份重复 Playbook，将其有效方法保留到统一生命周期与 Track / Mode。共用契约继续使用原路径，既有 Skill-only 评估快照无需额外资源注入协议。Maintain 是验证工作流的一条路径，不再增加一个 Skill。
+生命周期重构时，能力从 12 个调整为 14 个：增加 Decision Dialogue 与 Verification Run，删除六份重复 Playbook，将其有效方法保留到统一生命周期与 Track / Mode。随后增加 Help，目前共 15 个 Skill。日常入口收敛不改变内部能力数量。共用契约继续使用原路径，既有 Skill-only 评估快照无需额外资源注入协议。Maintain 是验证工作流的一条路径，不再增加一个 Skill。
 
 本版本没有后台任务引擎、隐式多 Agent 启动或默认 hooks。确定性约束由可直接运行的检查器和 CI 承担；恢复与人工协作按当前宿主能力执行。

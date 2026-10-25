@@ -28,6 +28,8 @@ description: Carry a software engineering goal through the shortest sufficient p
 
 按 [生命周期](references/lifecycle.md) 选择入口、跳过已满足的阶段并允许回退；按 [任务与执行方式](references/tracks-and-modes.md) 选择一个主 Track 和必要 Mode。只加载当前问题所需资源，不逐项调用整个目录。
 
+涉及页面、组件、视觉或交互时，按需使用 [UI 能力接入](references/ui-capabilities.md)，将设计、实现和真实界面验证交给适用能力；UI 沿用当前生命周期，不增加必经阶段或默认安装。
+
 ## 推进与切换
 
 1. 先识别决定下一动作的不确定性：仓库可回答的自己查；用户掌握的关键决定交给 [decision-dialogue](../decision-dialogue/SKILL.md)。真人观察、操作或判断更有效时按 [协作契约](references/collaboration.md) 请求最小帮助，继续不依赖回答的工作。

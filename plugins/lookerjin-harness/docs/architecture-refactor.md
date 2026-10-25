@@ -7,14 +7,21 @@
 | 权威位置 | 拥有内容 | 调用边界 |
 |---|---|---|
 | `engineering-run/SKILL.md` | 目标→路径、能力组合、回退、交付 | 不内置语言知识、项目启动命令或权限系统 |
-| `engineering-run/references/execution-contract.md` | Task / Unit / Evidence / 完成语义、质量底线 | 所有调用方读同一份资源，不创建独立契约 Skill |
+| `engineering-run/references/execution-contract.md` | Task / Unit / Evidence / 完成语义、质量底线、沟通与实现的克制 | Change Review 与项目规则生成引用同一处；不创建独立契约 Skill |
 | `engineering-run/references/lifecycle.md` | 六阶段进入、跳过、退出、回退与反馈入口 | 阶段不强制产物，不定义第二套任务队列 |
 | `engineering-run/references/tracks-and-modes.md` | 四类验收与四类可组合执行方式 | Prototype / Long Run 不再伪装任务类型 |
 | `engineering-run/references/collaboration.md` | 人与 Agent 的决策、观察、授权协作 | 必需回答阻塞相关 Unit，独立任务继续 |
 | `engineering-run/references/continuity.md` | 检查点、实际工作区恢复、证据失效与历史事实版本 | 复用现有项目状态位置，不另建知识库 |
+| `help/SKILL.md` | 用法解释、场景推荐、宿主入口与能力发现 | 只问用法不启动实施；按问题读框架或已知专家元数据 |
+| `system-understand/references/code-navigation.md` 与 `scripts/code-map.py` | 文本/符号/结构选路、局部 JSON 与 draw.io、内容新鲜度 | 按范围提取、固定输入、原子发布；不安装后台索引 |
+| `engineering-run/references/ui-capabilities.md` | UI 专家选择、设计与真实交互验证 | 已启用能力按需使用，小修不强制重新设计 |
+| `root-cause-debug/references/feedback-loop.md` | 原症状复现、区分实验、输入缩减与同入口复验 | 记录反馈耗时和复现率，不以偶然通过作为修复 |
+| `harness-eval/references/protocol.md` | 固定判据、独立配对、统一复验、质量/耗时/可观测成本 | 分派前计时，自报与事实分开；缺失费用不估造 |
 | 项目规则、代码、配方、Issue / PR | 实际产品事实、命令、验收与当前状态 | 插件保存方法，项目保存事实 |
 
 所有路径相对 `skills/`。基础契约保留在现有拥有者目录，评估工具仍可完整注入 `skills/`；避免为了形式分层增加插件级共享资源协议。
+
+Harness 内有 15 个 Skill。独立 UI 专家位于仓库的 `plugins/frontend-design/skills/frontend-design/SKILL.md`，分发记录与许可证留在该插件。Marketplace 共 4 个成员，声明位于 `.agents/plugins/marketplace.json`；发现、安装与启用由宿主负责。主 Agent 根据任务组合能力，不存在自动 Plugin-to-Plugin 调用协议。
 
 ## 2. 六阶段的具体方法
 
@@ -70,19 +77,23 @@ Long Run 先 pilot 再扩大；Parallel 先隔离写入；Subagent 需宿主允�
 | 插件自检 | Doctor + 自测 + Marketplace CI | 发现入口、资源引用、目录一致性、Python 语法与负例诊断 |
 | 私有演化入口 | SKILL 显式触发描述与 `agents/openai.yaml` | 元数据存在且一致；运行是否尊重由宿主负责 |
 | 可恢复执行 | 项目现有状态与会话恢复流程 | 由 Agent 核对真实状态；未宣称后台自动恢复 |
+| 局部代码导航 | `system-understand/scripts/code-map.py`，按需调用解析器 | 同一关系集查询/出图，固定输入与发布前复核；语义仍需源码或运行核对 |
+| UI 设计与验收 | 独立 Frontend Design + 项目浏览器/验证配方 | 视觉方向、交互、键盘/焦点、窄屏、真实渲染对比度分别验收 |
+| 分发校验 | 仓库 `scripts/validate_marketplace.py` 与 `frontend_design_test.py` | manifest 内容/名称、资源路径、固定正文与许可证；安装链路另行实测 |
 
-本版本不默认配置 hooks。命令文本匹配不构成权限边界，未接线脚本不构成生命周期自动化，改写文件来隐藏内容会制造恢复与并发风险。确需低歧义机械约束时按项目实际宿主接入并单独验证。
+本版本不引入 hooks、命令拦截或后台索引；需要的检查通过显式 CLI 与 CI 执行。沟通、实现与审查共享执行契约，禁止防御性表达和无实际依据的防御型编程。
 
 ## 7. 私有演化与验证范围
 
 仅显式用户请求进入 Evidence → Eval → Distill → Evolve → Doctor，交付与错误不会自动触发。用户主动设计可以成为候选实施；跨项目收益仍需真实重复证据。
 
-本次脚本自测检查确定性行为，Doctor 检查结构，实际 CLI 试验检查输入→运行→记录→失效判断。独立 Agent 的追问质量、自适应选路、跨会话恢复与跨客户端触发需另行行为评估；其场景已进入 Harness Eval 的 cases，未实际跑的保持 NOT_RUN。
+检查结果按版本保留在 [field-tests](field-tests.md)：包括生命周期配对行为、Help 与入口、导航失效/并发、调试反馈，以及 [UI 配对试验](frontend-design-ab.md) 的共同浏览器复验和 CLI 安装链路。脚本自测证明机械行为，Doctor 证明结构；单次配对结果不外推为跨项目、跨客户端的稳定收益。每轮缺失的计时、费用或运行场景在各自记录中标明。
 
-## 8. 文件迁移与阅读入口
+## 8. 演进与阅读入口
 
 - 删除 `engineering-run/references/playbooks/` 六份旧流程，其方法归入 lifecycle 与 tracks-and-modes。
 - 保留共用 execution-contract 与 recipe-shape 原路径；已安装 Skill-only 副本保留资源闭包。
-- 新增两个 Skill：Decision Dialogue、Verification Run。维护、合同、六阶段都不单独成为 Skill。
+- 生命周期重构时新增 Decision Dialogue、Verification Run，后续新增 Help；当前共 15 个。维护、契约、六阶段都不单独成为 Skill。
+- 导航方法与脚本归 System Understand；UI 专家归独立插件；简洁表达和实现克制归共同执行契约。
 - 更新 Change Review、Root Cause Debug、项目接入与私有演化接口；确定性检查加入同一 CI。
 - 原生图分别见 [架构](architecture-refactor.drawio) 与 [用户旅程](user-journey.drawio)，实际结果见 [field-tests](field-tests.md)。

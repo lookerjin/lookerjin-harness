@@ -58,7 +58,7 @@ Brainstorm → Design → Plan → Execute ⇄ Verify → Ship。
 
 ## 具体方法与文件
 
-- [执行契约](skills/engineering-run/references/execution-contract.md)：目标、授权、事实标签、证据状态、质量底线与完成条件。
+- [执行契约](skills/engineering-run/references/execution-contract.md)：目标、授权、事实标签、证据状态与完成条件；沟通直接简洁，禁止防御性表达、重复校验和无依据的兜底。
 - [生命周期](skills/engineering-run/references/lifecycle.md) 与 [Track / Mode](skills/engineering-run/references/tracks-and-modes.md)：选路、跳过、回退、兼容迁移、pilot 与 Unit。
 - [协作](skills/engineering-run/references/collaboration.md) 与 [连续性](skills/engineering-run/references/continuity.md)：最小人工请求、独立推进、基线核对和恢复。
 - [决策前沿](skills/decision-dialogue/references/frontier.md)：先查事实、只问前置已满足的问题、回答后重算。
@@ -67,7 +67,7 @@ Brainstorm → Design → Plan → Execute ⇄ Verify → Ship。
 - [代码导航](skills/system-understand/references/code-navigation.md)：按问题选文本/符号/结构查询，局部关系 JSON 与 draw.io 同源；内容指纹识别过期。JS 模块依赖可选接入固定版本解析工具，其他语言复用已有工具和源码证据，不默认安装全库索引。
 - [调试反馈闭环](skills/root-cause-debug/references/feedback-loop.md)：先建立能命中原症状的反馈，记录耗时/复现率、逐项缩减输入，修复后重跑原始路径。代码导航在固定输入副本上提取关系，完整暂存后原子创建输出，失败与并发不覆盖已有产物。
 - [UI 能力接入](skills/engineering-run/references/ui-capabilities.md)：设计、组件实现、规则检索与真实界面验证按需组合，沿用六阶段；Marketplace 提供独立 Frontend Design。候选筛选见 [UI 评估](docs/ui-capability-evaluation.md)，集成、配对试验与成本见 [A/B 记录](docs/frontend-design-ab.md)。
-- [评估协议](skills/harness-eval/references/protocol.md)：同时比较完成质量、耗时与可观测成本，分别报告准备、执行、重试与未知的模型计费。
+- [评估协议](skills/harness-eval/references/protocol.md)：分派前计时、统一判据复验，核对执行者自报；分别记录质量、准备/执行/重试耗时与可观测成本，缺失的模型计费保留未知。
 
 这些是按需加载的方法。本版本不引入 hook、会话后台脚本或命令拦截器，检查器由任务显式调用或在 CI 运行。私有演化入口同时声明显式调用元数据，实际执行仍受宿主支持与授权约束。
 

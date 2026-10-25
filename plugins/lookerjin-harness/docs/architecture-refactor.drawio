@@ -2,23 +2,23 @@
   <root>
     <mxCell id="0" />
     <mxCell id="1" parent="0" />
-    <mxCell id="title" value="lookerjin Harness 0.3 · 架构与文件职责" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
+    <mxCell id="title" value="lookerjin Harness · 当前架构与文件职责 · 15 个核心 Skill + 独立专家" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="40" y="40" width="1580" height="60" />
     </mxCell>
     <mxCell id="goal" value="用户目标&lt;br&gt;验收 · 范围 · 授权" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
-      <mxGeometry as="geometry" x="40" y="160" width="140" height="60" />
+      <mxGeometry as="geometry" x="40" y="400" width="140" height="60" />
     </mxCell>
     <mxCell id="router" value="engineering-run&lt;br&gt;选择最短充分路径" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
-      <mxGeometry as="geometry" x="400" y="160" width="140" height="60" />
+      <mxGeometry as="geometry" x="400" y="400" width="140" height="60" />
     </mxCell>
     <mxCell id="track" value="Track&lt;br&gt;Feature / Bug Fix&lt;br&gt;Refactor / Investigate" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
-      <mxGeometry as="geometry" x="760" y="160" width="140" height="60" />
+      <mxGeometry as="geometry" x="760" y="400" width="140" height="60" />
     </mxCell>
     <mxCell id="mode" value="Mode（可组合）&lt;br&gt;Prototype / Long Run&lt;br&gt;Parallel / Subagent" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
-      <mxGeometry as="geometry" x="1120" y="160" width="140" height="60" />
+      <mxGeometry as="geometry" x="1120" y="400" width="140" height="60" />
     </mxCell>
     <mxCell id="cap" value="Capability&lt;br&gt;领域 / 专家 / 人&lt;br&gt;MCP / 工具" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
-      <mxGeometry as="geometry" x="1480" y="160" width="140" height="60" />
+      <mxGeometry as="geometry" x="1480" y="400" width="140" height="60" />
     </mxCell>
     <mxCell id="e1" source="goal" target="router" value="" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
       <mxGeometry as="geometry" relative="1" />
@@ -33,7 +33,7 @@
       <mxGeometry as="geometry" relative="1" />
     </mxCell>
     <mxCell id="life" value="内部生命周期 · references/lifecycle.md · 允许跳过和回退" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#edf3fc;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
-      <mxGeometry as="geometry" x="40" y="280" width="1620" height="240" />
+      <mxGeometry as="geometry" x="40" y="520" width="1620" height="240" />
     </mxCell>
     <mxCell id="b" value="Brainstorm&lt;br&gt;目标与成功现象" parent="life" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
@@ -84,7 +84,7 @@
       <mxGeometry as="geometry" relative="1" />
     </mxCell>
     <mxCell id="dialog" value="决定与协作 · decision-dialogue / collaboration" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff8e5;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
-      <mxGeometry as="geometry" x="40" y="520" width="540" height="480" />
+      <mxGeometry as="geometry" x="40" y="760" width="540" height="480" />
     </mxCell>
     <mxCell id="facts" value="先查代码事实&lt;br&gt;复用用户已给答案" parent="dialog" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
@@ -138,7 +138,7 @@
       <mxGeometry as="geometry" relative="1" />
     </mxCell>
     <mxCell id="execution" value="执行方法 · tracks-and-modes / continuity" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#edf3fc;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
-      <mxGeometry as="geometry" x="580" y="520" width="540" height="480" />
+      <mxGeometry as="geometry" x="580" y="760" width="540" height="480" />
     </mxCell>
     <mxCell id="unit" value="Unit&lt;br&gt;目标 / 范围 / 上下文&lt;br&gt;验收 / 验证 / 依赖" parent="execution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
@@ -192,7 +192,7 @@
       <mxGeometry as="geometry" relative="1" />
     </mxCell>
     <mxCell id="verification" value="验证方法 · verification-bootstrap / verification-run" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#eef6ed;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
-      <mxGeometry as="geometry" x="1120" y="520" width="540" height="480" />
+      <mxGeometry as="geometry" x="1120" y="760" width="540" height="480" />
     </mxCell>
     <mxCell id="boot" value="Bootstrap&lt;br&gt;唯一项目配方&lt;br&gt;首条代表路径证明" parent="verification" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
@@ -218,7 +218,7 @@
     <mxCell id="result" value="逐项结果&lt;br&gt;VERIFIED&lt;br&gt;未验证 / 不确定" parent="verification" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="220" y="280" width="140" height="60" />
     </mxCell>
-    <mxCell id="review" value="change-review&lt;br&gt;最终 diff / 门槛&lt;br&gt;证据适用性 / 发现" parent="verification" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+    <mxCell id="review" value="change-review&lt;br&gt;最终 diff / 验收证据&lt;br&gt;核对防御代码依据" parent="verification" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="400" y="280" width="140" height="60" />
     </mxCell>
     <mxCell id="e29" source="boot" target="run" value="" parent="verification" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
@@ -246,7 +246,7 @@
       <mxGeometry as="geometry" relative="1" />
     </mxCell>
     <mxCell id="contract" value="唯一共用契约 · engineering-run/references/execution-contract.md" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#f1edf8;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
-      <mxGeometry as="geometry" x="40" y="1000" width="1080" height="240" />
+      <mxGeometry as="geometry" x="40" y="1240" width="1080" height="240" />
     </mxCell>
     <mxCell id="task" value="Task / Unit&lt;br&gt;目标与完成条件&lt;br&gt;授权不因阶段扩大" parent="contract" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
@@ -264,15 +264,15 @@
       <mxGeometry as="geometry" x="760" y="40" width="140" height="60" />
     </mxCell>
     <mxCell id="evolution" value="私有演化 · 仅用户显式要求" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff3ec;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
-      <mxGeometry as="geometry" x="1120" y="1000" width="540" height="240" />
+      <mxGeometry as="geometry" x="1120" y="1240" width="540" height="240" />
     </mxCell>
-    <mxCell id="evolve" value="Evidence → Eval&lt;br&gt;Distill → Evolve&lt;br&gt;Doctor" parent="evolution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#ffe6cc;strokeColor=#61748e;">
+    <mxCell id="evolve" value="harness-evolve&lt;br&gt;Evidence → Eval → Distill&lt;br&gt;→ Evolve → Doctor" parent="evolution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#ffe6cc;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
     </mxCell>
-    <mxCell id="eval" value="隔离快照与固定判据&lt;br&gt;原始行为评估&lt;br&gt;未跑保留 NOT_RUN" parent="evolution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#ffe6cc;strokeColor=#61748e;">
+    <mxCell id="eval" value="harness-eval&lt;br&gt;固定快照 / 判据&lt;br&gt;共同复验实际产物" parent="evolution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#ffe6cc;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="220" y="40" width="140" height="60" />
     </mxCell>
-    <mxCell id="doctor" value="Doctor + CI&lt;br&gt;活跃引用 / 目录&lt;br&gt;入口元数据 / 自测" parent="evolution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#ffe6cc;strokeColor=#61748e;">
+    <mxCell id="doctor" value="harness-doctor + CI&lt;br&gt;活跃引用 / 目录&lt;br&gt;入口元数据 / 自测" parent="evolution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#ffe6cc;strokeColor=#61748e;">
       <mxGeometry as="geometry" x="400" y="40" width="140" height="60" />
     </mxCell>
     <mxCell id="e37" source="evolve" target="eval" value="" parent="evolution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
@@ -281,8 +281,227 @@
     <mxCell id="e38" source="eval" target="doctor" value="" parent="evolution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
       <mxGeometry as="geometry" relative="1" />
     </mxCell>
-    <mxCell id="legend" value="实线：职责或数据流。阶段可跳过；共用契约按需读取。交付不会自动进入私有演化；本版本无默认 hooks 或后台引擎。" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#f5f5f5;strokeColor=#61748e;">
-      <mxGeometry as="geometry" x="40" y="1240" width="1580" height="60" />
+    <mxCell id="legend" value="实线：职责或数据流。六阶段可跳过和回退；核心方法与专家插件分离。仅显式要求进入私有演化；本版本无 hooks 或后台引擎。" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#f5f5f5;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="1960" width="1580" height="60" />
+    </mxCell>
+    <mxCell id="entrypoints" value="日常入口 · 自然语言优先，按宿主实际能力调用" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#f1edf8;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
+      <mxGeometry as="geometry" x="40" y="160" width="1620" height="240" />
+    </mxCell>
+    <mxCell id="natural" value="开始 / 继续工作&lt;br&gt;直接描述目标&lt;br&gt;无需总控命令" parent="entrypoints" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="help" value="help/SKILL.md&lt;br&gt;问用法 / 找能力&lt;br&gt;只读相关说明" parent="entrypoints" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="discover" value="宿主技能元数据&lt;br&gt;核心 + 相关专家&lt;br&gt;核对启用状态" parent="entrypoints" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="760" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="advice" value="解释推荐路径&lt;br&gt;给可发送的示例&lt;br&gt;不自动启动开发" parent="entrypoints" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="1120" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="entry-help-discover" source="help" target="discover" value="" parent="entrypoints" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="entry-discover-advice" source="discover" target="advice" value="" parent="entrypoints" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="entry-natural-goal" source="natural" target="goal" value="执行请求" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="entry-advice-goal" source="advice" target="goal" value="用户要求执行时" parent="1" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="eval-cost" value="分派前开始计时&lt;br&gt;质量 / 耗时 / 成本&lt;br&gt;缺失数据记 unknown" parent="evolution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#ffe6cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="eval-facts" value="核对自报与文件事实&lt;br&gt;保留原始差异&lt;br&gt;不比较不同测试数" parent="evolution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#ffe6cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="eval-cost-link" source="eval" target="eval-cost" value="" parent="evolution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="eval-facts-link" source="eval-cost" target="eval-facts" value="" parent="evolution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="communication" value="表达直接简洁&lt;br&gt;无套话 / 重复解释&lt;br&gt;无防御性免责声明" parent="contract" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="implementation" value="校验对应真实边界&lt;br&gt;无重复防御 / 吞错&lt;br&gt;无假想兼容层" parent="contract" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="defaults" value="项目规则生成&lt;br&gt;从共同契约裁剪&lt;br&gt;Change Review 核对" parent="contract" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#e1d5e7;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="760" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="contract-defaults" source="implementation" target="defaults" value="" parent="contract" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="navigation" value="局部代码导航 · system-understand / code-map.py" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#edf3fc;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
+      <mxGeometry as="geometry" x="40" y="1480" width="540" height="480" />
+    </mxCell>
+    <mxCell id="ui" value="UI 专家接入 · engineering-run/references/ui-capabilities.md" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#eef6ed;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
+      <mxGeometry as="geometry" x="580" y="1480" width="540" height="480" />
+    </mxCell>
+    <mxCell id="distribution" value="分发与发现 · Marketplace / 独立 Plugin" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff8e5;strokeColor=#61748e;swimlane;startSize=30;container=1;collapsible=0;rounded=0;fontStyle=1;verticalAlign=top;">
+      <mxGeometry as="geometry" x="1120" y="1480" width="540" height="480" />
+    </mxCell>
+    <mxCell id="nav-route" value="按问题选路&lt;br&gt;字符串 → rg&lt;br&gt;符号 → LSP / AST" parent="navigation" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="nav-scope" value="需要关系图才建图&lt;br&gt;限定范围 / 快照&lt;br&gt;源码证据" parent="navigation" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="nav-fixed" value="固定输入副本&lt;br&gt;可选 depcruise&lt;br&gt;或 record 已查关系" parent="navigation" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="nav-fresh" value="内容指纹复核&lt;br&gt;新增 / 修改 / 删除&lt;br&gt;过期重查" parent="navigation" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="nav-query" value="query 局部关系&lt;br&gt;方向 / 深度 / 限额&lt;br&gt;明确截断" parent="navigation" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="nav-draw" value="同源 JSON / draw.io&lt;br&gt;节点 / 边 / 证据&lt;br&gt;人和 Agent 共用" parent="navigation" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="nav-publish" value="完成暂存后原子发布&lt;br&gt;发布前复核源码&lt;br&gt;不覆盖历史 / 并发赢家" parent="navigation" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="280" width="140" height="60" />
+    </mxCell>
+    <mxCell id="nav-impact" value="关系连接验收入口&lt;br&gt;动态边界另核对&lt;br&gt;图不证明运行行为" parent="navigation" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="280" width="140" height="60" />
+    </mxCell>
+    <mxCell id="nav-nohooks" value="显式查询与重建&lt;br&gt;无 hook / 后台索引&lt;br&gt;失效不阻断 rg" parent="navigation" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="280" width="140" height="60" />
+    </mxCell>
+    <mxCell id="ui-discover" value="先核对宿主启用&lt;br&gt;Frontend Design&lt;br&gt;按需加载正文" parent="ui" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="ui-short" value="明确 UI 小修&lt;br&gt;直接调试与验证&lt;br&gt;不强制重做设计" parent="ui" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="ui-design" value="Design / Execute&lt;br&gt;视觉方向 / 排版&lt;br&gt;组件 / 内容表达" parent="ui" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="ui-verify" value="Verify 真实操作&lt;br&gt;输入 / 状态 / 总价&lt;br&gt;失败与恢复" parent="ui" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="ui-a11y" value="键盘 / 焦点 / 窄屏&lt;br&gt;真实文字对比度&lt;br&gt;自动检查 + 观察" parent="ui" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="ui-evidence" value="共用证据与验收&lt;br&gt;截图证明视觉&lt;br&gt;操作证明行为" parent="ui" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="ui-human" value="真人观察更有效&lt;br&gt;请求最小具体动作&lt;br&gt;继续独立工作" parent="ui" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="280" width="140" height="60" />
+    </mxCell>
+    <mxCell id="ui-review" value="Change Review&lt;br&gt;验收 / 最终 diff&lt;br&gt;必要错误处理" parent="ui" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="280" width="140" height="60" />
+    </mxCell>
+    <mxCell id="ui-ab" value="frontend-design-ab.md&lt;br&gt;同题独立配对&lt;br&gt;质量 / 耗时 / 成本" parent="ui" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#d5e8d4;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="280" width="140" height="60" />
+    </mxCell>
+    <mxCell id="market" value="marketplace.json&lt;br&gt;4 个插件成员&lt;br&gt;不自造调用协议" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="core15" value="lookerjin-harness&lt;br&gt;15 个 Skill&lt;br&gt;六阶段与方法" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="expert1" value="frontend-design&lt;br&gt;独立 1 个 Skill&lt;br&gt;固定正文与许可证" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="40" width="140" height="60" />
+    </mxCell>
+    <mxCell id="remote2" value="Go / 代码审查专家&lt;br&gt;remote source&lt;br&gt;独立维护" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="sourcecheck" value="SOURCE.json / LICENSE&lt;br&gt;正文与许可证指纹&lt;br&gt;本地包不添加 hook" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="manifestcheck" value="validate_marketplace.py&lt;br&gt;manifest / 名称&lt;br&gt;技能路径 / 越界" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="160" width="140" height="60" />
+    </mxCell>
+    <mxCell id="installcheck" value="宿主实际安装验证&lt;br&gt;启用 / 缓存 / 指纹&lt;br&gt;清理本次测试安装" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="280" width="140" height="60" />
+    </mxCell>
+    <mxCell id="distrotest" value="frontend_design_test.py&lt;br&gt;9 项分发测试&lt;br&gt;接入 Marketplace CI" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="280" width="140" height="60" />
+    </mxCell>
+    <mxCell id="method" value="方法事实在 Skill&lt;br&gt;项目事实在项目&lt;br&gt;历史结果绑定版本" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#fff2cc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="280" width="140" height="60" />
+    </mxCell>
+    <mxCell id="navigation-edge-0" source="nav-route" target="nav-scope" value="" parent="navigation" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="navigation-edge-1" source="nav-scope" target="nav-fixed" value="" parent="navigation" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="navigation-edge-2" source="nav-fixed" target="nav-fresh" value="" parent="navigation" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="navigation-edge-3" source="nav-fresh" target="nav-query" value="" parent="navigation" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="navigation-edge-4" source="nav-query" target="nav-draw" value="" parent="navigation" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="navigation-edge-5" source="nav-draw" target="nav-publish" value="" parent="navigation" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="navigation-edge-6" source="nav-draw" target="nav-impact" value="" parent="navigation" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="ui-edge-0" source="ui-discover" target="ui-design" value="" parent="ui" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="ui-edge-1" source="ui-short" target="ui-verify" value="" parent="ui" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="ui-edge-2" source="ui-design" target="ui-verify" value="" parent="ui" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="ui-edge-3" source="ui-verify" target="ui-a11y" value="" parent="ui" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="ui-edge-4" source="ui-a11y" target="ui-evidence" value="" parent="ui" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="ui-edge-5" source="ui-human" target="ui-evidence" value="" parent="ui" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="ui-edge-6" source="ui-evidence" target="ui-review" value="" parent="ui" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="distribution-edge-0" source="market" target="core15" value="" parent="distribution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="distribution-edge-1" source="market" target="expert1" value="" parent="distribution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="distribution-edge-2" source="market" target="remote2" value="" parent="distribution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="distribution-edge-3" source="expert1" target="sourcecheck" value="" parent="distribution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="distribution-edge-4" source="sourcecheck" target="distrotest" value="" parent="distribution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="distribution-edge-5" source="manifestcheck" target="distrotest" value="" parent="distribution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="distribution-edge-6" source="expert1" target="installcheck" value="" parent="distribution" edge="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#61748e;">
+      <mxGeometry as="geometry" relative="1" />
+    </mxCell>
+    <mxCell id="debug-feedback" value="root-cause-debug&lt;br&gt;原症状反馈 / 缩减输入&lt;br&gt;修复后同入口复验" parent="execution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="400" width="140" height="60" />
+    </mxCell>
+    <mxCell id="understand" value="system-understand&lt;br&gt;入口 / 状态 / 所有权&lt;br&gt;按需查询局部关系" parent="execution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="400" width="140" height="60" />
+    </mxCell>
+    <mxCell id="design-explore" value="design-explore&lt;br&gt;结构候选与取舍&lt;br&gt;关键假设实验" parent="execution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="400" y="400" width="140" height="60" />
+    </mxCell>
+    <mxCell id="dependency-evaluation" value="dependency-evaluation&lt;br&gt;许可 / 版本 / 成本&lt;br&gt;代表路径试验" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="40" y="400" width="140" height="60" />
+    </mxCell>
+    <mxCell id="project-rules" value="project-bootstrap&lt;br&gt;project-adopt&lt;br&gt;裁剪规则 / 补实际缺口" parent="distribution" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fontColor=#1b2d45;spacing=6;fillColor=#dae8fc;strokeColor=#61748e;">
+      <mxGeometry as="geometry" x="220" y="400" width="140" height="60" />
     </mxCell>
   </root>
 </mxGraphModel>

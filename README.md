@@ -24,7 +24,8 @@ lookerjin-harness/
 │       ├── docs/
 │       └── skills/
 ├── scripts/
-│   └── validate_marketplace.py
+│   ├── validate_marketplace.py
+│   └── frontend_design_test.py
 └── README.md
 ```
 
@@ -41,6 +42,7 @@ Developer、Creator、Research、Experimental 等领域仍然是有用的认知�
 ```text
 Developer
 ├── lookerjin-harness
+├── frontend-design
 ├── modern-go-guidelines
 └── open-code-review-codex
 
@@ -82,6 +84,7 @@ Harness 不应该成为领域知识大全。具体语言、框架、工具和创
 ```text
 Marketplace
 ├── Local Owned Plugin
+├── Local Pinned Expert Plugin
 ├── Remote Independent Plugin
 └── Remote Fork Plugin
 ```
@@ -120,6 +123,8 @@ Independent Plugin Repository
 ```
 
 `.github/workflows/marketplace.yml` 负责 Marketplace 和本地插件检查；`.github/workflows/remote-plugins.yml` 负责远端插件契约巡检。
+
+在仓库根运行 `python scripts/validate_marketplace.py` 和 `python scripts/frontend_design_test.py`，分别检查分发引用与固定 UI 专家的正文、许可证和包边界。本地 manifest 校验覆盖 JSON、名称、技能路径与越界；Harness 自测入口见其 [README](plugins/lookerjin-harness/README.md#运行与验证)。
 
 ## 边界
 

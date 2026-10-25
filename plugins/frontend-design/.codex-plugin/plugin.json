@@ -1,0 +1,19 @@
+{
+  "name": "frontend-design",
+  "version": "0.1.0",
+  "description": "Distinctive frontend visual design, typography and layout, loaded when the UI task needs design direction.",
+  "author": {
+    "name": "Anthropic"
+  },
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Frontend Design",
+    "shortDescription": "Intentional frontend design",
+    "longDescription": "An independent UI design expert. The engineering harness owns scope, lifecycle and verification.",
+    "developerName": "lookerjin",
+    "category": "Developer Tools",
+    "capabilities": [],
+    "defaultPrompt": "Design this interface around its users, content and existing visual constraints."
+  }
+}

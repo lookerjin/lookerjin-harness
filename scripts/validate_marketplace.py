@@ -59,7 +59,29 @@ def validate_local_source(name: str, source: dict) -> None:
         raise ValidationError(f"{name}: local source escapes repository: {raw_path}") from exc
 
     require(plugin_root.is_dir(), f"{name}: local plugin directory does not exist: {raw_path}")
-    require(find_manifest(plugin_root) is not None, f"{name}: no supported plugin manifest found under {raw_path}")
+    manifest_path = find_manifest(plugin_root)
+    require(manifest_path is not None, f"{name}: no supported plugin manifest found under {raw_path}")
+    require(manifest_path.resolve().is_relative_to(plugin_root), f"{name}: manifest escapes plugin root")
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise ValidationError(f"{name}: invalid local plugin manifest: {exc}") from exc
+    require(isinstance(manifest, dict), f"{name}: plugin manifest must be an object")
+    require(manifest.get("name") == name, f"{name}: marketplace and manifest names differ")
+    # This is a local reference check, not a substitute for a host schema validator.
+    skills = manifest.get("skills")
+    if skills is not None:
+        paths = [skills] if isinstance(skills, str) else skills
+        require(isinstance(paths, list) and bool(paths), f"{name}: skills must declare relative paths")
+        for raw in paths:
+            require(isinstance(raw, str) and raw.startswith("./"), f"{name}: skills must be plugin-relative")
+            skill_root = (plugin_root / raw).resolve()
+            require(skill_root.is_relative_to(plugin_root), f"{name}: skills escape plugin root")
+            require(skill_root.is_dir(), f"{name}: declared skills directory does not exist")
+            # Hosts may declare one skill folder or a collection folder.
+            entries = [skill_root / "SKILL.md"] if (skill_root / "SKILL.md").is_file() else list(skill_root.glob("*/SKILL.md"))
+            require(bool(entries), f"{name}: declared skills directory has no skills")
+            require(all(p.resolve().is_relative_to(plugin_root) for p in entries), f"{name}: skill entry escapes plugin root")
 
 
 def validate_git_source(name: str, source: dict) -> None:

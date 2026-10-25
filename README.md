@@ -14,6 +14,7 @@ lookerjin-harness/
 ├── .github/
 │   └── workflows/
 ├── plugins/
+│   ├── frontend-design/          # 独立 UI 专家
 │   └── lookerjin-harness/
 │       ├── .codex-plugin/
 │       │   └── plugin.json
@@ -27,7 +28,7 @@ lookerjin-harness/
 └── README.md
 ```
 
-自有插件统一平铺在 `plugins/<plugin-name>/` 下。第三方插件原则上保持其独立仓库，通过 Marketplace remote source 引用，不复制进本仓库。
+插件统一平铺在 `plugins/<plugin-name>/` 下。第三方插件默认使用 remote source；Frontend Design 按本次明确的本地引入决定保留固定版本正文与许可证，独立来源、指纹和包装差异记录在其 [SOURCE.json](plugins/frontend-design/SOURCE.json)，不作为自有技能实现署名。
 
 每个 Codex 插件只保留 `.codex-plugin/plugin.json` 作为 manifest；展示资源统一放在插件根级 `assets/`，由 manifest 使用插件相对路径引用。
 
@@ -87,7 +88,7 @@ Marketplace
 
 - 使用独立插件：直接通过 Marketplace remote source 引用；
 - 需要定制：优先 fork 到独立仓库，再让 Marketplace 指向 fork；
-- 只有真正由本仓库维护的插件才放进 `plugins/`。
+- 本地固定副本需有明确引入决定、完整许可证和来源校验记录，独立于自有 Harness 维护。
 
 重要第三方能力应优先固定到经过验证的 ref 或 sha，避免不可控漂移。
 
@@ -96,6 +97,7 @@ Marketplace
 | 成员 | 架构角色 | 分工 |
 |---|---|---|
 | `lookerjin-harness` | 软件工程 Domain Harness | 任务路由、能力组合、行为验收、证据与交付判断 |
+| [`frontend-design`](plugins/frontend-design/README.md) | UI Design Expert Plugin | 页面视觉、排版与布局；固定正文与许可证，无 hook；实际行为仍需验证 |
 | `modern-go-guidelines` | Go Expert Plugin | Go 专业开发指导 |
 | `open-code-review-codex` | 专业审查 Plugin | OCR 文件选择、语言规则和缺陷审查；另需可运行的 `ocr` CLI |
 

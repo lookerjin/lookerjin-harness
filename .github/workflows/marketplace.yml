@@ -23,7 +23,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Validate marketplace
-        run: python scripts/validate_marketplace.py
+        run: |
+          python scripts/validate_marketplace.py
+          python scripts/frontend_design_test.py
 
   lookerjin-harness:
     runs-on: ubuntu-latest

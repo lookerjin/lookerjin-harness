@@ -65,6 +65,7 @@ Brainstorm → Design → Plan → Execute ⇄ Verify → Ship。
 - [配方维护](skills/verification-run/references/maintenance.md) 与 [形式化检查](skills/verification-run/references/formal-checks.md)：覆盖漂移、新写入者、成功同步基线、模型负对照与真实入口边界。
 - [计划检查器](skills/engineering-run/scripts/check-plan.py) 与 [证据检查器](skills/verification-run/scripts/check-evidence.py)：可选 JSON 导出上的确定性检查，不另建运行引擎或状态数据库。
 - [代码导航](skills/system-understand/references/code-navigation.md)：按问题选文本/符号/结构查询，局部关系 JSON 与 draw.io 同源；内容指纹识别过期。JS 模块依赖可选接入固定版本解析工具，其他语言复用已有工具和源码证据，不默认安装全库索引。
+- [调试反馈闭环](skills/root-cause-debug/references/feedback-loop.md)：先建立能命中原症状的反馈，记录耗时/复现率、逐项缩减输入，修复后重跑原始路径。代码导航在固定输入副本上提取关系，完整暂存后原子创建输出，失败与并发不覆盖已有产物。
 
 这些是按需加载的方法。hooks 不是默认产物：只有宿主支持、信任配置明确且有实际机械约束时才接入；本版本不安装会话后台脚本或命令拦截器。私有演化入口同时声明显式调用元数据，实际执行仍受宿主支持与授权约束。
 
@@ -85,7 +86,7 @@ python skills/system-understand/scripts/code-map_test.py
 
 JSON 输入格式分别见 [计划输入](skills/engineering-run/references/plan-format.md) 与 [证据输入](skills/verification-run/references/evidence-format.md)。检查器通过不证明 Agent 实际遵循流程，也不证明产品行为正确；实际运行结果与边界见 [field-tests](docs/field-tests.md)。
 
-代码导航本地自测默认运行标准库部分；设置 `DEPCRUISE` 为已安装的 CLI 路径时，同时运行真实解析器的两项集成测试。CI 在临时工具目录安装固定版本并运行全部导航测试。可查看 [实际检查记录](docs/code-navigation-checks.json) 与 [本实现的局部调用图](docs/code-navigation.drawio)。
+代码导航本地自测默认运行标准库部分；设置 `DEPCRUISE` 为已安装的 CLI 路径时，同时运行真实解析器的两项集成测试。CI 在临时工具目录安装固定版本并运行全部导航测试。可查看 [初版检查](docs/code-navigation-checks.json)、[故障与并发加固记录](docs/method-hardening-checks.json) 与 [本实现的局部调用图](docs/code-navigation.drawio)。
 
 ## 包与文档
 

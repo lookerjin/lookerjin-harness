@@ -7,7 +7,9 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
+from unittest.mock import patch
 import xml.etree.ElementTree as ET
 
 SCRIPT = Path(__file__).with_name('code-map.py')
@@ -123,6 +125,145 @@ class NavigationTests(unittest.TestCase):
         self.assertEqual(self.cli('record', '--input', source, '--output', source).returncode, 1)
         self.assertEqual(self.cli('record', '--input', source, '--output', str(self.root / 'src/map.json')).returncode, 1)
         self.assertEqual(json.loads(Path(source).read_text()), self.graph)
+
+    def test_failed_serialization_leaves_no_published_file(self):
+        # Valid JSON can carry an unpaired surrogate; output encoding then fails.
+        self.graph['nodes'][0]['label'] = '\ud800'
+        source = self.save()
+        out = self.base / 'result.json'
+        result = self.cli('record', '--input', source, '--output', str(out))
+        self.assertEqual(result.returncode, 1)
+        self.assertFalse(out.exists(), 'failed write exposed a partial formal artifact')
+        self.assertEqual(list(self.base.glob('.code-map-*')), [])
+
+    def test_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns(self):
+        source = self.root / 'src/entry.js'
+        initial = source.read_text()
+        actual_run = mod.run
+
+        def reading_extractor(argv, root):
+            if '--version' in argv:
+                return 'probe-1'
+            if '--output-type' not in argv:
+                return actual_run(argv, root)
+            first = (root / 'src/entry.js').read_text()
+            source.write_text('changed during extraction')
+            try:
+                second = (root / 'src/entry.js').read_text()
+            finally:
+                source.write_text(initial)
+            self.assertEqual(first, second, 'extractor observed two versions')
+            return json.dumps({'modules': [{'source': 'src/entry.js', 'dependencies': []}]})
+
+        with patch.object(mod, 'run', side_effect=reading_extractor):
+            graph = mod.build(self.root, ['src'], sys.executable)
+        self.assertEqual(graph['baseline']['files']['src/entry.js'], mod.digest(source))
+
+    def test_changed_source_at_publication_refuses_result(self):
+        out = self.base / 'late.json'
+        def guard():
+            (self.root / 'src/entry.js').write_text('new revision')
+            mod.require_current(self.root, self.graph['baseline'])
+        with self.assertRaises(ValueError):
+            mod.write_output(out, 'complete data', self.root, ['src'], guard)
+        self.assertFalse(out.exists())
+        self.assertEqual(list(self.base.glob('.code-map-*')), [])
+
+    def test_capture_refuses_bytes_different_from_baseline(self):
+        (self.root / 'src/worker.js').write_text('changed after baseline')
+        with tempfile.TemporaryDirectory() as copy_dir:
+            with self.assertRaisesRegex(ValueError, 'capturing inputs'):
+                mod.fixed_inputs(self.root, self.graph['baseline'], Path(copy_dir))
+
+    def test_modified_input_copy_or_live_source_rejects_extraction(self):
+        actual_run = mod.run
+        for changed in ['copy', 'live']:
+            source = self.root / 'src/entry.js'; original = source.read_text()
+            def extractor(argv, root):
+                if '--version' in argv:
+                    return 'probe-1'
+                if '--output-type' not in argv:
+                    return actual_run(argv, root)
+                target = root / 'src/entry.js' if changed == 'copy' else source
+                target.write_text('changed')
+                return json.dumps({'modules': [{'source': 'src/entry.js', 'dependencies': []}]})
+            try:
+                with patch.object(mod, 'run', side_effect=extractor):
+                    with self.assertRaisesRegex(ValueError, 'modified its input copy|source changed'):
+                        mod.build(self.root, ['src'], sys.executable)
+            finally:
+                source.write_text(original)
+
+    def test_disk_failure_does_not_publish_or_damage_existing_output(self):
+        out = self.base / 'failed.json'
+        with patch.object(mod.os, 'fsync', side_effect=OSError('simulated disk full')):
+            with self.assertRaises(OSError):
+                mod.write_output(out, 'new data', self.root, ['src'])
+        self.assertFalse(out.exists())
+        out.write_text('previous artifact')
+        with self.assertRaises(FileExistsError):
+            mod.write_output(out, 'new data', self.root, ['src'])
+        self.assertEqual(out.read_text(), 'previous artifact')
+        self.assertEqual(list(self.base.glob('.code-map-*')), [])
+
+    def test_unsupported_atomic_publication_fails_without_direct_write_fallback(self):
+        out = self.base / 'unsupported.json'
+        with patch.object(mod.os, 'link', side_effect=OSError('hard links unavailable')):
+            with self.assertRaises(OSError):
+                mod.write_output(out, 'data', self.root, ['src'])
+        self.assertFalse(out.exists())
+        self.assertEqual(list(self.base.glob('.code-map-*')), [])
+
+    def staged_writer(self, marker, out, label):
+        code = '''
+import importlib.util, sys, time
+from pathlib import Path
+s=importlib.util.spec_from_file_location('map',sys.argv[1]); m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+marker=Path(sys.argv[2]); out=Path(sys.argv[3]); label=sys.argv[4]; root=Path(sys.argv[5])
+def ready():
+ marker.write_text('ready'); deadline=time.monotonic()+8
+ while not marker.with_name('go').exists():
+  if time.monotonic()>deadline: raise TimeoutError('test barrier')
+  time.sleep(.01)
+try: m.write_output(out,label*200000,root,['src'],ready)
+except FileExistsError: sys.exit(3)
+'''
+        proc = subprocess.Popen([sys.executable, '-c', code, str(SCRIPT), str(marker), str(out), label, str(self.root)],
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        self.addCleanup(lambda: proc.kill() if proc.poll() is None else None)
+        return proc
+
+    def wait_for(self, markers):
+        deadline = time.monotonic() + 5
+        while not all(p.exists() for p in markers):
+            if time.monotonic() > deadline:
+                self.fail('writer did not reach publication barrier')
+            time.sleep(.01)
+
+    def test_concurrent_writers_publish_one_complete_winner(self):
+        out = self.base / 'shared.json'
+        markers = [self.base / 'ready-a', self.base / 'ready-b']
+        writers = [self.staged_writer(marker, out, label) for marker, label in zip(markers, ['a', 'b'])]
+        self.wait_for(markers)
+        self.assertFalse(out.exists(), 'staged content exposed before commit')
+        (self.base / 'go').touch()
+        for writer in writers:
+            writer.communicate(timeout=8)
+        self.assertEqual(sorted(w.returncode for w in writers), [0, 3])
+        self.assertIn(out.read_text(), ['a'*200000+'\n', 'b'*200000+'\n'])
+        self.assertEqual(list(self.base.glob('.code-map-*')), [])
+
+    @unittest.skipUnless(os.name == 'posix', 'SIGKILL probe uses POSIX process semantics')
+    def test_killed_writer_never_exposes_staging_as_formal_output(self):
+        out = self.base / 'interrupted.json'; marker = self.base / 'ready'
+        writer = self.staged_writer(marker, out, 'x')
+        self.wait_for([marker]); writer.kill(); writer.communicate(timeout=5)
+        self.assertFalse(out.exists())
+        # SIGKILL cannot execute cleanup. Its uniquely named stage is harmless
+        # and must not lead another run to delete somebody else's output.
+        self.assertEqual(len(list(self.base.glob('.code-map-*'))), 1)
+        mod.write_output(out, 'replacement', self.root, ['src'])
+        self.assertEqual(out.read_text(), 'replacement\n')
 
     def test_depth_direction_cycles_and_truncation(self):
         self.graph['edges'].append(dict(source='src/barrel.js', target='src/entry.js', kind='imports',

@@ -5,10 +5,13 @@ from collections import deque
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path, PurePosixPath
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 import xml.etree.ElementTree as ET
 
 KINDS = {'imports', 'calls', 'data-flow', 'state-transition', 'verifies'}
@@ -123,8 +126,29 @@ def validate(graph, root):
     return graph
 
 
+def fixed_inputs(root, baseline, destination):
+    """Copy exactly the observed bytes, without chasing out-of-scope files."""
+    for name, expected in baseline['files'].items():
+        data = local(root, name).read_bytes()
+        if hashlib.sha256(data).hexdigest() != expected:
+            raise ValueError('source changed while capturing inputs; rebuild')
+        target = destination / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
+    require_current(root, baseline)
+
+
+def require_current(root, baseline):
+    if freshness(root, baseline)['status'] != 'current':
+        raise ValueError('source changed before publication; rebuild from current inputs')
+
+
 def build(root, scopes, executable):
     baseline = snapshot(root, scopes)
+    # Resolve before changing cwd to the temporary input copy.
+    executable = str((root / executable).resolve()) if '/' in executable or '\\' in executable else shutil.which(executable)
+    if not executable:
+        raise ValueError('extractor is not available on PATH')
     pattern = '|'.join('^' + re.escape(s) + r'(?:/|$)' for s in scopes) if '.' not in scopes else '.'
     # include-only discards unresolved imports before we can report them. Stop
     # traversal at the scope boundary instead, retaining those dependency edges.
@@ -132,7 +156,12 @@ def build(root, scopes, executable):
     argv = [executable, '--no-config', '--no-cache', '--output-type', 'json',
             '--do-not-follow', stop, '--', *scopes]
     version = run([executable, '--version'], root).strip()
-    raw = json.loads(run(argv, root))
+    with tempfile.TemporaryDirectory(prefix='code-map-inputs-') as temporary:
+        frozen = Path(temporary)
+        fixed_inputs(root, baseline, frozen)
+        raw = json.loads(run(argv, frozen))
+        if snapshot(frozen, scopes)['files'] != baseline['files']:
+            raise ValueError('extractor modified its input copy; result rejected')
     nodes, edges = {}, []
     for m in raw['modules']:
         path = m['source']
@@ -155,9 +184,10 @@ def build(root, scopes, executable):
             edges.append(dict(source=m['source'], target=target, kind='imports', basis='static',
                               evidence=[dict(path=m['source'], specifier=d['module'])]))
     graph = dict(version=1, generated_at=datetime.now(timezone.utc).isoformat(),
-                 producer=dict(name='dependency-cruiser', version=version), baseline=baseline,
+                 producer=dict(name='dependency-cruiser', version=version, fixed_inputs=True), baseline=baseline,
                  nodes=list(nodes.values()), edges=edges,
                  limitations=LIMITS + ['Imports are module dependencies, not function calls.',
+                 'Only scoped files are copied; external packages and out-of-scope config are not resolved.',
                  'Project executable config is not loaded; aliases/config-dependent resolution may be incomplete.'],
                  unresolved=sorted(set(unresolved)))
     validate(graph, root)
@@ -246,8 +276,11 @@ def drawio(view):
     return ET.tostring(doc, encoding='unicode')
 
 
-def write_output(path, value, root, scopes):
-    out = Path(path).resolve()
+def write_output(path, value, root, scopes, before_publish=None):
+    out = Path(path).absolute()
+    if out.is_symlink():
+        raise ValueError('output must not be a symlink')
+    out = out.parent.resolve() / out.name
     try:
         relative = out.relative_to(root).as_posix()
     except ValueError:
@@ -255,9 +288,21 @@ def write_output(path, value, root, scopes):
     if relative and in_scope(relative, scopes):
         raise ValueError('write map outside observed scopes to avoid self-invalidating snapshots')
     out.parent.mkdir(parents=True, exist_ok=True)
-    # Exclusive creation preserves prior evidence on mistakes or failed refreshes.
-    with out.open('x', encoding='utf-8') as f:
-        f.write(value + '\n')
+    # A complete same-filesystem staging file is linked into place atomically.
+    # link() refuses an existing destination, including a concurrent winner.
+    # No direct-write fallback: unsupported filesystems fail without a partial
+    # formal output. This does not promise power-loss durability of the directory.
+    fd, staged = tempfile.mkstemp(prefix='.code-map-', dir=out.parent)
+    try:
+        with os.fdopen(fd, 'w', encoding='utf-8') as f:
+            f.write(value + '\n')
+            f.flush()
+            os.fsync(f.fileno())
+        if before_publish:
+            before_publish()
+        os.link(staged, out)
+    finally:
+        os.unlink(staged)
 
 
 def main():
@@ -303,7 +348,8 @@ def main():
                         raise ValueError('evidence line is outside the source file')
         rendered = drawio(result) if args.command == 'drawio' else json.dumps(result, ensure_ascii=False, indent=2)
         if args.output:
-            write_output(args.output, rendered, root, graph['baseline']['scopes'])
+            guard = None if args.command in {'query', 'status'} else lambda: require_current(root, graph['baseline'])
+            write_output(args.output, rendered, root, graph['baseline']['scopes'], guard)
             print(json.dumps(dict(output=args.output, freshness=state['status'])))
         else:
             print(rendered)

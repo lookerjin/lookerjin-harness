@@ -2,6 +2,12 @@
 
 软件工程 Domain Harness：由目标决定路径，用实际证据判断结果。以 Codex Plugin 分发，具体语言、框架与专业工具由可用专家能力提供。
 
+## 怎么开始
+
+直接描述目标、必要约束和完成标准即可，例如：“先讨论这个模块怎么拆，保留对外行为，方案定下来前先不实现。”无需先输入总控命令或手动选择六阶段。
+
+不确定怎么用时，问“这个 Harness 怎么用？”或“我想重构这个模块，该怎么开始？”。[help](skills/help/SKILL.md) 会读取当前安装的相关说明，解释推荐路径并给一条可直接发送的示例。也可以从客户端技能列表选择“help / Harness 帮助”；具体调用方式以宿主为准，裸 `/help` 可能是客户端内置命令。单纯问用法不会启动开发或演化流程，明确要求执行时则继续对应工作。
+
 ## 自适应六阶段
 
 Brainstorm → Design → Plan → Execute ⇄ Verify → Ship。
@@ -21,6 +27,7 @@ Brainstorm → Design → Plan → Execute ⇄ Verify → Ship。
 
 | Skill | 何时调用 |
 |---|---|
+| [help](skills/help/SKILL.md) | 解释 Harness 用法、场景选路与运行边界，按需读取当前技能说明 |
 | [engineering-run](skills/engineering-run/SKILL.md) | 跨步骤任务推进、路径选择、阶段回退与交付 |
 | [decision-dialogue](skills/decision-dialogue/SKILL.md) | 用户掌握的信息决定目标或方案，或用户明确要求完整追问 |
 | [system-understand](skills/system-understand/SKILL.md) | 追踪真实入口、状态、所有权和约束 |
@@ -36,7 +43,7 @@ Brainstorm → Design → Plan → Execute ⇄ Verify → Ship。
 | [harness-evolve](skills/harness-evolve/SKILL.md) | 仅用户明确要求时提炼、改变自身工作方法 |
 | [harness-doctor](skills/harness-doctor/SKILL.md) | 本插件结构、活跃引用、入口元数据与脚本语法检查 |
 
-14 个 Skill。共用契约仍归 Engineering Run 的 references，验证配方形状仍归 Verification Bootstrap；调用方引用同一份资源。配方维护是 Verification Run 的显式路径，未增加独立入口。
+15 个 Skill。共用契约仍归 Engineering Run 的 references，验证配方形状仍归 Verification Bootstrap；调用方引用同一份资源。配方维护是 Verification Run 的显式路径，未增加独立入口。
 
 ## 具体方法与文件
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Harness 帮助"
+  short_description: "解释 Harness 用法，按当前场景推荐路径"
+  default_prompt: "解释这个 Harness 怎么用，并结合我的场景给一条可以直接发送的自然语言示例。"

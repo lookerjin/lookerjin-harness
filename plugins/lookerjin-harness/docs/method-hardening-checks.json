@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "date": "2026-10-25",
+  "scope": "Debug feedback and single-file publication hardening; no claim of cross-client agent behavior",
+  "before": {
+    "phase": "before",
+    "source_sha256": "dded9e7adc297f4cba3d8dfe9ef2ccb650d206280da29f1995c97eb6c9bbd7b4",
+    "command": "python code-map.py record --root PROJECT --input INPUT --output NEW_OUTPUT",
+    "defect": "failed UTF-8 write leaves a formal output file",
+    "attempts": [
+      {
+        "attempt": 1,
+        "exit_code": 1,
+        "seconds": 0.04,
+        "published_exists": true,
+        "published_bytes": 0,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      },
+      {
+        "attempt": 2,
+        "exit_code": 1,
+        "seconds": 0.0367,
+        "published_exists": true,
+        "published_bytes": 0,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      },
+      {
+        "attempt": 3,
+        "exit_code": 1,
+        "seconds": 0.0356,
+        "published_exists": true,
+        "published_bytes": 0,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      },
+      {
+        "attempt": 4,
+        "exit_code": 1,
+        "seconds": 0.0377,
+        "published_exists": true,
+        "published_bytes": 0,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      },
+      {
+        "attempt": 5,
+        "exit_code": 1,
+        "seconds": 0.038,
+        "published_exists": true,
+        "published_bytes": 0,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      }
+    ],
+    "reproduced": 5
+  },
+  "after": {
+    "source_sha256": "6ca4509c6bbb1bb2d41cafbc3d7aac12e482343800690da9886a12940b8fb2eb",
+    "attempts": [
+      {
+        "attempt": 1,
+        "exit_code": 1,
+        "seconds": 0.0459,
+        "published_exists": false,
+        "published_bytes": null,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      },
+      {
+        "attempt": 2,
+        "exit_code": 1,
+        "seconds": 0.0415,
+        "published_exists": false,
+        "published_bytes": null,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      },
+      {
+        "attempt": 3,
+        "exit_code": 1,
+        "seconds": 0.0408,
+        "published_exists": false,
+        "published_bytes": null,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      },
+      {
+        "attempt": 4,
+        "exit_code": 1,
+        "seconds": 0.0401,
+        "published_exists": false,
+        "published_bytes": null,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      },
+      {
+        "attempt": 5,
+        "exit_code": 1,
+        "seconds": 0.0413,
+        "published_exists": false,
+        "published_bytes": null,
+        "stderr": "{\"error\": \"'utf-8' codec can't encode character '\\\\ud800' in position 256: surrogates not allowed\"}\n"
+      }
+    ],
+    "reproduced": 0
+  },
+  "oracle": "CLI must reject the malformed label AND leave no formal output. Exit code alone cannot distinguish the bug from correct rejection.",
+  "tests": {
+    "command": "DEPCRUISE=PINNED_TOOL python skills/system-understand/scripts/code-map_test.py",
+    "result": "test_added_caller_and_deleted_module_invalidate (__main__.NavigationTests.test_added_caller_and_deleted_module_invalidate) ... ok\ntest_budget_keeps_nearest_relationship_first (__main__.NavigationTests.test_budget_keeps_nearest_relationship_first) ... ok\ntest_capture_refuses_bytes_different_from_baseline (__main__.NavigationTests.test_capture_refuses_bytes_different_from_baseline) ... ok\ntest_changed_source_at_publication_refuses_result (__main__.NavigationTests.test_changed_source_at_publication_refuses_result) ... ok\ntest_cli_record_query_and_drawio_same_relations (__main__.NavigationTests.test_cli_record_query_and_drawio_same_relations) ... ok\ntest_concurrent_writers_publish_one_complete_winner (__main__.NavigationTests.test_concurrent_writers_publish_one_complete_winner) ... ok\ntest_depth_direction_cycles_and_truncation (__main__.NavigationTests.test_depth_direction_cycles_and_truncation) ... ok\ntest_disk_failure_does_not_publish_or_damage_existing_output (__main__.NavigationTests.test_disk_failure_does_not_publish_or_damage_existing_output) ... ok\ntest_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns (__main__.NavigationTests.test_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns) ... ok\ntest_failed_serialization_leaves_no_published_file (__main__.NavigationTests.test_failed_serialization_leaves_no_published_file) ... ok\ntest_git_commit_change_with_identical_scope_is_current (__main__.NavigationTests.test_git_commit_change_with_identical_scope_is_current) ... ok\ntest_invalid_relations_and_missing_citations_rejected (__main__.NavigationTests.test_invalid_relations_and_missing_citations_rejected) ... ok\ntest_killed_writer_never_exposes_staging_as_formal_output (__main__.NavigationTests.test_killed_writer_never_exposes_staging_as_formal_output) ... ok\ntest_missing_extractor_is_explicit_failure (__main__.NavigationTests.test_missing_extractor_is_explicit_failure) ... ok\ntest_modified_input_copy_or_live_source_rejects_extraction (__main__.NavigationTests.test_modified_input_copy_or_live_source_rejects_extraction) ... ok\ntest_no_overwrite_or_self_invalidating_output (__main__.NavigationTests.test_no_overwrite_or_self_invalidating_output) ... ok\ntest_outside_scope_edit_does_not_invalidate (__main__.NavigationTests.test_outside_scope_edit_does_not_invalidate) ... ok\ntest_real_extractor_finds_indirect_importers_without_string_false_positive (__main__.NavigationTests.test_real_extractor_finds_indirect_importers_without_string_false_positive) ... ok\ntest_real_extractor_reports_unresolved_import (__main__.NavigationTests.test_real_extractor_reports_unresolved_import) ... ok\ntest_record_rejects_nonexistent_source_line (__main__.NavigationTests.test_record_rejects_nonexistent_source_line) ... ok\ntest_symlink_and_path_escape_rejected (__main__.NavigationTests.test_symlink_and_path_escape_rejected) ... ok\ntest_uncommitted_edit_blocks_export_and_marks_query (__main__.NavigationTests.test_uncommitted_edit_blocks_export_and_marks_query) ... ok\ntest_unsupported_atomic_publication_fails_without_direct_write_fallback (__main__.NavigationTests.test_unsupported_atomic_publication_fails_without_direct_write_fallback) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 1.278s\n\nOK\n",
+    "negative_control": "test_failed_serialization_leaves_no_published_file (__main__.NavigationTests.test_failed_serialization_leaves_no_published_file) ... FAIL\ntest_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns (__main__.NavigationTests.test_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns) ... FAIL\n\n======================================================================\nFAIL: test_failed_serialization_leaves_no_published_file (__main__.NavigationTests.test_failed_serialization_leaves_no_published_file)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"$REPO/plugins/lookerjin-harness/skills/system-understand/scripts/code-map_test.py\", line 135, in test_failed_serialization_leaves_no_published_file\n    self.assertFalse(out.exists(), 'failed write exposed a partial formal artifact')\nAssertionError: True is not false : failed write exposed a partial formal artifact\n\n======================================================================\nFAIL: test_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns (__main__.NavigationTests.test_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"$REPO/plugins/lookerjin-harness/skills/system-understand/scripts/code-map_test.py\", line 158, in test_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns\n    graph = mod.build(self.root, ['src'], sys.executable)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"$REPO/plugins/lookerjin-harness/skills/system-understand/scripts/code-map.py\", line 135, in build\n    raw = json.loads(run(argv, root))\n                     ^^^^^^^^^^^^^^^\n  File \"$PYTHON_ENV/lib/python3.12/unittest/mock.py\", line 1139, in __call__\n    return self._mock_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"$PYTHON_ENV/lib/python3.12/unittest/mock.py\", line 1143, in _mock_call\n    return self._execute_mock_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"$PYTHON_ENV/lib/python3.12/unittest/mock.py\", line 1204, in _execute_mock_call\n    result = effect(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"$REPO/plugins/lookerjin-harness/skills/system-understand/scripts/code-map_test.py\", line 154, in reading_extractor\n    self.assertEqual(first, second, 'extractor observed two versions')\nAssertionError: \"import {work} from './barrel.js'; work();\\n\" != 'changed during extraction'\n+ changed during extraction\n- import {work} from './barrel.js'; work();\n- \n : extractor observed two versions\n\n----------------------------------------------------------------------\nRan 2 tests in 0.057s\n\nFAILED (failures=2)\n"
+  },
+  "real_source": {
+    "source_commit": "99b609a72323b70204eab407c622f436e858e112",
+    "files": 26,
+    "nodes": 33,
+    "edges": 99,
+    "relations_match_previous": true,
+    "fixed_inputs": true,
+    "unresolved": []
+  },
+  "diagram": {
+    "nodes": 14,
+    "edges": 22,
+    "source_sha256": "6ca4509c6bbb1bb2d41cafbc3d7aac12e482343800690da9886a12940b8fb2eb",
+    "evidence": "Source-reviewed selected call sites; no automatic Python resolver"
+  },
+  "limits": [
+    "SIGKILL may leave uniquely named temporary files; no global cleanup.",
+    "Atomic single-file creation needs hard-link support; no direct-write fallback.",
+    "No directory power-loss durability, multi-file transaction, or editor lock.",
+    "Real two-process publication and SIGKILL tested on Linux only.",
+    "Snapshot races use a controlled extractor; fixed-copy relation parity also tested with the actual JS extractor.",
+    "No independent agent trial of the revised debugging instructions."
+  ],
+  "repository_checks": [
+    {
+      "command": "python skills/harness-doctor/scripts/doctor.py --root . --json",
+      "directory": "PLUGIN",
+      "exit_code": 0,
+      "seconds": 0.0603,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"errors\": [],\n  \"warnings\": [],\n  \"checks\": [\n    {\n      \"code\": \"CODEX_MANIFEST\",\n      \"message\": \".codex-plugin/plugin.json\"\n    },\n    {\n      \"code\": \"PLUGIN_NAME\",\n      \"message\": \"lookerjin-harness\"\n    },\n    {\n      \"code\": \"PLUGIN_VERSION\",\n      \"message\": \"0.3.0\"\n    },\n    {\n      \"code\": \"PLUGIN_PATH\",\n      \"message\": \"skills -> ./skills/\"\n    },\n    {\n      \"code\": \"PLUGIN_PATH\",\n      \"message\": \"mcpServers -> ./mcp.json\"\n    },\n    {\n      \"code\": \"PLUGIN_ASSET\",\n      \"message\": \"logo -> ./assets/logo.svg\"\n    },\n    {\n      \"code\": \"PLUGIN_ASSET\",\n      \"message\": \"composerIcon -> ./assets/composer-icon.svg\"\n    },\n    {\n      \"code\": \"MCP\",\n      \"message\": \"1 MCP server(s)\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"change-review\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"decision-dialogue\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"dependency-evaluation\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"design-explore\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"engineering-run\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-doctor\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-eval\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-evolve\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"help\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"project-adopt\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"project-bootstrap\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"root-cause-debug\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"system-understand\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"verification-bootstrap\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"verification-run\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"agent-core\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"experiment\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"go-library\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"go-service\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"web-app\"\n    },\n    {\n      \"code\": \"CI_PLACEHOLDER\",\n      \"message\": \"ci-go.yml keeps pin placeholders\"\n    },\n    {\n      \"code\": \"LAYOUT\",\n      \"message\": \"no deprecated top-level directories\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python skills/harness-doctor/scripts/doctor_test.py",
+      "directory": "PLUGIN",
+      "exit_code": 0,
+      "seconds": 0.4605,
+      "stdout": "",
+      "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.390s\n\nOK\n"
+    },
+    {
+      "command": "python scripts/validate_marketplace.py",
+      "directory": "REPO",
+      "exit_code": 0,
+      "seconds": 0.0291,
+      "stdout": "marketplace ok: lookerjin-agent-market (3 plugins)\n",
+      "stderr": ""
+    },
+    {
+      "command": "python skills/verification-run/scripts/check-evidence_test.py",
+      "directory": "PLUGIN",
+      "exit_code": 0,
+      "seconds": 0.1532,
+      "stdout": "",
+      "stderr": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.087s\n\nOK\n"
+    }
+  ]
+}

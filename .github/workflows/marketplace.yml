@@ -23,7 +23,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Validate marketplace
-        run: python scripts/validate_marketplace.py
+        run: |
+          python scripts/validate_marketplace.py
+          python scripts/frontend_design_test.py
 
   lookerjin-harness:
     runs-on: ubuntu-latest
@@ -37,7 +39,14 @@ jobs:
           python-version: "3.12"
       - name: Run harness doctor
         run: python skills/harness-doctor/scripts/doctor.py --root . --json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "24"
+      - name: Install navigation test extractor outside the project
+        run: npm install --prefix "$RUNNER_TEMP/navigation-tools" --ignore-scripts --no-audit --no-fund dependency-cruiser@18.7.0
       - name: Self-tests
+        env:
+          DEPCRUISE: ${{ runner.temp }}/navigation-tools/node_modules/.bin/depcruise
         run: |
           python skills/change-review/scripts/preflight_test.py
           python skills/project-bootstrap/scripts/check-placeholders_test.py
@@ -45,3 +54,4 @@ jobs:
           python skills/engineering-run/scripts/check-plan_test.py
           python skills/verification-run/scripts/check-evidence_test.py
           python skills/harness-doctor/scripts/doctor_test.py
+          python skills/system-understand/scripts/code-map_test.py

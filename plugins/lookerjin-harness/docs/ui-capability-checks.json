@@ -1,0 +1,821 @@
+{
+  "date": "2026-10-25",
+  "model_usage": null,
+  "model_cost": null,
+  "external_model_api_calls_in_probe": 0,
+  "limits": [
+    "Tool/lookup probes, not agent skill effectiveness A/B.",
+    "Existing Chromium reused; browser startup measured separately; each sample gets new browser context.",
+    "First sample retained; no forced cold OS cache.",
+    "No hook manifests or installed user skills; engine only in isolated tool directory."
+  ],
+  "runs": [
+    {
+      "name": "error-summary-search",
+      "command": [
+        "python",
+        "<ui-evaluation>/ui-pro/src/ui-ux-pro-max/scripts/search.py",
+        "error summary validation",
+        "--domain",
+        "ux",
+        "--json",
+        "-n",
+        "3"
+      ],
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.04976317399996333,
+          "stdout_bytes": 1903,
+          "stderr_bytes": 0,
+          "stdout": "{\n  \"domain\": \"ux\",\n  \"query\": \"error summary validation\",\n  \"file\": \"ux-guidelines.csv\",\n  \"count\": 3,\n  \"results\": [\n    {\n      \"Category\": \"Forms / Accessibility\",\n      \"Issue\": \"Focusable Error Summary\",\n      \"Platform\": \"Web\",\n      \"Description\": \"An error summary for failed validation complements inline field errors and must be easy to find by keyboard and screen reader users\",\n      \"Do\": \"Place it at the top of the form; move focus to its heading or container after failed submit; link each item to its invalid field; retain inline errors\",\n      \"Don't\": \"Replace inline errors with a visual-only summary or move focus on every blur\",\n      \"Code Example Good\": \"<div role=\\\"alert\\\" tabindex=\\\"-1\\\" aria-labelledby=\\\"error-title\\\"><h2 id=\\\"error-title\\\">There is a problem</h2><a href=\\\"#email\\\">Enter an email address</a></div>\",\n      \"Code Example Bad\": \"Toast only with no field links or focus target\",\n      \"Severity\": \"High\"\n    },\n    {\n      \"Category\": \"Accessibility\",\n      \"Issue\": \"Error Messages\",\n      \"Platform\": \"All\",\n      \"Description\": \"Error messages must be announced\",\n      \"Do\": \"Use aria-live or role=alert for errors\",\n      \"Don't\": \"Visual-only error indication\",\n      \"Code Example Good\": \"role='alert'\",\n      \"Code Example Bad\": \"Red border only\",\n      \"Severity\": \"High\"\n    },\n    {\n      \"Category\": \"Forms\",\n      \"Issue\": \"Error Placement\",\n      \"Platform\": \"All\",\n      \"Description\": \"Each invalid field needs an inline error connected to that field\",\n      \"Do\": \"Show a specific error below the input and reference it with aria-describedby\",\n      \"Don't\": \"Show only a top-level error without identifying each invalid field\",\n      \"Code Example Good\": \"<input aria-describedby=\\\"email-error\\\"><p id=\\\"email-error\\\">Enter an email address</p>\",\n      \"Code Example Bad\": \"Red border or summary only\",\n      \"Severity\": \"High\"\n    }\n  ]\n}\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "3f884204cd4c3da878441086170179c62a6656eed206c16ea0de00391f4734d3",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.04434479500014277,
+          "stdout_bytes": 1903,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "3f884204cd4c3da878441086170179c62a6656eed206c16ea0de00391f4734d3",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.04623492000064289,
+          "stdout_bytes": 1903,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "3f884204cd4c3da878441086170179c62a6656eed206c16ea0de00391f4734d3",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.04785536700001103,
+          "stdout_bytes": 1903,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "3f884204cd4c3da878441086170179c62a6656eed206c16ea0de00391f4734d3",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.04833718999998382,
+          "stdout_bytes": 1903,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "3f884204cd4c3da878441086170179c62a6656eed206c16ea0de00391f4734d3",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.04785536700001103
+    },
+    {
+      "name": "modal-focus-search",
+      "command": [
+        "python",
+        "<ui-evaluation>/ui-pro/src/ui-ux-pro-max/scripts/search.py",
+        "modal focus trap restore",
+        "--domain",
+        "ux",
+        "--json",
+        "-n",
+        "3"
+      ],
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.04407448199981445,
+          "stdout_bytes": 1812,
+          "stderr_bytes": 0,
+          "stdout": "{\n  \"domain\": \"ux\",\n  \"query\": \"modal focus trap restore\",\n  \"file\": \"ux-guidelines.csv\",\n  \"count\": 3,\n  \"results\": [\n    {\n      \"Category\": \"Interaction\",\n      \"Issue\": \"Focus States\",\n      \"Platform\": \"All\",\n      \"Description\": \"Keyboard focus, including controls inside a modal, needs a visible indicator\",\n      \"Do\": \"Use a visible focus ring on every interactive control, including modal controls\",\n      \"Don't\": \"Remove focus outline without replacement\",\n      \"Code Example Good\": \"focus:ring-2 focus:ring-blue-500\",\n      \"Code Example Bad\": \"outline-none without alternative\",\n      \"Severity\": \"High\"\n    },\n    {\n      \"Category\": \"Accessibility\",\n      \"Issue\": \"Focus Appearance\",\n      \"Platform\": \"Web\",\n      \"Description\": \"WCAG 2.2 AAA defines minimum area and contrast for focus indicators\",\n      \"Do\": \"Use an indicator at least as large as a 2 CSS px perimeter with 3:1 state contrast\",\n      \"Don't\": \"Present this enhanced AAA criterion as an AA requirement or use a thin low-contrast outline\",\n      \"Code Example Good\": \"outline: 2px solid currentColor; outline-offset: 2px\",\n      \"Code Example Bad\": \"box-shadow: 0 0 1px low-contrast\",\n      \"Severity\": \"Medium\"\n    },\n    {\n      \"Category\": \"Accessibility\",\n      \"Issue\": \"Focus Not Obscured (Enhanced)\",\n      \"Platform\": \"Web\",\n      \"Description\": \"WCAG 2.2 AAA requires keyboard focus to remain fully visible\",\n      \"Do\": \"Keep the entire focused component unobscured by author-created content\",\n      \"Don't\": \"Present this enhanced AAA criterion as an AA requirement or allow persistent UI to hide any part of focus\",\n      \"Code Example Good\": \"close persistent overlay before focus moves behind it\",\n      \"Code Example Bad\": \"sticky footer covers half the focused button\",\n      \"Severity\": \"Medium\"\n    }\n  ]\n}\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "01e0be9aee9c2e38c523a028bab1342ff66e56568534a288c69d255b7f06c2d9",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.0566714390006382,
+          "stdout_bytes": 1812,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "01e0be9aee9c2e38c523a028bab1342ff66e56568534a288c69d255b7f06c2d9",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.04428142899996601,
+          "stdout_bytes": 1812,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "01e0be9aee9c2e38c523a028bab1342ff66e56568534a288c69d255b7f06c2d9",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.04633504599951266,
+          "stdout_bytes": 1812,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "01e0be9aee9c2e38c523a028bab1342ff66e56568534a288c69d255b7f06c2d9",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.043991956999889226,
+          "stdout_bytes": 1812,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "01e0be9aee9c2e38c523a028bab1342ff66e56568534a288c69d255b7f06c2d9",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.04428142899996601
+    },
+    {
+      "name": "modal-focus-one-rewrite",
+      "command": [
+        "python",
+        "<ui-evaluation>/ui-pro/src/ui-ux-pro-max/scripts/search.py",
+        "dialog keyboard focus return",
+        "--domain",
+        "ux",
+        "--json",
+        "-n",
+        "3"
+      ],
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.043861961000402516,
+          "stdout_bytes": 1778,
+          "stderr_bytes": 0,
+          "stdout": "{\n  \"domain\": \"ux\",\n  \"query\": \"dialog keyboard focus return\",\n  \"file\": \"ux-guidelines.csv\",\n  \"count\": 3,\n  \"results\": [\n    {\n      \"Category\": \"Interaction\",\n      \"Issue\": \"Focus States\",\n      \"Platform\": \"All\",\n      \"Description\": \"Keyboard focus, including controls inside a modal, needs a visible indicator\",\n      \"Do\": \"Use a visible focus ring on every interactive control, including modal controls\",\n      \"Don't\": \"Remove focus outline without replacement\",\n      \"Code Example Good\": \"focus:ring-2 focus:ring-blue-500\",\n      \"Code Example Bad\": \"outline-none without alternative\",\n      \"Severity\": \"High\"\n    },\n    {\n      \"Category\": \"Accessibility\",\n      \"Issue\": \"Focus Not Obscured (Enhanced)\",\n      \"Platform\": \"Web\",\n      \"Description\": \"WCAG 2.2 AAA requires keyboard focus to remain fully visible\",\n      \"Do\": \"Keep the entire focused component unobscured by author-created content\",\n      \"Don't\": \"Present this enhanced AAA criterion as an AA requirement or allow persistent UI to hide any part of focus\",\n      \"Code Example Good\": \"close persistent overlay before focus moves behind it\",\n      \"Code Example Bad\": \"sticky footer covers half the focused button\",\n      \"Severity\": \"Medium\"\n    },\n    {\n      \"Category\": \"Accessibility\",\n      \"Issue\": \"Focus Not Obscured (Minimum)\",\n      \"Platform\": \"Web\",\n      \"Description\": \"WCAG 2.2 AA requires keyboard focus to remain at least partially visible\",\n      \"Do\": \"Offset sticky UI with scroll-padding and dismiss or move persistent overlays\",\n      \"Don't\": \"Let headers footers banners or chat widgets fully cover focus\",\n      \"Code Example Good\": \"scroll-padding-top: var(--header-height)\",\n      \"Code Example Bad\": \"fixed overlay covers :focus\",\n      \"Severity\": \"High\"\n    }\n  ]\n}\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "1c55f6a3857872a6058b89e5705b6f35b4fed761a7dd2d33c2fde47e6801a4bf",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.04994513400015421,
+          "stdout_bytes": 1778,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "1c55f6a3857872a6058b89e5705b6f35b4fed761a7dd2d33c2fde47e6801a4bf",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.04451219300062803,
+          "stdout_bytes": 1778,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "1c55f6a3857872a6058b89e5705b6f35b4fed761a7dd2d33c2fde47e6801a4bf",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.04638493099992047,
+          "stdout_bytes": 1778,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "1c55f6a3857872a6058b89e5705b6f35b4fed761a7dd2d33c2fde47e6801a4bf",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.04434313299952919,
+          "stdout_bytes": 1778,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "1c55f6a3857872a6058b89e5705b6f35b4fed761a7dd2d33c2fde47e6801a4bf",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.04451219300062803
+    },
+    {
+      "name": "no-match-search",
+      "command": [
+        "python",
+        "<ui-evaluation>/ui-pro/src/ui-ux-pro-max/scripts/search.py",
+        "zzqvnonexistent",
+        "--domain",
+        "ux",
+        "--json",
+        "-n",
+        "3"
+      ],
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.049437531999501516,
+          "stdout_bytes": 134,
+          "stderr_bytes": 0,
+          "stdout": "{\n  \"domain\": \"ux\",\n  \"query\": \"zzqvnonexistent\",\n  \"file\": \"ux-guidelines.csv\",\n  \"count\": 0,\n  \"results\": [],\n  \"suggestions\": []\n}\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "d4629a285d4f1060c24a5f2292ff2c97fd619fb2b220345289ed93d219bf69a2",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.05140327099979913,
+          "stdout_bytes": 134,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "d4629a285d4f1060c24a5f2292ff2c97fd619fb2b220345289ed93d219bf69a2",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.05154515999947762,
+          "stdout_bytes": 134,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "d4629a285d4f1060c24a5f2292ff2c97fd619fb2b220345289ed93d219bf69a2",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.05158290300005319,
+          "stdout_bytes": 134,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "d4629a285d4f1060c24a5f2292ff2c97fd619fb2b220345289ed93d219bf69a2",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.05219444700014719,
+          "stdout_bytes": 134,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "d4629a285d4f1060c24a5f2292ff2c97fd619fb2b220345289ed93d219bf69a2",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.05154515999947762
+    },
+    {
+      "name": "static-form-before",
+      "command": [
+        "<ui-evaluation>/tools/node_modules/@impeccable/cli-linux-x64/bin/impeccable",
+        "detect",
+        "--json",
+        "--no-config",
+        "<ui-evaluation>/fixture/form.html"
+      ],
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.028637796000111848,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout": "[]\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.028384693000589323,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.027976932999990822,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.028300195999690914,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.02776574899962725,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.028300195999690914
+    },
+    {
+      "name": "static-negative-control",
+      "command": [
+        "<ui-evaluation>/tools/node_modules/@impeccable/cli-linux-x64/bin/impeccable",
+        "detect",
+        "--json",
+        "--no-config",
+        "<ui-evaluation>/fixture/bad-contrast.html"
+      ],
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 2,
+          "wall_seconds": 0.030860783000207448,
+          "stdout_bytes": 5916,
+          "stderr_bytes": 0,
+          "stdout": "[\n  {\n    \"antipattern\": \"low-contrast\",\n    \"name\": \"Low contrast text\",\n    \"description\": \"Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.\",\n    \"severity\": \"warning\",\n    \"category\": \"quality\",\n    \"file\": \"<ui-evaluation>/fixture/bad-contrast.html\",\n    \"line\": 0,\n    \"snippet\": \"1.2:1 (need 3:1) — text #eeeeee on #ffffff\"\n  },\n  {\n    \"antipattern\": \"low-contrast\",\n    \"name\": \"Low contrast text\",\n    \"description\": \"Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.\",\n    \"severity\": \"warning\",\n    \"category\": \"quality\",\n    \"file\": \"<ui-evaluation>/fixture/bad-contrast.html\",\n    \"line\": 0,\n    \"snippet\": \"1.2:1 (need 4.5:1) — text #eeeeee on #ffffff\"\n  },\n  {\n    \"antipattern\": \"low-contrast\",\n    \"name\": \"Low contrast text\",\n    \"description\": \"Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.\",\n    \"severity\": \"warning\",\n    \"category\": \"quality\",\n    \"file\": \"<ui-evaluation>/fixture/bad-contrast.html\",\n    \"line\": 0,\n    \"snippet\": \"1.2:1 (need 4.5:1) — text #eeeeee on #ffffff\"\n  },\n  {\n    \"antipattern\": \"tiny-text\",\n    \"name\": \"Tiny body text\",\n    \"description\": \"Body text below 12px is hard to read, especially on high-DPI screens. Use at least 14px for body content, 16px is ideal.\",\n    \"severity\": \"warning\",\n    \"category\": \"quality\",\n    \"file\": \"<ui-evaluation>/fixture/bad-contrast.html\",\n    \"line\": 0,\n    \"snippet\": \"8px body text\"\n  },\n  {\n    \"antipattern\": \"tiny-text\",\n    \"name\": \"Tiny body text\",\n    \"description\": \"Body text below 12px is hard to read, especially on high-DPI screens. Use at least 14px for body content, 16px is ideal.\",\n    \"severity\": \"warning\",\n    \"category\": \"quality\",\n    \"file\": \"<ui-evaluation>/fixture/bad-contrast.html\",\n    \"line\": 0,\n    \"snippet\": \"8px body text\"\n  },\n  {\n    \"antipattern\": \"undersized-ui-text\",\n    \"name\": \"Undersized functional text\",\n    \"description\": \"Interactive and content-bearing UI text (links, buttons, nav items, labels, table cells, meta rows, timecodes) below 11px is a legibility failure, not a style choice. WCAG sets no absolute pixel floor, but functional text under 11px is a defensible quality bar: it fails on high-DPI and small viewports and it degrades tap and read targets. The 11px floor holds even inside a footer; only non-interactive legal smallprint gets the softer 10px floor. Being ON the DESIGN.md size ramp does not exempt a value here: adding 8px to the ramp launders the token but not the legibility problem, and that is exactly the escape hatch this rule closes. Exempts sup/sub, visually-hidden (sr-only) text, and code/terminal contexts. Decorative letterspaced micro-labels are still functional and stay in scope.\",\n    \"severity\": \"warning\",\n    \"category\": \"quality\",\n    \"file\": \"<ui-evaluation>/fixture/bad-contrast.html\",\n    \"line\": 0,\n    \"snippet\": \"8px functional text \\\"Enter a valid email address\\\" (below 11px floor)\"\n  },\n  {\n    \"antipattern\": \"undersized-ui-text\",\n    \"name\": \"Undersized functional text\",\n    \"description\": \"Interactive and content-bearing UI text (links, buttons, nav items, labels, table cells, meta rows, timecodes) below 11px is a legibility failure, not a style choice. WCAG sets no absolute pixel floor, but functional text under 11px is a defensible quality bar: it fails on high-DPI and small viewports and it degrades tap and read targets. The 11px floor holds even inside a footer; only non-interactive legal smallprint gets the softer 10px floor. Being ON the DESIGN.md size ramp does not exempt a value here: adding 8px to the ramp launders the token but not the legibility problem, and that is exactly the escape hatch this rule closes. Exempts sup/sub, visually-hidden (sr-only) text, and code/terminal contexts. Decorative letterspaced micro-labels are still functional and stay in scope.\",\n    \"severity\": \"warning\",\n    \"category\": \"quality\",\n    \"file\": \"<ui-evaluation>/fixture/bad-contrast.html\",\n    \"line\": 0,\n    \"snippet\": \"8px functional text \\\"Email address\\\" (below 11px floor)\"\n  },\n  {\n    \"antipattern\": \"tiny-text\",\n    \"name\": \"Tiny body text\",\n    \"description\": \"Body text below 12px is hard to read, especially on high-DPI screens. Use at least 14px for body content, 16px is ideal.\",\n    \"severity\": \"warning\",\n    \"category\": \"quality\",\n    \"file\": \"<ui-evaluation>/fixture/bad-contrast.html\",\n    \"line\": 0,\n    \"snippet\": \"8px body text\"\n  },\n  {\n    \"antipattern\": \"undersized-ui-text\",\n    \"name\": \"Undersized functional text\",\n    \"description\": \"Interactive and content-bearing UI text (links, buttons, nav items, labels, table cells, meta rows, timecodes) below 11px is a legibility failure, not a style choice. WCAG sets no absolute pixel floor, but functional text under 11px is a defensible quality bar: it fails on high-DPI and small viewports and it degrades tap and read targets. The 11px floor holds even inside a footer; only non-interactive legal smallprint gets the softer 10px floor. Being ON the DESIGN.md size ramp does not exempt a value here: adding 8px to the ramp launders the token but not the legibility problem, and that is exactly the escape hatch this rule closes. Exempts sup/sub, visually-hidden (sr-only) text, and code/terminal contexts. Decorative letterspaced micro-labels are still functional and stay in scope.\",\n    \"severity\": \"warning\",\n    \"category\": \"quality\",\n    \"file\": \"<ui-evaluation>/fixture/bad-contrast.html\",\n    \"line\": 0,\n    \"snippet\": \"8px functional text \\\"Save email\\\" (below 11px floor)\"\n  }\n]\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "00871171d985c70823c55cae0863c5446257185e9158c94043758efc3a34ba15",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 2,
+          "wall_seconds": 0.031697646999418794,
+          "stdout_bytes": 5916,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "00871171d985c70823c55cae0863c5446257185e9158c94043758efc3a34ba15",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 2,
+          "wall_seconds": 0.030858511000587896,
+          "stdout_bytes": 5916,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "00871171d985c70823c55cae0863c5446257185e9158c94043758efc3a34ba15",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 2,
+          "wall_seconds": 0.028883646999929624,
+          "stdout_bytes": 5916,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "00871171d985c70823c55cae0863c5446257185e9158c94043758efc3a34ba15",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 2,
+          "wall_seconds": 0.029153358999792545,
+          "stdout_bytes": 5916,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "00871171d985c70823c55cae0863c5446257185e9158c94043758efc3a34ba15",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.030858511000587896
+    },
+    {
+      "name": "missing-file-operational-failure",
+      "command": [
+        "<ui-evaluation>/tools/node_modules/@impeccable/cli-linux-x64/bin/impeccable",
+        "detect",
+        "--json",
+        "--no-config",
+        "<ui-evaluation>/fixture/missing.html"
+      ],
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 1,
+          "wall_seconds": 0.0017292219999944791,
+          "stdout_bytes": 3,
+          "stderr_bytes": 80,
+          "stdout": "[]\n",
+          "stderr": "Warning: cannot access <ui-evaluation>/fixture/missing.html\n",
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stderr_normalized_sha256": "8533d2feb6e8c1a9edd0ffd198253054553a19626012967113d9143473fb25c3"
+        }
+      ],
+      "median_wall_seconds": 0.0017292219999944791
+    },
+    {
+      "name": "browser-before",
+      "samples": [
+        {
+          "sample": 1,
+          "wall_seconds": 0.5686271419999684,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": false,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 9,
+          "total": 10
+        },
+        {
+          "sample": 2,
+          "wall_seconds": 0.5088079690003724,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": false,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 9,
+          "total": 10
+        },
+        {
+          "sample": 3,
+          "wall_seconds": 0.4458997930005353,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": false,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 9,
+          "total": 10
+        },
+        {
+          "sample": 4,
+          "wall_seconds": 0.41240743000071234,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": false,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 9,
+          "total": 10
+        },
+        {
+          "sample": 5,
+          "wall_seconds": 0.40566843099986727,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": false,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 9,
+          "total": 10
+        }
+      ],
+      "median_wall_seconds": 0.4458997930005353
+    },
+    {
+      "name": "browser-after",
+      "samples": [
+        {
+          "sample": 1,
+          "wall_seconds": 0.4787175169994953,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": true,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 10,
+          "total": 10
+        },
+        {
+          "sample": 2,
+          "wall_seconds": 0.42648087900033715,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": true,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 10,
+          "total": 10
+        },
+        {
+          "sample": 3,
+          "wall_seconds": 0.40696939999997994,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": true,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 10,
+          "total": 10
+        },
+        {
+          "sample": 4,
+          "wall_seconds": 0.4278166499998406,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": true,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 10,
+          "total": 10
+        },
+        {
+          "sample": 5,
+          "wall_seconds": 0.3603761519998443,
+          "checks": {
+            "invalid_summary_visible": true,
+            "focus_on_error_summary": true,
+            "field_describes_error": true,
+            "error_link_focuses_field": true,
+            "success_message": true,
+            "old_error_hidden": true,
+            "no_overflow_320": true,
+            "no_overflow_768": true,
+            "no_overflow_1440": true,
+            "no_page_errors": true
+          },
+          "passed": 10,
+          "total": 10
+        }
+      ],
+      "median_wall_seconds": 0.42648087900033715
+    },
+    {
+      "name": "static-form-after",
+      "command": [
+        "<ui-evaluation>/tools/node_modules/@impeccable/cli-linux-x64/bin/impeccable",
+        "detect",
+        "--json",
+        "--no-config",
+        "<ui-evaluation>/fixture/form.html"
+      ],
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.028382702999806497,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout": "[]\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.025663336999969033,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.0292702630003987,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.027390916000513243,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.028773273000297195,
+          "stdout_bytes": 3,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.028382702999806497
+    }
+  ],
+  "prior_environment_failure": {
+    "action": "file URL navigation",
+    "error": "net::ERR_BLOCKED_BY_ADMINISTRATOR",
+    "status": "INCONCLUSIVE",
+    "wall_seconds": null,
+    "resolution": "Render owned fixture via set_content; no browser policy modified. No URL/deployment verification claimed."
+  },
+  "fixture_before_sha256": "8976f324b745ed1597ef8e4230e8ed717df250c63dd1f5ad50010ee85bcfd0b2",
+  "browser_startup_seconds": 0.1722340960004658,
+  "fixture_after_sha256": "4def7a60cdba8f3b002919e62a8774681d2f3a8158221fc24867df1e5fd811f7",
+  "engine_installed_bytes": 43700941,
+  "sources": [
+    {
+      "name": "official-design",
+      "repo": "anthropics/skills",
+      "exit": 0,
+      "seconds": 1.466,
+      "error": null,
+      "head": "dbd4588f9e1033efb41dad4bef2f7947c8993d44 2026-10-09T18:45:49Z"
+    },
+    {
+      "name": "interface-review",
+      "repo": "vercel-labs/agent-skills",
+      "exit": 0,
+      "seconds": 1.25,
+      "error": null,
+      "head": "063bee94c3f4df8453406c830b0a7df0f2860278 2026-08-28T15:36:07+02:00"
+    },
+    {
+      "name": "interface-rules",
+      "repo": "vercel-labs/web-interface-guidelines",
+      "exit": 0,
+      "seconds": 1.06,
+      "error": null,
+      "head": "434b7f91364665f2f733b310ec54809bf8f37937 2026-10-05T13:49:16-07:00"
+    },
+    {
+      "name": "impeccable",
+      "repo": "pbakaus/impeccable",
+      "exit": 0,
+      "seconds": 2.217,
+      "error": null,
+      "head": "936867543ac2576920d663cc9803597f6044f3ac 2026-10-23T18:46:19-07:00"
+    },
+    {
+      "name": "ui-pro",
+      "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "exit": 0,
+      "seconds": 2.03,
+      "error": null,
+      "head": "d14efff8ed1faa4187f004f79926f428c8074ec7 2026-10-23T17:06:30+07:00"
+    }
+  ],
+  "engine_install": {
+    "command": [
+      "npm",
+      "install",
+      "--prefix",
+      "<evaluation>/tools",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "@impeccable/cli-linux-x64@0.1.17"
+    ],
+    "wall_seconds": 0.8307812579996607,
+    "exit": 0,
+    "stdout": "\nadded 1 package in 778ms\n",
+    "stderr": ""
+  },
+  "unavailable_cli_version": {
+    "command": [
+      "npm",
+      "install",
+      "--prefix",
+      "<isolated-tools>",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "impeccable@4.7.1"
+    ],
+    "wall_seconds": 0.4778328310003417,
+    "exit": 1,
+    "stdout": "",
+    "stderr": "npm error code ETARGET\nnpm error notarget No matching version found for impeccable@4.7.1.\nnpm error notarget In most cases you or one of your dependencies are requesting\nnpm error notarget a package version that doesn't exist.\nnpm error A complete log of this run can be found in: <npm-cache>/_logs/2026-10-25T05_29_02_042Z-debug-0.log\n"
+  },
+  "loaded_text_bytes": {
+    "official-design": 9390,
+    "interface-review": 1231,
+    "interface-rules": 8055,
+    "impeccable-entry": 12042,
+    "impeccable-craft-floor": 4516,
+    "ui-pro-template": 27433,
+    "ui-pro-generated-claude-entry": 15969
+  },
+  "lookup_assessment": {
+    "error_summary": "Relevant specific result: focusable error summary with field links and inline errors.",
+    "modal_focus": "No verified answer for focus trapping/restoration in top 3, including one permitted rewrite.",
+    "no_match": "count=0 is explicit, despite exit 0."
+  },
+  "fixture_after_html": "<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Account email</title>\n<style>body{font:18px Georgia,serif;background:#f6f7f8;color:#172632;margin:0}main{max-width:600px;padding:24px;margin:auto}h1{font-size:32px}label{display:block;margin-top:24px}input{box-sizing:border-box;width:100%;padding:12px;font:inherit}button{font:inherit;padding:12px 24px;margin-top:16px;background:#146454;color:white;border:0;border-radius:6px}a{color:#164f8c}:focus-visible{outline:3px solid #164f8c;outline-offset:3px}[hidden]{display:none}#errors{padding:16px;border:2px solid #9c2539;margin:16px 0}</style></head>\n<body><main><h1>Account email</h1><p>Choose where to receive account notifications.</p>\n<form novalidate><div id=\"errors\" role=\"alert\" tabindex=\"-1\" hidden><h2>Check your email address</h2><a href=\"#email\">Enter a valid email address</a></div>\n<label for=\"email\">Email address</label><input id=\"email\" name=\"email\" type=\"email\" autocomplete=\"email\" aria-describedby=\"hint field-error\"><p id=\"hint\">For example, you@example.com</p><p id=\"field-error\" hidden>Enter a valid email address.</p><button type=\"submit\">Save email</button><p id=\"success\" role=\"status\"></p></form></main>\n<script>const form=document.querySelector('form');const email=document.querySelector('#email');const errors=document.querySelector('#errors');form.addEventListener('submit',event=>{event.preventDefault();const invalid=!email.value||!email.validity.valid;errors.hidden=!invalid;document.querySelector('#field-error').hidden=!invalid;email.setAttribute('aria-invalid',String(invalid));document.querySelector('#success').textContent=invalid?'':'Email saved';if(invalid) errors.focus();});</script>\n</body></html>\n",
+  "fixture_before_derivation": "Replace 'if(invalid) errors.focus();' with '/* focus adjustment */'.",
+  "browser_probe": "set_content owned fixture; fill invalid email; submit; check summary visibility/focus, describedby and field link focus; fill valid email; submit; check success and hidden errors; check document overflow at 320/768/1440; record pageerror events. Same browser, fresh context each sample.",
+  "browser_scope": "Form behavior only; no deployed URL, backend save, screen reader, native device or independent aesthetic comparison."
+}

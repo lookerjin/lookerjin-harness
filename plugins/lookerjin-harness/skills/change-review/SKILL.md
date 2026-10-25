@@ -34,12 +34,12 @@ Open Code Review 的可用性、委托/完整模式选择、敏感文件排除�
 1. 区分用户已有修改、Agent 修改和未跟踪文件。
 2. 检查实际 diff，包括可安全展开的 `untracked_diff`，而不是只看改过的文件名。
 3. 识别行为变化、接口变化、数据/状态变化和潜在兼容性影响。
-4. 检查错误路径、边界条件和副作用；使用专业审查时核对 findings 的真实触发路径并补查未覆盖风险，不重复完整运行相同专业审查，也不把专家报告当最终结论。
+4. 检查错误路径、边界条件和副作用；按 [沟通与实现的克制](../engineering-run/references/execution-contract.md#沟通与实现的克制) 核对新增校验、重试、fallback 和兼容层的实际依据，删除重复防御和掩盖错误的兜底。使用专业审查时核对 findings 的真实触发路径并补查未覆盖风险，不重复完整运行相同专业审查，也不把专家报告当最终结论。
 5. 检查测试是否覆盖真实行为，而不是镜像实现。
 6. 检查应该同步的 docs / config / migration / examples。
 7. 通过 [Verification Run](../verification-run/SKILL.md) 使用项目既有快速/完整门禁，验证范围与改动相称；已有绑定当前产物和影响范围的有效证据直接复用。检查门槛、断言、skip 与忽略项是否被削弱，并核对最终 diff 后的证据适用性。
 8. 按 [execution-contract](../engineering-run/references/execution-contract.md) 区分 `VERIFIED` / `NOT_VERIFIED` / `INCONCLUSIVE`，说明入口、证据与未覆盖边界；整体存在缺口时报告部分验证。
-9. 输出 findings 优先；没有问题时明确说明证据范围。
+9. 输出 findings 优先；没有问题时简述结论与必要证据范围。只报告有触发依据的问题及影响当前交付的缺口，不罗列假想风险或重复免责声明。
 
 ## 4. 按需独立审查
 

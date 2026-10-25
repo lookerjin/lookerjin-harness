@@ -1,0 +1,1151 @@
+{
+  "date": "2026-10-25",
+  "harness_baseline": "e976555e4714d71b9931aa6f7173a310a2fd3556",
+  "skill_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+  "controller": {
+    "new_page": {
+      "cedar": {
+        "checks": {
+          "course_facts": true,
+          "sold_out_disabled": true,
+          "required_errors_and_focus": true,
+          "invalid_email_rejected": true,
+          "price_hand_1": true,
+          "price_hand_2": true,
+          "price_wheel_1": true,
+          "price_wheel_2": true,
+          "confirmation_correct": true,
+          "simulation_disclosed": true,
+          "return_usable": true,
+          "no_overflow_320": true,
+          "no_overflow_768": true,
+          "no_overflow_1440": true,
+          "keyboard_submit": true,
+          "no_external_requests": true,
+          "no_page_errors": true
+        },
+        "passed": 17,
+        "total": 17,
+        "axe": {
+          "320": {
+            "violations": [
+              {
+                "id": "color-contrast",
+                "impact": "serious",
+                "help": "Elements must meet minimum color contrast ratio thresholds",
+                "nodes": [
+                  {
+                    "target": [
+                      ".hero-copy > .eyebrow"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".section-heading > div > .eyebrow"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "fieldset > .field-hint"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(3) > .course-info > .course-price > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.16 (foreground color: #767a70, background color: #faf9f5, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(4) > .course-info > .course-description"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #6b7164, background color: #f0f1e7, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(4) > .course-info > .course-meta"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #6b7164, background color: #f0f1e7, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(4) > .course-info > .course-price > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #767a70, background color: #f0f1e7, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "p > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "button[data-people=\"2\"] > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.08 (foreground color: #71756b, background color: #edf0e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".simulation-note"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.28 (foreground color: #777b70, background color: #fffefa, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-content > div:nth-child(1) > .eyebrow"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #71756b, background color: #eaece2, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-content > div:nth-child(1) > p:nth-child(3)"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.07 (foreground color: #6c7464, background color: #eaece2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-details > div:nth-child(1) > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #707966, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-details > div:nth-child(2) > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #707966, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "div:nth-child(3) > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #707966, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".footer-brand"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".footer-brand > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 5.3pt (7px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "footer > span:nth-child(2)"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "footer > a[href=\"#\"]"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  }
+                ]
+              }
+            ],
+            "incomplete_rules": [
+              "color-contrast"
+            ]
+          },
+          "768": {
+            "violations": [
+              {
+                "id": "color-contrast",
+                "impact": "serious",
+                "help": "Elements must meet minimum color contrast ratio thresholds",
+                "nodes": [
+                  {
+                    "target": [
+                      ".hero-copy > .eyebrow"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".hero-note"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #8b8d80, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".section-heading > div > .eyebrow"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "fieldset > .field-hint"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(3) > .course-info > .course-price > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.16 (foreground color: #767a70, background color: #faf9f5, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(4) > .course-info > .course-description"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #6b7164, background color: #f0f1e7, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(4) > .course-info > .course-meta"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #6b7164, background color: #f0f1e7, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(4) > .course-info > .course-price > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #767a70, background color: #f0f1e7, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "p > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "button[data-people=\"2\"] > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.08 (foreground color: #71756b, background color: #edf0e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".simulation-note"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.28 (foreground color: #777b70, background color: #fffefa, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-content > div:nth-child(1) > .eyebrow"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #71756b, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-content > div:nth-child(1) > p:nth-child(3)"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.07 (foreground color: #6c7464, background color: #eaece2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-details > div:nth-child(1) > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #707966, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-details > div:nth-child(2) > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #707966, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "div:nth-child(3) > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #707966, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".footer-brand"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".footer-brand > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "footer > span:nth-child(2)"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "footer > a[href=\"#\"]"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  }
+                ]
+              }
+            ],
+            "incomplete_rules": [
+              "color-contrast"
+            ]
+          },
+          "1440": {
+            "violations": [
+              {
+                "id": "color-contrast",
+                "impact": "serious",
+                "help": "Elements must meet minimum color contrast ratio thresholds",
+                "nodes": [
+                  {
+                    "target": [
+                      ".hero-copy > .eyebrow"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".hero-note"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.09 (foreground color: #8b8d80, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".section-heading > div > .eyebrow"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".section-aside"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "fieldset > .field-hint"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(3) > .course-info > .course-price > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.16 (foreground color: #767a70, background color: #faf9f5, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(4) > .course-info > .course-description"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #6b7164, background color: #f0f1e7, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(4) > .course-info > .course-meta"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #6b7164, background color: #f0f1e7, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".course-card:nth-child(4) > .course-info > .course-price > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #767a70, background color: #f0f1e7, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "p > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.31 (foreground color: #71756b, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "button[data-people=\"2\"] > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.08 (foreground color: #71756b, background color: #edf0e6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".simulation-note"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.28 (foreground color: #777b70, background color: #fffefa, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-content > div:nth-child(1) > .eyebrow"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #71756b, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-content > div:nth-child(1) > p:nth-child(3)"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.07 (foreground color: #6c7464, background color: #eaece2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-details > div:nth-child(1) > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #707966, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".visit-details > div:nth-child(2) > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #707966, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "div:nth-child(3) > span"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #707966, background color: #eaece2, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".footer-brand"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      ".footer-brand > small"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "footer > span:nth-child(2)"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  },
+                  {
+                    "target": [
+                      "footer > a[href=\"#\"]"
+                    ],
+                    "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.92 (foreground color: #777c70, background color: #f7f5ef, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                  }
+                ]
+              }
+            ],
+            "incomplete_rules": [
+              "color-contrast"
+            ]
+          }
+        },
+        "wall_seconds": 1.921539187000235,
+        "external_requests": [],
+        "page_errors": []
+      },
+      "birch": {
+        "checks": {
+          "course_facts": true,
+          "sold_out_disabled": true,
+          "required_errors_and_focus": true,
+          "invalid_email_rejected": true,
+          "price_hand_1": true,
+          "price_hand_2": true,
+          "price_wheel_1": true,
+          "price_wheel_2": true,
+          "confirmation_correct": true,
+          "simulation_disclosed": true,
+          "return_usable": true,
+          "no_overflow_320": true,
+          "no_overflow_768": true,
+          "no_overflow_1440": true,
+          "keyboard_submit": true,
+          "no_external_requests": true,
+          "no_page_errors": true
+        },
+        "passed": 17,
+        "total": 17,
+        "axe": {
+          "320": {
+            "violations": [],
+            "incomplete_rules": [
+              "color-contrast"
+            ]
+          },
+          "768": {
+            "violations": [],
+            "incomplete_rules": [
+              "color-contrast"
+            ]
+          },
+          "1440": {
+            "violations": [],
+            "incomplete_rules": [
+              "color-contrast"
+            ]
+          }
+        },
+        "wall_seconds": 1.6868988409996746,
+        "external_requests": [],
+        "page_errors": []
+      }
+    },
+    "small_fix": {
+      "cedar": {
+        "checks": {
+          "invalid_submit_focus": true,
+          "link_focus": true,
+          "valid_submit": true,
+          "css_unchanged": true,
+          "markup_copy_unchanged": true,
+          "no_page_errors": true,
+          "no_external_requests": true
+        },
+        "passed": 7,
+        "total": 7,
+        "wall_seconds": 0.40903383800014126,
+        "product_diff": "diff --git a/index.html b/index.html\nindex 4ed6018..02f28e5 100644\n--- a/index.html\n+++ b/index.html\n@@ -4,5 +4,5 @@\n <body><main><h1>Account email</h1><p>Choose where to receive account notifications.</p>\n <form novalidate><div id=\"errors\" role=\"alert\" tabindex=\"-1\" hidden><h2>Check your email address</h2><a href=\"#email\">Enter a valid email address</a></div>\n <label for=\"email\">Email address</label><input id=\"email\" name=\"email\" type=\"email\" autocomplete=\"email\" aria-describedby=\"hint field-error\"><p id=\"hint\">For example, you@example.com</p><p id=\"field-error\" hidden>Enter a valid email address.</p><button type=\"submit\">Save email</button><p id=\"success\" role=\"status\"></p></form></main>\n-<script>const form=document.querySelector('form');const email=document.querySelector('#email');const errors=document.querySelector('#errors');form.addEventListener('submit',event=>{event.preventDefault();const invalid=!email.value||!email.validity.valid;errors.hidden=!invalid;document.querySelector('#field-error').hidden=!invalid;email.setAttribute('aria-invalid',String(invalid));document.querySelector('#success').textContent=invalid?'':'Email saved';/* focus adjustment */});</script>\n+<script>const form=document.querySelector('form');const email=document.querySelector('#email');const errors=document.querySelector('#errors');form.addEventListener('submit',event=>{event.preventDefault();const invalid=!email.value||!email.validity.valid;errors.hidden=!invalid;document.querySelector('#field-error').hidden=!invalid;email.setAttribute('aria-invalid',String(invalid));document.querySelector('#success').textContent=invalid?'':'Email saved';if(invalid)errors.focus();});</script>\n </body></html>\n"
+      },
+      "birch": {
+        "checks": {
+          "invalid_submit_focus": true,
+          "link_focus": true,
+          "valid_submit": true,
+          "css_unchanged": true,
+          "markup_copy_unchanged": true,
+          "no_page_errors": true,
+          "no_external_requests": true
+        },
+        "passed": 7,
+        "total": 7,
+        "wall_seconds": 0.4227013600002465,
+        "product_diff": "diff --git a/index.html b/index.html\nindex 4ed6018..02f28e5 100644\n--- a/index.html\n+++ b/index.html\n@@ -4,5 +4,5 @@\n <body><main><h1>Account email</h1><p>Choose where to receive account notifications.</p>\n <form novalidate><div id=\"errors\" role=\"alert\" tabindex=\"-1\" hidden><h2>Check your email address</h2><a href=\"#email\">Enter a valid email address</a></div>\n <label for=\"email\">Email address</label><input id=\"email\" name=\"email\" type=\"email\" autocomplete=\"email\" aria-describedby=\"hint field-error\"><p id=\"hint\">For example, you@example.com</p><p id=\"field-error\" hidden>Enter a valid email address.</p><button type=\"submit\">Save email</button><p id=\"success\" role=\"status\"></p></form></main>\n-<script>const form=document.querySelector('form');const email=document.querySelector('#email');const errors=document.querySelector('#errors');form.addEventListener('submit',event=>{event.preventDefault();const invalid=!email.value||!email.validity.valid;errors.hidden=!invalid;document.querySelector('#field-error').hidden=!invalid;email.setAttribute('aria-invalid',String(invalid));document.querySelector('#success').textContent=invalid?'':'Email saved';/* focus adjustment */});</script>\n+<script>const form=document.querySelector('form');const email=document.querySelector('#email');const errors=document.querySelector('#errors');form.addEventListener('submit',event=>{event.preventDefault();const invalid=!email.value||!email.validity.valid;errors.hidden=!invalid;document.querySelector('#field-error').hidden=!invalid;email.setAttribute('aria-invalid',String(invalid));document.querySelector('#success').textContent=invalid?'':'Email saved';if(invalid)errors.focus();});</script>\n </body></html>\n"
+      }
+    },
+    "limits": [
+      "Controller replay is one run per artifact, not independent model replication.",
+      "Browser route fulfills owned files; no deployment, real service, screen reader or physical device verification.",
+      "Axe findings are automated accessibility evidence, not full WCAG certification."
+    ],
+    "browser_startup_seconds": 0.1732017240001369
+  },
+  "cases": {
+    "new-page": {
+      "assignment": {
+        "project_commit": "45beb9e97aff519a16f89340d43417d6dbc6b280",
+        "snapshot_sha256": "8e41f16515ff9702e2f31b14c2cd1884daa7ec128c09dffba1e82ee22751dcf1",
+        "seed": 17,
+        "skills_path": "skills",
+        "assignments": {
+          "cedar": {
+            "variant": "baseline",
+            "skills_sha256": "33c8bf95abc2a76dcceb4425975f85463a3b94f2216f170f858789527a1dc3fe"
+          },
+          "birch": {
+            "variant": "candidate",
+            "skills_sha256": "4934cfa6996cd4e91387f709afeb4eaf1f8f703549f0702340cfc468f9e671b6"
+          }
+        }
+      },
+      "runs": {
+        "cedar": {
+          "variant": "baseline",
+          "self_report": {
+            "task": "根据 README 实现并实际验证静水陶作本地课程预约单页",
+            "scope": "<experiment>/new-page/projects/cedar only; native HTML/CSS/JavaScript",
+            "loaded_skills": [
+              "skills/engineering-run/SKILL.md",
+              "skills/verification-bootstrap/SKILL.md",
+              "skills/verification-run/SKILL.md",
+              "skills/change-review/SKILL.md"
+            ],
+            "loaded_references": [
+              "skills/engineering-run/references/execution-contract.md",
+              "skills/engineering-run/references/ui-capabilities.md",
+              "skills/verification-bootstrap/references/recipe-shape.md"
+            ],
+            "metadata_discovery": "Read frontmatter only for all 15 skills/*/SKILL.md before selecting four skill bodies.",
+            "delivered_files": [
+              "index.html",
+              "styles.css",
+              "app.js"
+            ],
+            "verification_commands": [
+              {
+                "command": "python evidence/verify.py > evidence/verification.log 2>&1",
+                "result": "VERIFIED: 10 behavior groups passed; local Chromium desktop and mobile viewport checks; no external requests or runtime errors",
+                "raw_output": "evidence/verification.log",
+                "structured_result": "evidence/results.json",
+                "measured_script_elapsed_seconds": 3.709
+              },
+              {
+                "command": "python skills/change-review/scripts/preflight.py --root . --json > evidence/review-preflight.json",
+                "result": "VERIFIED: preflight completed; repository scope contains new application files and evidence only; git diff checks returned exit code 0. Actual untracked HTML/JS diff inspected.",
+                "raw_output": "evidence/review-preflight.json"
+              }
+            ],
+            "visual_inspection": {
+              "status": "VERIFIED",
+              "method": "Opened and inspected actual Playwright screenshots using view_image",
+              "files": [
+                "evidence/desktop.png",
+                "evidence/mobile.png"
+              ],
+              "observed": "Desktop two-column booking layout, mobile stacked form, pottery illustrations, complete course cards and readable order summary; no observed overlap."
+            },
+            "review": {
+              "method": "Same-agent static diff review and browser behavior verification; no independent agent used",
+              "findings": "No blocking issue found in requested behavior. Inputs are rendered with textContent. Sold-out native radio disabled; submission also checks capacity. No backend, storage, payment or external dependency."
+            },
+            "not_verified": [
+              {
+                "item": "Safari, Firefox and physical mobile devices",
+                "reason": "NOT_RUN: tested installed Chromium using viewport emulation only"
+              },
+              {
+                "item": "file:// opening",
+                "reason": "NOT_RUN: used local HTTP entry as permitted by README"
+              },
+              {
+                "item": "Real booking, payment, email and actual seat locking",
+                "reason": "Outside scope; only local simulation implemented"
+              }
+            ],
+            "observed_cost": {
+              "task_total_elapsed_seconds": "unknown",
+              "task_total_elapsed_reason": "No task-start timestamp was recorded; file timestamps were not used to infer duration.",
+              "verification_script_elapsed_seconds": 3.709,
+              "verification_script_runs": 1,
+              "chromium_launches": 1,
+              "observed_tool_calls_in_this_agent": {
+                "functions.exec": 12,
+                "exec_command": 11,
+                "view_image": 2,
+                "collaboration.send_message": 1
+              },
+              "tool_count_note": "Manually counted visible calls, including the command writing this log. Tool wrapper counts and nested tool counts are separate, not additive API usage.",
+              "model_tokens": "unknown",
+              "api_usage": "unknown",
+              "monetary_cost": "unknown"
+            },
+            "cleanup": "Owned temporary loopback HTTP service shut down and Chromium closed by verification script.",
+            "authorization": "No external network access, package installation, commit, push or sub-agent creation performed.",
+            "record_type": "Executor self-report; raw verification output and screenshots are the evidence, not this log."
+          },
+          "actual_available_skill_count": 15,
+          "unique_reported_read_bytes": 25760,
+          "product_sha256": {
+            "styles.css": "281dd13456b81dbcb7491bbc7fd286b4da9651f41a9b15cad44710aade65ec64",
+            "app.js": "e08caa3a30e664311c28d3f678032641decd15c788b1bb6e532dfc16fcf3afac",
+            "index.html": "e7cda028642ce6c801386b4cd93fc0e6dc7a70ee4b6eb354dd02c6fcd35ba10f"
+          },
+          "product_bytes": 27381
+        },
+        "birch": {
+          "variant": "candidate",
+          "self_report": {
+            "loaded_skills": [
+              "skills/frontend-design/SKILL.md"
+            ],
+            "metadata_inspected": "front matter of all 17 skills/*/SKILL.md",
+            "validation": [
+              {
+                "command": "python3 evidence/verify.py > evidence/verification-output.txt 2>&1",
+                "run": 1,
+                "result": "PASS: 34 checks; Chromium desktop/mobile workflow, responsiveness, keyboard, no runtime errors or external requests",
+                "observed_command_elapsed_seconds": 6.39741118
+              },
+              {
+                "command": "Python contrast calculation for 5 initial foreground/background pairs",
+                "result": "Found low contrast in helper text and placeholders; corrected colors in style.css",
+                "observed_command_elapsed_seconds": 2.8844e-05
+              },
+              {
+                "command": "python3 evidence/verify.py > evidence/verification-output.txt 2>&1",
+                "run": 2,
+                "result": "PASS: 38 checks after contrast improvements",
+                "observed_command_elapsed_seconds": 5.668921206
+              },
+              {
+                "command": "git diff --check && git status --short",
+                "result": "Exit 0; added files are untracked; no tracked diff to check",
+                "observed_command_elapsed_seconds": 2.3656e-05
+              },
+              {
+                "command": "python3 evidence/verify.py > evidence/verification-output.txt 2>&1",
+                "run": 3,
+                "result": "PASS: 38 checks after skip-link hiding refinement",
+                "observed_command_elapsed_seconds": 5.44496805
+              }
+            ],
+            "limitations": [
+              "Only installed Chromium tested; Safari, Firefox and physical mobile devices not available in this verification.",
+              "No real booking, payment, email or seat-lock service exists: this is the required local simulation.",
+              "No screen-reader session was run; keyboard navigation, labels, error associations and focus behavior were checked."
+            ],
+            "usage": "unknown",
+            "tool_call_count": "unknown",
+            "logging_started_at": "2026-10-25T05:45:32.107225+00:00",
+            "completed_at": "2026-10-25T05:50:18.128308+00:00",
+            "total_task_elapsed_seconds": "unknown",
+            "total_task_elapsed_note": "Task start clock was not recorded. logging_started_at is only the start of evidence logging.",
+            "latest_browser_results": "evidence/results.json",
+            "raw_latest_validation_output": "evidence/verification-output.txt",
+            "screenshots": [
+              "evidence/desktop.png",
+              "evidence/mobile.png",
+              "evidence/validation-errors.png",
+              "evidence/confirmation-desktop.png",
+              "evidence/confirmation-mobile.png"
+            ],
+            "visual_review": "Inspected desktop, mobile and mobile confirmation screenshots. Increased helper-text contrast; refined hidden skip-link CSS to remove full-page screenshot artifact.",
+            "browser_verification_runs": 3,
+            "network": "Only loopback HTTP; test blocked non-local requests and observed none.",
+            "cleanup": "Each verification shut down its own local HTTP server. No installed packages, external network, commits, pushes, or subagents."
+          },
+          "actual_available_skill_count": 16,
+          "unique_reported_read_bytes": 9390,
+          "product_sha256": {
+            "app.js": "6036f1004835af043e049f08f5cea063858fdd65c6f525361a1f1af0bb58704e",
+            "index.html": "62176e3f74a4e5dfcdda58a176f08e7ee7809b69349de8244cbc399c4292cfb6",
+            "style.css": "f9b03274e2cdc8a0c8ce4f04fc2719d34f9b7b904721152a744fc531acc78b9d"
+          },
+          "product_bytes": 27008
+        }
+      }
+    },
+    "small-fix": {
+      "assignment": {
+        "project_commit": "feeebcc01e5b85ce1b1abdce5a1ba626b6582bd7",
+        "snapshot_sha256": "fbbe68ea6184f8c11d8607b9c664d0480c83d512a7caa36b416d3786cfb1c1c0",
+        "seed": 18,
+        "skills_path": "skills",
+        "assignments": {
+          "cedar": {
+            "variant": "candidate",
+            "skills_sha256": "4934cfa6996cd4e91387f709afeb4eaf1f8f703549f0702340cfc468f9e671b6"
+          },
+          "birch": {
+            "variant": "baseline",
+            "skills_sha256": "33c8bf95abc2a76dcceb4425975f85463a3b94f2216f170f858789527a1dc3fe"
+          }
+        }
+      },
+      "runs": {
+        "cedar": {
+          "variant": "candidate",
+          "self_report": {
+            "task": "Fix focus transfer to error summary after invalid email form submission",
+            "status": "VERIFIED",
+            "started_at": "2026-10-25T05:49:36+00:00",
+            "finished_at": "2026-10-25T05:50:46.258977+00:00",
+            "elapsed_seconds": 70.259,
+            "usage": "unknown",
+            "skills_metadata_inspected": [
+              "skills/change-review/SKILL.md",
+              "skills/decision-dialogue/SKILL.md",
+              "skills/dependency-evaluation/SKILL.md",
+              "skills/design-explore/SKILL.md",
+              "skills/engineering-run/SKILL.md",
+              "skills/frontend-design/SKILL.md",
+              "skills/harness-doctor/SKILL.md",
+              "skills/harness-eval/SKILL.md",
+              "skills/harness-evolve/SKILL.md",
+              "skills/help/SKILL.md",
+              "skills/project-adopt/SKILL.md",
+              "skills/project-bootstrap/SKILL.md",
+              "skills/root-cause-debug/SKILL.md",
+              "skills/system-understand/SKILL.md",
+              "skills/verification-bootstrap/SKILL.md",
+              "skills/verification-run/SKILL.md"
+            ],
+            "skills_loaded": [
+              "skills/root-cause-debug/SKILL.md",
+              "skills/verification-run/SKILL.md",
+              "skills/verification-bootstrap/SKILL.md"
+            ],
+            "references_loaded": [
+              "skills/engineering-run/references/execution-contract.md",
+              "skills/verification-bootstrap/references/recipe-shape.md"
+            ],
+            "product_files_changed": [
+              "index.html"
+            ],
+            "change": "Replace focus placeholder with if(invalid)errors.focus(); after updating form validation state.",
+            "verification": [
+              {
+                "command": "python evidence/verify.py before > evidence/before-output.txt 2>&1",
+                "exit_code": 1,
+                "status": "NOT_VERIFIED",
+                "reason": "FAILED: original invalid click, invalid Enter and empty Enter submissions kept focus on button/input",
+                "evidence": [
+                  "evidence/before-results.json",
+                  "evidence/before-output.txt",
+                  "evidence/before-initial.png",
+                  "evidence/before-invalid.png"
+                ]
+              },
+              {
+                "command": "python evidence/verify.py after > evidence/after-output.txt 2>&1",
+                "exit_code": 0,
+                "status": "VERIFIED",
+                "result": "All 6 browser action/state checks passed",
+                "evidence": [
+                  "evidence/after-results.json",
+                  "evidence/after-output.txt",
+                  "evidence/after-initial.png",
+                  "evidence/after-invalid.png"
+                ]
+              },
+              {
+                "command": "Inline Python: assert source equals baseline with only focus placeholder replacement; compare before/after initial PNG bytes; write diff",
+                "exit_code": 0,
+                "status": "VERIFIED",
+                "result": "Only focus call changed; initial screenshots identical",
+                "evidence": [
+                  "evidence/scope-results.json",
+                  "evidence/change.diff"
+                ]
+              }
+            ],
+            "environment": {
+              "browser": "/usr/bin/chromium",
+              "driver": "installed Python Playwright",
+              "viewport": {
+                "width": 1000,
+                "height": 800
+              },
+              "launch": "Headless Chromium; browser route fulfills http://cedar.local/ from local index.html; all other requests aborted",
+              "network": "No external requests; route served local file in memory",
+              "cleanup": "Browser closed in finally; no server started"
+            },
+            "not_verified": [
+              "Other browser engines and screen-reader announcement were not tested.",
+              "Real backend integration not tested; existing page uses local form state only."
+            ]
+          },
+          "actual_available_skill_count": 16,
+          "unique_reported_read_bytes": 17018,
+          "product_sha256": {
+            "index.html": "16df124d6ad225b83e0fb28242cc8f1bef105ef68aa4bf59ee28c09bafd23d8b"
+          },
+          "product_bytes": 1773
+        },
+        "birch": {
+          "variant": "baseline",
+          "self_report": {
+            "task": "Fix error-summary focus after submitting an invalid email; preserve visuals, wording and other behavior.",
+            "status": "VERIFIED",
+            "started_at_utc": "2026-10-25T05:49:40+00:00",
+            "finished_at_utc": "2026-10-25T05:50:44.507389+00:00",
+            "elapsed_seconds": 64.507,
+            "usage": "unknown",
+            "loaded_skills": [
+              "skills/root-cause-debug/SKILL.md",
+              "skills/verification-run/SKILL.md"
+            ],
+            "loaded_references": [
+              "skills/engineering-run/references/execution-contract.md",
+              "skills/verification-bootstrap/references/recipe-shape.md"
+            ],
+            "skill_metadata_inspected": "Frontmatter of all 15 project skills; only the two listed skill bodies loaded.",
+            "verification_recipe": "One-off project-local browser check using installed Python Playwright and /usr/bin/chromium. Intercept birch.local and fulfill only own index.html; abort all other requests. No HTTP service or external network required.",
+            "cause": "Submit handler revealed errors and changed validation state but did not move focus. Existing tabindex=-1 already allows focusing the summary.",
+            "change": "Replace focus-adjustment placeholder with if(invalid)errors.focus(); after existing state updates.",
+            "verification": [
+              {
+                "command": "python evidence/verify.py baseline > evidence/baseline-run.log 2>&1",
+                "exit_code": 1,
+                "result": "FAILED: original focus defect reproduced for mouse, repeated Enter, empty Enter and invalid after success. Other behavior checks passed.",
+                "evidence": "evidence/baseline-results.json"
+              },
+              {
+                "command": "python evidence/verify.py fixed > evidence/fixed-run.log 2>&1",
+                "exit_code": 0,
+                "result": "VERIFIED: 13 checks passed, including invalid-submit focus, valid-submit focus/state, summary link, browser errors and two unchanged screenshot comparisons.",
+                "evidence": "evidence/fixed-results.json"
+              },
+              {
+                "command": "git diff --check",
+                "exit_code": 0,
+                "result": "VERIFIED: no whitespace errors."
+              },
+              {
+                "command": "git diff -- index.html",
+                "exit_code": 0,
+                "result": "Reviewed: only conditional summary focus added; no markup, CSS or wording changes."
+              }
+            ],
+            "not_verified": [
+              "Other browser engines and screen-reader announcements were not tested.",
+              "No real backend integration tested; this page simulates local state."
+            ],
+            "cleanup": "Playwright browser closed; no persistent server started.",
+            "scope": "Local project only. No package installation, external network, commits, pushes, skill edits or child agents."
+          },
+          "actual_available_skill_count": 15,
+          "unique_reported_read_bytes": 14042,
+          "product_sha256": {
+            "index.html": "16df124d6ad225b83e0fb28242cc8f1bef105ef68aa4bf59ee28c09bafd23d8b"
+          },
+          "product_bytes": 1773
+        }
+      }
+    }
+  },
+  "judge": "# 静水陶作页面独立评估\n\n结论：在这组产物中，小幅偏好 **willow**，主要依据是预约信息的可读性与手机表单呈现。两者都符合陶艺工作室主题，也都有完整的预约界面；maple 的暖陶土色、场景插画与直接展开的 1/2 人按钮有明确优势。如果优先营造温暖的手作空间感，maple 仍是合理选择。这不是对实现方法或模型能力的普遍结论，也不是运行验收结论。\n\n## 证据范围与尺度\n\n先读取 `brief.md`、`rubric.json`，实际查看以下四张截图，并完整核对两份 HTML、CSS、JS。未读取 judge 目录之外内容、版本映射、执行日志或其他任务；未联网、安装、修改产物或启动子 Agent。\n\n- `maple/screenshots/desktop.png`（1440×1899）与 `maple/screenshots/mobile.png`（390×2631）。\n- `willow/screenshots/desktop.png`（1440×1753）与 `willow/screenshots/mobile.png`（390×2656）。\n- `maple/index.html`、`maple/styles.css`、`maple/app.js`。\n- `willow/index.html`、`willow/style.css`、`willow/app.js`。\n\n统一采用整数 0–2 分：0 为缺失或明显不合要求，1 为基本成立但有显著弱点，2 为当前可见证据下完成得较好。2 分不表示毫无改进空间。响应式分数只评现有截图的可见质量，不代表 320/768/1440 全部经过测量；预约界面分数评可理解性，不替代动态行为测试。没有按代码长度、测试数量或开发成本评分。\n\n| 维度 | maple | willow | 具体依据 |\n| --- | ---: | ---: | --- |\n| 品牌与内容事实 | 2 | 2 | 两份截图及 HTML 都有正确的三门课程、价格、时长、周末时间、4/2/0 余位、地址、营业时间、费用包含内容及约三周自取说明。未发现虚构评价、销量、资质或导师履历。willow 的信息条明确写“初次体验的成年人”；maple 写“零基础”，受众表达略宽，但未引入冲突事实。 |\n| 预约界面的可理解性 | 2 | 2 | 两份均用可选卡片、明显的已满状态、姓名/邮箱标签、总价和提交按钮表达流程。maple 的“01/02”步骤与并列人数按钮更直接；willow 的价格统一右对齐，表单顶部复述课程、时间和时长，按钮还附“本地模拟”，复核更容易。 |\n| 响应式可见质量 | 1 | 2 | 四张截图都没有明显裁切或覆盖；手机均自然堆叠。maple 手机表单输入文字仅 12px、说明多为 10px，弱化信息较难读；willow 手机输入控件为 16px、49px 高，课程文字及模拟声明也更清楚。仅据所提供的 390px 手机图，不声称已验证 320/768px。 |\n| 视觉：主题相关性 | 2 | 2 | maple 的桌面窗影、泥色花瓶、粗陶杯与暖纸色有手作工作室气息；willow 的青瓷静物、釉色样片和青绿配色与“静水”名称及陶艺相关。两份都不是无关的通用图库装饰。 |\n| 视觉：层级 | 2 | 2 | maple 通过陶土色标题词、橙色总价/按钮和编号组织层级；willow 用较大的主标题、右对齐价格以及浅绿预约区域突出决策路径。手机图中两者均保留清楚的课程—表单顺序。 |\n| 视觉：排版 | 1 | 2 | maple 的宋体标题与正文搭配协调，但桌面和手机有较多 8–11px 装饰/辅助文字及偏淡颜色；willow 的中文信息层级、较深文本和更大的手机控件更利于阅读。willow 的图注及少数辅助标签仍小，2 分不等于这些细节无需改进。 |\n| 视觉：布局 | 2 | 2 | 桌面均用左课程、右表单，外边距和卡片对齐稳定；手机均变为单列。maple 的整幅拱形场景图与分区底色更有空间感；willow 的独立静物留白、右侧预约面板更集中。两者手机都需较长滚动才能进入姓名/邮箱，但属于相同的信息编排取舍。 |\n| 视觉：克制 | 2 | 2 | 两份配色和插画风格均统一，没有虚构社交证明、促销角标或多重抢眼按钮。maple 的英文眉题、竖排小字略多；willow 更简洁，但这些差异不足以把 maple 降为明显失控。 |\n| 合计（描述性指标） | **14/16** | **16/16** | 视觉五项为 maple 9/10、willow 10/10。差距主要集中在文字可读性，不代表全面胜出。 |\n\n## 静态核对与具体风险\n\n**maple：** `index.html` 的 `.course-card.full input` 原生 `disabled`；`app.js:14–19` 按单价乘人数更新摘要，`app.js:21–27` 给姓名和邮箱具体错误，`app.js:40–59` 阻止默认提交、填充确认框并恢复关闭后的焦点。确认框明确写“仅模拟本地预约，未扣款、未锁定真实名额，也不会发送邮件”。这些是实现证据，截图只展示初始状态，不能证明提交已经成功执行。\n\nmaple 的明显质量风险是小字与对比度。`styles.css` 中 `--muted:#71756b` 对纸色 `#f7f5ef` 的静态对比度约 **4.32:1**；输入占位文字 `#92958b` 对 `#fffefa` 约 **3.02:1**；10px 的 `.simulation-note` 颜色 `#777b70` 对该背景约 **4.29:1**，均低于普通小字常用的 4.5:1 门槛。数值由 CSS 颜色按相对亮度公式计算，未将截图缩放后的观感当作测量。表单有持久标签，低对比占位文字不会造成字段完全无名称，但仍值得提高可读性。`app.js:50` 对异常人数/余位只静默返回；常规 UI 限制为 1–2 人且满员禁选，故不能据此认定正常流程失败，不过异常状态的反馈不如 willow 完整。\n\n**willow：** `index.html:54–56` 的课程及余位与 brief 相符，已满项原生禁用；`index.html:65–69` 用 `form=\"booking-form\"` 正确关联表单外部的人数、姓名、邮箱及提交控件，不能因为控件位于 `aside` 就误判它们未参与提交。`app.js:20–27` 同步课程/时间/时长及总价；`app.js:37–62` 检查课程、人数、姓名和邮箱并填入本地确认信息；`app.js:64–67` 提供修改入口。`index.html:70、72` 明确否认真实锁位、扣款和发送邮件。\n\nwillow 的 `.simulation-note` 使用 `#56665d` 对 `#e3ebe4`，静态对比度约 **5.00:1**；输入占位文字 `#657266` 对 `#f8faf5` 约 **4.81:1**。其可见阅读表现优于 maple。需注意：人数采用折叠选择框，2 人选项不像 maple 那样始终可见；`app.js:36` 在输入任何字符后即清除错误，而非实时重新验证，错误地址会到下一次提交才重新提示。错误信息有 `aria-describedby` 关联，但不像 maple 的错误节点有 `aria-live`；实际辅助技术播报质量未验证。桌面 `.booking-panel` 使用 sticky，而截图无法证明滚动和短视口下体验。\n\n两份均有原生控件、可访问名称、跳转链接、焦点样式和减少动态效果的媒体查询；这些静态迹象支持设计意图，但键盘实际顺序、读屏播报和焦点移动效果仍不能直接判定通过。\n\n## INCONCLUSIVE 与否决项\n\n| 项目 | maple | willow | 原因 |\n| --- | --- | --- | --- |\n| 有效提交、人数/课程切换、错误提示的实际运行结果 | INCONCLUSIVE | INCONCLUSIVE | 本次只审查截图和源文件，未实际操作浏览器；确认内容的生成逻辑存在，不等于实际运行证据。 |\n| 320/768px 无横向溢出、完整键盘操作、读屏、手机软键盘表现 | INCONCLUSIVE | INCONCLUSIVE | 现有截图只覆盖 1440/390px 初始页面。CSS 断点与焦点规则存在，但未测量这些运行条件。 |\n| 真实预约或支付成功 | 不适用 | 不适用 | 任务要求本地模拟，两份页面都明确如此；截图绝不是成功锁位或付款的证明。 |\n| 虚构真实预约/支付的否决项 | 未发现 | 未发现 | 初始界面和确认模板都有明确模拟声明。 |\n| 未经授权联网/安装/远程写入 | 产物中未发现；历史 INCONCLUSIVE | 产物中未发现；历史 INCONCLUSIVE | 可审源文件使用本地 CSS/JS 和内联 SVG，JS 无外部请求；未读取执行日志，不能据此证明制作过程从未联网。 |\n| 关键流程不可用的否决项 | INCONCLUSIVE | INCONCLUSIVE | 静态审查未见常规路径必然中断的缺陷，但没有交互验收证据。 |\n| 时间、工具事件、usage、费用 | INCONCLUSIVE | INCONCLUSIVE | 本次范围排除了执行日志及映射，未以不可见成本推断优劣。 |\n\n偏好边界：若优先让首次体验者更容易阅读价格、复核时间并在手机输入信息，选 willow；若优先暖陶土视觉、工作室场景感和无需展开的双人数选择，maple 的方案也有吸引力，但建议先提高小字尺寸及对比度。这里只能支持这一个页面对的有限判断；在实际交互验收之前，不宣称任一版本已完整通过预约功能要求。\n",
+  "monetary_cost": null,
+  "token_usage": null,
+  "limits": [
+    "Two cases, one independent pair per case; no replicated agent sampling or statistical significance.",
+    "Inherited model configuration; exact model revision and reasoning budget not independently captured.",
+    "Shared filesystem, instructed scope separation rather than security sandbox.",
+    "New-page start timestamps missing; total latency unknown, not inferred from file times.",
+    "Executor logs are self-reported; uniform browser replay independently validates current artifact behavior.",
+    "Skill-path injection tests behavior; separate Codex CLI lifecycle test validates packaging, not ChatGPT desktop menus.",
+    "Axe reports incomplete color-contrast cases; no findings is not full accessibility certification.",
+    "No screen reader, physical device, native mobile, Safari or Firefox testing."
+  ],
+  "self_report_discrepancies": [
+    {
+      "case": "new-page",
+      "label": "birch",
+      "claim": "front matter of all 17 skills",
+      "observed": 16,
+      "action": "preserved original log; available skill count independently recomputed; no cost inference from claimed count"
+    }
+  ],
+  "host": {
+    "host-market-add": {
+      "command": [
+        "codex",
+        "plugin",
+        "marketplace",
+        "add",
+        "<experiment>/install-fixture",
+        "--json"
+      ],
+      "seconds": 0.024614148000182468,
+      "exit": 0,
+      "stdout": "{\n  \"marketplaceName\": \"ui-eval-local-20261025\",\n  \"installedRoot\": \"<experiment>/install-fixture\",\n  \"alreadyAdded\": false\n}\n",
+      "stderr": ""
+    },
+    "host-plugin-add": {
+      "command": [
+        "codex",
+        "plugin",
+        "add",
+        "frontend-design@ui-eval-local-20261025",
+        "--json"
+      ],
+      "seconds": 0.026289284999620577,
+      "exit": 0,
+      "stdout": "{\n  \"pluginId\": \"frontend-design@ui-eval-local-20261025\",\n  \"name\": \"frontend-design\",\n  \"marketplaceName\": \"ui-eval-local-20261025\",\n  \"version\": \"0.1.0\",\n  \"installedPath\": \"<cli-state>/plugins/cache/ui-eval-local-20261025/frontend-design/0.1.0\",\n  \"authPolicy\": \"ON_INSTALL\"\n}\n",
+      "stderr": ""
+    },
+    "host-verification": {
+      "installed_skill_bytes": 9390,
+      "skill_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "license_present": true,
+      "hook_manifests": 0,
+      "exit": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"frontend-design@ui-eval-local-20261025\",\n      \"name\": \"frontend-design\",\n      \"marketplaceName\": \"ui-eval-local-20261025\",\n      \"version\": \"0.1.0\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"<experiment>/install-fixture/plugins/frontend-design\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"<experiment>/install-fixture\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": ""
+    },
+    "host-cleanup": [
+      {
+        "command": [
+          "codex",
+          "plugin",
+          "remove",
+          "frontend-design@ui-eval-local-20261025",
+          "--json"
+        ],
+        "exit": 0,
+        "stdout": "{\n  \"pluginId\": \"frontend-design@ui-eval-local-20261025\",\n  \"name\": \"frontend-design\",\n  \"marketplaceName\": \"ui-eval-local-20261025\"\n}\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "codex",
+          "plugin",
+          "marketplace",
+          "remove",
+          "ui-eval-local-20261025",
+          "--json"
+        ],
+        "exit": 0,
+        "stdout": "{\n  \"marketplaceName\": \"ui-eval-local-20261025\",\n  \"installedRoot\": null\n}\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "codex",
+          "plugin",
+          "marketplace",
+          "list",
+          "--json"
+        ],
+        "exit": 0,
+        "stdout": "{\n  \"marketplaces\": []\n}\n",
+        "stderr": ""
+      }
+    ]
+  },
+  "blocked_cli_attempts": {
+    "cedar": {
+      "status": "INCONCLUSIVE",
+      "reason": "Network policy rejects ChatGPT WebSocket CONNECT with 403; stopped without retry or policy change",
+      "observed_elapsed_seconds": 13.335437059402466
+    },
+    "birch": {
+      "status": "INCONCLUSIVE",
+      "reason": "Network policy rejects ChatGPT WebSocket CONNECT with 403; stopped without retry or policy change",
+      "observed_elapsed_seconds": 13.335123300552368
+    }
+  },
+  "task_briefs": {
+    "new_page": "# 静水陶作预约页\n\n项目交付物是一个本地可打开的单页 Web 页面，使用原生 HTML/CSS/JavaScript，不需要安装依赖。入口为 index.html，可拆 CSS/JS。\n\n品牌资料：静水陶作，一家社区陶艺工作室。面向初次体验陶艺的成年人。地址：杭州市拱墅区湖墅南路 58 号。营业时间：周三至周日 10:00–19:00。不要添加虚构评价、销量、资质、导师履历或客户标志。\n\n课程数据（保持名称和价格真实）：\n- 手捏入门：90 分钟，¥168，周六 10:00，余 4 位。\n- 拉坯体验：120 分钟，¥238，周六 14:00，余 2 位。\n- 釉色实验：90 分钟，¥198，周日 10:00，已满。\n费用包含工具、材料和一次烧制。作品约三周后到店自取。\n\n页面需要课程选择、人数（1–2 人）、姓名和邮箱；总价随选择变化，满员课程不能预约。提交无效表单时显示具体错误；有效提交给出含课程、人数、总价的确认信息。仅模拟本地预约，不联系真实服务，不伪装已扣款或真实锁位。刷新可丢失预约数据。\n\n环境可用 Python 3 与 Playwright Python、/usr/bin/chromium；file URL 可能被环境禁止。可用本地 HTTP 服务，或用浏览器路由拦截将自有文件作为页面响应，不修改浏览器策略。截图和测试证据保存在项目 evidence/ 中；停止自己启动的服务。不得安装包、访问外网或改项目外文件。\n",
+    "new_page_request": "请根据 README 为静水陶作做一个完整的课程预约页面。希望它让人感觉是这家陶艺工作室自己的页面，信息清楚、好用，手机和桌面都能预约。实现并实际检查后交付；仅本地操作。",
+    "small_fix_request": "这个表单提交无效邮箱后，焦点没有移到错误摘要。只修这个交互问题，保持页面视觉、文案和其他行为不变，实际验证后交付。仅本地操作。"
+  },
+  "tool_setup": {
+    "package": "axe-core@4.14.0",
+    "wall_seconds": 0.6500372319997041,
+    "exit": 0,
+    "stdout": "\nadded 1 package in 581ms\n",
+    "stderr": ""
+  },
+  "repository_checks": [
+    {
+      "cwd": ".",
+      "command": [
+        "python",
+        "scripts/validate_marketplace.py"
+      ],
+      "exit": 0,
+      "seconds": 0.03374634600004356,
+      "stdout": "marketplace ok: lookerjin-agent-market (4 plugins)\n",
+      "stderr": ""
+    },
+    {
+      "cwd": ".",
+      "command": [
+        "python",
+        "scripts/frontend_design_test.py"
+      ],
+      "exit": 0,
+      "seconds": 0.10222161900037463,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.007s\n\nOK\n"
+    },
+    {
+      "cwd": ".",
+      "command": [
+        "python",
+        "plugins/lookerjin-harness/skills/harness-doctor/scripts/doctor.py",
+        "--root",
+        "plugins/frontend-design",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 0.03407156600042072,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"errors\": [],\n  \"warnings\": [],\n  \"checks\": [\n    {\n      \"code\": \"CODEX_MANIFEST\",\n      \"message\": \".codex-plugin/plugin.json\"\n    },\n    {\n      \"code\": \"PLUGIN_NAME\",\n      \"message\": \"frontend-design\"\n    },\n    {\n      \"code\": \"PLUGIN_VERSION\",\n      \"message\": \"0.1.0\"\n    },\n    {\n      \"code\": \"PLUGIN_PATH\",\n      \"message\": \"skills -> ./skills/\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"frontend-design\"\n    },\n    {\n      \"code\": \"LAYOUT\",\n      \"message\": \"no deprecated top-level directories\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "cwd": "plugins/lookerjin-harness",
+      "command": [
+        "python",
+        "skills/harness-doctor/scripts/doctor.py",
+        "--root",
+        ".",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 0.06261564800024644,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"errors\": [],\n  \"warnings\": [],\n  \"checks\": [\n    {\n      \"code\": \"CODEX_MANIFEST\",\n      \"message\": \".codex-plugin/plugin.json\"\n    },\n    {\n      \"code\": \"PLUGIN_NAME\",\n      \"message\": \"lookerjin-harness\"\n    },\n    {\n      \"code\": \"PLUGIN_VERSION\",\n      \"message\": \"0.3.0\"\n    },\n    {\n      \"code\": \"PLUGIN_PATH\",\n      \"message\": \"skills -> ./skills/\"\n    },\n    {\n      \"code\": \"PLUGIN_PATH\",\n      \"message\": \"mcpServers -> ./mcp.json\"\n    },\n    {\n      \"code\": \"PLUGIN_ASSET\",\n      \"message\": \"logo -> ./assets/logo.svg\"\n    },\n    {\n      \"code\": \"PLUGIN_ASSET\",\n      \"message\": \"composerIcon -> ./assets/composer-icon.svg\"\n    },\n    {\n      \"code\": \"MCP\",\n      \"message\": \"1 MCP server(s)\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"change-review\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"decision-dialogue\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"dependency-evaluation\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"design-explore\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"engineering-run\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-doctor\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-eval\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-evolve\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"help\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"project-adopt\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"project-bootstrap\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"root-cause-debug\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"system-understand\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"verification-bootstrap\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"verification-run\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"agent-core\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"experiment\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"go-library\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"go-service\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"web-app\"\n    },\n    {\n      \"code\": \"CI_PLACEHOLDER\",\n      \"message\": \"ci-go.yml keeps pin placeholders\"\n    },\n    {\n      \"code\": \"LAYOUT\",\n      \"message\": \"no deprecated top-level directories\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "cwd": "plugins/lookerjin-harness",
+      "command": [
+        "python",
+        "skills/change-review/scripts/preflight_test.py"
+      ],
+      "exit": 0,
+      "seconds": 0.09221453500049392,
+      "stdout": "preflight_test ok\n",
+      "stderr": ""
+    },
+    {
+      "cwd": "plugins/lookerjin-harness",
+      "command": [
+        "python",
+        "skills/project-bootstrap/scripts/check-placeholders_test.py"
+      ],
+      "exit": 0,
+      "seconds": 0.084941107999839,
+      "stdout": "no REPLACE_WITH_FULL_COMMIT_SHA in generated workflows\ncheck-placeholders_test ok\n",
+      "stderr": ""
+    },
+    {
+      "cwd": "plugins/lookerjin-harness",
+      "command": [
+        "python",
+        "skills/harness-eval/scripts/prepare_test.py"
+      ],
+      "exit": 0,
+      "seconds": 0.915529071000492,
+      "stdout": "",
+      "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.845s\n\nOK\n"
+    },
+    {
+      "cwd": "plugins/lookerjin-harness",
+      "command": [
+        "python",
+        "skills/engineering-run/scripts/check-plan_test.py"
+      ],
+      "exit": 0,
+      "seconds": 0.13789721600005578,
+      "stdout": "",
+      "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.074s\n\nOK\n"
+    },
+    {
+      "cwd": "plugins/lookerjin-harness",
+      "command": [
+        "python",
+        "skills/verification-run/scripts/check-evidence_test.py"
+      ],
+      "exit": 0,
+      "seconds": 0.17010097000002133,
+      "stdout": "",
+      "stderr": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.093s\n\nOK\n"
+    },
+    {
+      "cwd": "plugins/lookerjin-harness",
+      "command": [
+        "python",
+        "skills/harness-doctor/scripts/doctor_test.py"
+      ],
+      "exit": 0,
+      "seconds": 0.4863237979998303,
+      "stdout": "",
+      "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.421s\n\nOK\n"
+    },
+    {
+      "cwd": "plugins/lookerjin-harness",
+      "command": [
+        "python",
+        "skills/system-understand/scripts/code-map_test.py"
+      ],
+      "exit": 0,
+      "seconds": 1.4778656509997745,
+      "stdout": "",
+      "stderr": "test_added_caller_and_deleted_module_invalidate (__main__.NavigationTests.test_added_caller_and_deleted_module_invalidate) ... ok\ntest_budget_keeps_nearest_relationship_first (__main__.NavigationTests.test_budget_keeps_nearest_relationship_first) ... ok\ntest_capture_refuses_bytes_different_from_baseline (__main__.NavigationTests.test_capture_refuses_bytes_different_from_baseline) ... ok\ntest_changed_source_at_publication_refuses_result (__main__.NavigationTests.test_changed_source_at_publication_refuses_result) ... ok\ntest_cli_record_query_and_drawio_same_relations (__main__.NavigationTests.test_cli_record_query_and_drawio_same_relations) ... ok\ntest_concurrent_writers_publish_one_complete_winner (__main__.NavigationTests.test_concurrent_writers_publish_one_complete_winner) ... ok\ntest_depth_direction_cycles_and_truncation (__main__.NavigationTests.test_depth_direction_cycles_and_truncation) ... ok\ntest_disk_failure_does_not_publish_or_damage_existing_output (__main__.NavigationTests.test_disk_failure_does_not_publish_or_damage_existing_output) ... ok\ntest_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns (__main__.NavigationTests.test_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns) ... ok\ntest_failed_serialization_leaves_no_published_file (__main__.NavigationTests.test_failed_serialization_leaves_no_published_file) ... ok\ntest_git_commit_change_with_identical_scope_is_current (__main__.NavigationTests.test_git_commit_change_with_identical_scope_is_current) ... ok\ntest_invalid_relations_and_missing_citations_rejected (__main__.NavigationTests.test_invalid_relations_and_missing_citations_rejected) ... ok\ntest_killed_writer_never_exposes_staging_as_formal_output (__main__.NavigationTests.test_killed_writer_never_exposes_staging_as_formal_output) ... ok\ntest_missing_extractor_is_explicit_failure (__main__.NavigationTests.test_missing_extractor_is_explicit_failure) ... ok\ntest_modified_input_copy_or_live_source_rejects_extraction (__main__.NavigationTests.test_modified_input_copy_or_live_source_rejects_extraction) ... ok\ntest_no_overwrite_or_self_invalidating_output (__main__.NavigationTests.test_no_overwrite_or_self_invalidating_output) ... ok\ntest_outside_scope_edit_does_not_invalidate (__main__.NavigationTests.test_outside_scope_edit_does_not_invalidate) ... ok\ntest_real_extractor_finds_indirect_importers_without_string_false_positive (__main__.NavigationTests.test_real_extractor_finds_indirect_importers_without_string_false_positive) ... ok\ntest_real_extractor_reports_unresolved_import (__main__.NavigationTests.test_real_extractor_reports_unresolved_import) ... ok\ntest_record_rejects_nonexistent_source_line (__main__.NavigationTests.test_record_rejects_nonexistent_source_line) ... ok\ntest_symlink_and_path_escape_rejected (__main__.NavigationTests.test_symlink_and_path_escape_rejected) ... ok\ntest_uncommitted_edit_blocks_export_and_marks_query (__main__.NavigationTests.test_uncommitted_edit_blocks_export_and_marks_query) ... ok\ntest_unsupported_atomic_publication_fails_without_direct_write_fallback (__main__.NavigationTests.test_unsupported_atomic_publication_fails_without_direct_write_fallback) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 1.363s\n\nOK\n"
+    }
+  ],
+  "interactive_preview_check": {
+    "passed": true,
+    "initial_failure": "Inlining external defer scripts removed deferred execution, producing null DOM access; comparison wrapper only, original artifacts unaffected.",
+    "fix": "Inline modules preserve deferred execution for these self-contained scripts.",
+    "checks": [
+      "both embedded products render",
+      "both real course actions change total",
+      "390px frame works",
+      "no pageerror"
+    ],
+    "bytes": 59141
+  }
+}

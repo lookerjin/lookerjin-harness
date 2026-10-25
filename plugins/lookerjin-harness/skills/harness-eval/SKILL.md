@@ -5,7 +5,7 @@ description: Evaluate whether a skill or harness revision changes agent behavior
 
 # Harness Eval
 
-评估任务结果、证据和副作用，不评价 Prompt 看起来是否专业。完整流程与报告字段见 [protocol](references/protocol.md)；按需从 [cases](references/cases.md) 选择有区分度的场景。
+评估任务结果、证据、副作用、成本和耗时，不评价 Prompt 看起来是否专业。完整流程与报告字段见 [protocol](references/protocol.md)；按需从 [cases](references/cases.md) 选择有区分度的场景。实际 token/金额不可得时标 unknown，不拿输出字节冒充模型账单。
 
 ## 准备
 

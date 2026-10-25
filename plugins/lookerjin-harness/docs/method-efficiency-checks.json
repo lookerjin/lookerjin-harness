@@ -1,0 +1,772 @@
+{
+  "date": "2026-10-25",
+  "baseline_commit": "e8a4c94a91e4cc74f3e0edc5ddf54779ab55b330",
+  "limits": [
+    "Tool measurements and controller-driven scenarios, not independent agent A/B.",
+    "Same machine; warm OS/package caches not cleared; first sample retained.",
+    "Actual model tokens and monetary costs unavailable; bytes are not tokens."
+  ],
+  "model_usage": null,
+  "model_cost": null,
+  "runs": [
+    {
+      "name": "store-only-known-bug",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "<experiment>/task-app",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.06107414500002051,
+          "child_cpu_seconds": 0.060828999999999994,
+          "stdout_bytes": 0,
+          "stderr_bytes": 172,
+          "stdout": "",
+          "stderr": "test_add_and_complete (test_store.StoreTests.test_add_and_complete) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nOK\n",
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_normalized_sha256": "7dc77d8671525b78a393a19d9b95486ed03dbcb8b494beb318e713d9b41faf50"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.06995432099938625,
+          "child_cpu_seconds": 0.06969000000000002,
+          "stdout_bytes": 0,
+          "stderr_bytes": 172,
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "7dc77d8671525b78a393a19d9b95486ed03dbcb8b494beb318e713d9b41faf50",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.05950983799993992,
+          "child_cpu_seconds": 0.059120999999999965,
+          "stdout_bytes": 0,
+          "stderr_bytes": 172,
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "7dc77d8671525b78a393a19d9b95486ed03dbcb8b494beb318e713d9b41faf50",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.06843470100011473,
+          "child_cpu_seconds": 0.068227,
+          "stdout_bytes": 0,
+          "stderr_bytes": 172,
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "7dc77d8671525b78a393a19d9b95486ed03dbcb8b494beb318e713d9b41faf50",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.060676541999782785,
+          "child_cpu_seconds": 0.06033199999999997,
+          "stdout_bytes": 0,
+          "stderr_bytes": 172,
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "7dc77d8671525b78a393a19d9b95486ed03dbcb8b494beb318e713d9b41faf50",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.06107414500002051
+    },
+    {
+      "name": "public-entry-known-bug",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/verify.py"
+      ],
+      "cwd": "<experiment>/task-app",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 1,
+          "wall_seconds": 0.36155805499947746,
+          "child_cpu_seconds": 0.35954400000000003,
+          "stdout_bytes": 277,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-zjup5m0m\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: FAILED\ncomplete-cli-read: FAILED\ncomplete-repeat: VERIFIED\ncomplete-restart: FAILED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "b941de7c1a7ec10c7b67ba228d54abfc1765240e94691bd69b3c606ece1c087c",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 1,
+          "wall_seconds": 0.3432643950000056,
+          "child_cpu_seconds": 0.3442989999999999,
+          "stdout_bytes": 277,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-6na3wprd\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: FAILED\ncomplete-cli-read: FAILED\ncomplete-repeat: VERIFIED\ncomplete-restart: FAILED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stdout_normalized_sha256": "3cf03199fe1a352febc1c863d75587e442da181e7acb848c6f776b107d408868",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 1,
+          "wall_seconds": 0.4094257729993842,
+          "child_cpu_seconds": 0.410862,
+          "stdout_bytes": 277,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-5ej29anq\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: FAILED\ncomplete-cli-read: FAILED\ncomplete-repeat: VERIFIED\ncomplete-restart: FAILED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stdout_normalized_sha256": "1f75086f2a851949beec4ea7edfa4c3cf6a323a4f248e8c3118bd274a47cc849",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 1,
+          "wall_seconds": 0.40361179299998184,
+          "child_cpu_seconds": 0.40655399999999997,
+          "stdout_bytes": 277,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-fl7frhmz\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: FAILED\ncomplete-cli-read: FAILED\ncomplete-repeat: VERIFIED\ncomplete-restart: FAILED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stdout_normalized_sha256": "8c98ccae815627d348d3f057dbb9069a88c6af8ccdaa76a78d3cd23b577bc6a1",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 1,
+          "wall_seconds": 0.36568143099975714,
+          "child_cpu_seconds": 0.36735700000000004,
+          "stdout_bytes": 277,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-pwlz9gqk\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: FAILED\ncomplete-cli-read: FAILED\ncomplete-repeat: VERIFIED\ncomplete-restart: FAILED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stdout_normalized_sha256": "5bb78963760e2e45c65a2d108807b611d959295b9e3f976f270eadc7dba040f6",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.36568143099975714
+    },
+    {
+      "name": "resume-uncommitted-fix",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/verify.py"
+      ],
+      "cwd": "<experiment>/task-app",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.3903848760000983,
+          "child_cpu_seconds": 0.39201800000000014,
+          "stdout_bytes": 283,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-z55q24wz\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: VERIFIED\ncomplete-cli-read: VERIFIED\ncomplete-repeat: VERIFIED\ncomplete-restart: VERIFIED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "fa7bde8f0b36241a26db658eeb1fd3d3e614477576a73cc61e18ee412a04eead",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.4084399650000705,
+          "child_cpu_seconds": 0.4113030000000003,
+          "stdout_bytes": 283,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-qmibfsrh\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: VERIFIED\ncomplete-cli-read: VERIFIED\ncomplete-repeat: VERIFIED\ncomplete-restart: VERIFIED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stdout_normalized_sha256": "ed547a46eb184422c85cea5a11687fc57212f80187c8ec66e5548d2cf4bf2a7d",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.3414544890001707,
+          "child_cpu_seconds": 0.342905,
+          "stdout_bytes": 283,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-r_fkm_s6\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: VERIFIED\ncomplete-cli-read: VERIFIED\ncomplete-repeat: VERIFIED\ncomplete-restart: VERIFIED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stdout_normalized_sha256": "c223aa0e8d8b8be0e9be5a3cd453c9d47a6a5c5e61d5e807d84138f901b153a6",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.3661989399997765,
+          "child_cpu_seconds": 0.36788299999999996,
+          "stdout_bytes": 283,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-ztupli0g\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: VERIFIED\ncomplete-cli-read: VERIFIED\ncomplete-repeat: VERIFIED\ncomplete-restart: VERIFIED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stdout_normalized_sha256": "09ed2fdb700f089ab5b8a5cd0d098326395eeafb7fd46ceacfcf56cf28b39155",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.3821253530004469,
+          "child_cpu_seconds": 0.3833319999999998,
+          "stdout_bytes": 283,
+          "stderr_bytes": 0,
+          "stdout": "Evidence: evidence/verify-m_ifu3ol\nhealth: VERIFIED\nadd-list: VERIFIED\ncomplete-response: VERIFIED\ncomplete-http-read: VERIFIED\ncomplete-cli-read: VERIFIED\ncomplete-repeat: VERIFIED\ncomplete-restart: VERIFIED\nerrors-no-write: VERIFIED\ncli-shared-state: VERIFIED\nstore-unit: VERIFIED\n",
+          "stdout_normalized_sha256": "ef59ce06b515e231a23e26ce08e8cd2df2eed403590594a64a860227c6933ba1",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.3821253530004469
+    },
+    {
+      "name": "scoped-build",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "<repository>/plugins/lookerjin-harness/skills/system-understand/scripts/code-map.py",
+        "build",
+        "--root",
+        "<navigation-project>",
+        "--scope",
+        "scripts",
+        "--extractor",
+        "<fixed-extractor>"
+      ],
+      "cwd": "<repository>",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.5345753830006288,
+          "child_cpu_seconds": 0.7854239999999997,
+          "stdout_bytes": 34495,
+          "stderr_bytes": 0,
+          "stderr": "",
+          "stdout_normalized_sha256": "21434c701f07cd3fa4f7616dc2e8e0bde5e6afa70dd6c10de4e1e2072de44f02",
+          "stdout_omitted": "Large graph output; dimensions and fingerprint retained, tool stdout bytes measured before normalization.",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.631803614999626,
+          "child_cpu_seconds": 0.8639870000000001,
+          "stdout_bytes": 34495,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "1a87fa9e67002c0fb9ca81c778ae91d2e822a0081ec0f2ca2f395fac772ccb10",
+          "stdout_omitted": "Large graph output; dimensions and fingerprint retained, tool stdout bytes measured before normalization.",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.581722844000069,
+          "child_cpu_seconds": 0.8416189999999998,
+          "stdout_bytes": 34495,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "9f7372036ecb0489acc68df370055042c2963ff37dbdcd64f4efed301c213bfb",
+          "stdout_omitted": "Large graph output; dimensions and fingerprint retained, tool stdout bytes measured before normalization.",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.6024747120000029,
+          "child_cpu_seconds": 0.8840290000000004,
+          "stdout_bytes": 34495,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "1f044a3ab53cfa5bef768fb9f35b6c96313678cb601ae9ead647ea354bf19556",
+          "stdout_omitted": "Large graph output; dimensions and fingerprint retained, tool stdout bytes measured before normalization.",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.55310549800015,
+          "child_cpu_seconds": 0.7713409999999985,
+          "stdout_bytes": 34495,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "c7691e885ba982c641c5bd0093ac532dcf7d946c7ebcbc8e93497e4a47fcebd9",
+          "stdout_omitted": "Large graph output; dimensions and fingerprint retained, tool stdout bytes measured before normalization.",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.581722844000069
+    },
+    {
+      "name": "reverse-query",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "<repository>/plugins/lookerjin-harness/skills/system-understand/scripts/code-map.py",
+        "query",
+        "--root",
+        "<navigation-project>",
+        "--input",
+        "<experiment>/map.json",
+        "--node",
+        "scripts/chart-parts.mjs",
+        "--direction",
+        "in",
+        "--depth",
+        "3",
+        "--limit",
+        "40"
+      ],
+      "cwd": "<repository>",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.047650694000367366,
+          "child_cpu_seconds": 0.047555999999999266,
+          "stdout_bytes": 6936,
+          "stderr_bytes": 0,
+          "stdout": "{\n  \"anchor\": \"scripts/chart-parts.mjs\",\n  \"direction\": \"in\",\n  \"depth\": 3,\n  \"kind\": null,\n  \"nodes\": [\n    {\n      \"id\": \"scripts/bug-states.mjs\",\n      \"label\": \"scripts/bug-states.mjs\",\n      \"path\": \"scripts/bug-states.mjs\"\n    },\n    {\n      \"id\": \"scripts/chart-edges.mjs\",\n      \"label\": \"scripts/chart-edges.mjs\",\n      \"path\": \"scripts/chart-edges.mjs\"\n    },\n    {\n      \"id\": \"scripts/chart-parts.mjs\",\n      \"label\": \"scripts/chart-parts.mjs\",\n      \"path\": \"scripts/chart-parts.mjs\"\n    },\n    {\n      \"id\": \"scripts/read-check.mjs\",\n      \"label\": \"scripts/read-check.mjs\",\n      \"path\": \"scripts/read-check.mjs\"\n    },\n    {\n      \"id\": \"scripts/regions-chart.mjs\",\n      \"label\": \"scripts/regions-chart.mjs\",\n      \"path\": \"scripts/regions-chart.mjs\"\n    },\n    {\n      \"id\": \"scripts/second-replay.mjs\",\n      \"label\": \"scripts/second-replay.mjs\",\n      \"path\": \"scripts/second-replay.mjs\"\n    },\n    {\n      \"id\": \"scripts/tlc-to-chart.mjs\",\n      \"label\": \"scripts/tlc-to-chart.mjs\",\n      \"path\": \"scripts/tlc-to-chart.mjs\"\n    },\n    {\n      \"id\": \"scripts/ways-in.mjs\",\n      \"label\": \"scripts/ways-in.mjs\",\n      \"path\": \"scripts/ways-in.mjs\"\n    }\n  ],\n  \"edges\": [\n    {\n      \"source\": \"scripts/bug-states.mjs\",\n      \"target\": \"scripts/chart-parts.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/bug-states.mjs\",\n          \"specifier\": \"./chart-parts.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/chart-edges.mjs\",\n      \"target\": \"scripts/chart-parts.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/chart-edges.mjs\",\n          \"specifier\": \"./chart-parts.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/read-check.mjs\",\n      \"target\": \"scripts/chart-parts.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/read-check.mjs\",\n          \"specifier\": \"./chart-parts.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/regions-chart.mjs\",\n      \"target\": \"scripts/chart-parts.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/regions-chart.mjs\",\n          \"specifier\": \"./chart-parts.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/second-replay.mjs\",\n      \"target\": \"scripts/chart-parts.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/second-replay.mjs\",\n          \"specifier\": \"./chart-parts.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/tlc-to-chart.mjs\",\n      \"target\": \"scripts/chart-parts.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/tlc-to-chart.mjs\",\n          \"specifier\": \"./chart-parts.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/chart-edges.mjs\",\n      \"target\": \"scripts/bug-states.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/chart-edges.mjs\",\n          \"specifier\": \"./bug-states.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/regions-chart.mjs\",\n      \"target\": \"scripts/bug-states.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/regions-chart.mjs\",\n          \"specifier\": \"./bug-states.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/second-replay.mjs\",\n      \"target\": \"scripts/bug-states.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/second-replay.mjs\",\n          \"specifier\": \"./bug-states.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/tlc-to-chart.mjs\",\n      \"target\": \"scripts/bug-states.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/tlc-to-chart.mjs\",\n          \"specifier\": \"./bug-states.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/ways-in.mjs\",\n      \"target\": \"scripts/bug-states.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/ways-in.mjs\",\n          \"specifier\": \"./bug-states.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/regions-chart.mjs\",\n      \"target\": \"scripts/chart-edges.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/regions-chart.mjs\",\n          \"specifier\": \"./chart-edges.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/tlc-to-chart.mjs\",\n      \"target\": \"scripts/chart-edges.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/tlc-to-chart.mjs\",\n          \"specifier\": \"./chart-edges.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/tlc-to-chart.mjs\",\n      \"target\": \"scripts/read-check.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/tlc-to-chart.mjs\",\n          \"specifier\": \"./read-check.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/tlc-to-chart.mjs\",\n      \"target\": \"scripts/regions-chart.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/tlc-to-chart.mjs\",\n          \"specifier\": \"./regions-chart.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/tlc-to-chart.mjs\",\n      \"target\": \"scripts/second-replay.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/tlc-to-chart.mjs\",\n          \"specifier\": \"./second-replay.mjs\"\n        }\n      ]\n    },\n    {\n      \"source\": \"scripts/tlc-to-chart.mjs\",\n      \"target\": \"scripts/ways-in.mjs\",\n      \"kind\": \"imports\",\n      \"basis\": \"static\",\n      \"evidence\": [\n        {\n          \"path\": \"scripts/tlc-to-chart.mjs\",\n          \"specifier\": \"./ways-in.mjs\"\n        }\n      ]\n    }\n  ],\n  \"truncated\": false,\n  \"omitted_edges\": 0,\n  \"limitations\": [\n    \"Scoped navigation only; absence is not proof of no callers.\",\n    \"Dynamic dispatch, generated code and external consumers require separate evidence.\",\n    \"Source fingerprints establish freshness, not semantic correctness or runtime success.\",\n    \"Imports are module dependencies, not function calls.\",\n    \"Only scoped files are copied; external packages and out-of-scope config are not resolved.\",\n    \"Project executable config is not loaded; aliases/config-dependent resolution may be incomplete.\"\n  ],\n  \"unresolved\": [],\n  \"behavior_verified\": false,\n  \"freshness\": {\n    \"status\": \"current\",\n    \"changed\": [],\n    \"added\": [],\n    \"deleted\": [],\n    \"built_at_commit\": \"99b609a72323b70204eab407c622f436e858e112\",\n    \"current_commit\": \"99b609a72323b70204eab407c622f436e858e112\",\n    \"scope_only\": true\n  }\n}\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "ecfbaf9968f46fbde9eb859aac5a806f184f276e26faa97eed879a3176d41570",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.04526325500046369,
+          "child_cpu_seconds": 0.045125000000001414,
+          "stdout_bytes": 6936,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "ecfbaf9968f46fbde9eb859aac5a806f184f276e26faa97eed879a3176d41570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.043185823000385426,
+          "child_cpu_seconds": 0.04315399999999858,
+          "stdout_bytes": 6936,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "ecfbaf9968f46fbde9eb859aac5a806f184f276e26faa97eed879a3176d41570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.04865464799968322,
+          "child_cpu_seconds": 0.04867399999999944,
+          "stdout_bytes": 6936,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "ecfbaf9968f46fbde9eb859aac5a806f184f276e26faa97eed879a3176d41570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.04663702600009856,
+          "child_cpu_seconds": 0.046292000000000666,
+          "stdout_bytes": 6936,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "ecfbaf9968f46fbde9eb859aac5a806f184f276e26faa97eed879a3176d41570",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.04663702600009856
+    },
+    {
+      "name": "direct-rg",
+      "command": [
+        "rg",
+        "-l",
+        "chart-parts.mjs",
+        "scripts"
+      ],
+      "cwd": "<navigation-project>",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.004999316000066756,
+          "child_cpu_seconds": 0.0026879999999995796,
+          "stdout_bytes": 147,
+          "stderr_bytes": 0,
+          "stdout": "scripts/read-check.mjs\nscripts/tlc-to-chart.mjs\nscripts/second-replay.mjs\nscripts/bug-states.mjs\nscripts/chart-edges.mjs\nscripts/regions-chart.mjs\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "5fa781a1ee9a44aaa1ae6ef919e5cad840b3c35734c5cc9d9bac9711b2264d13",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "sample": 2,
+          "exit": 0,
+          "wall_seconds": 0.0035720739997486817,
+          "child_cpu_seconds": 0.003122999999999987,
+          "stdout_bytes": 147,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "5fa781a1ee9a44aaa1ae6ef919e5cad840b3c35734c5cc9d9bac9711b2264d13",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 3,
+          "exit": 0,
+          "wall_seconds": 0.0037243249998937245,
+          "child_cpu_seconds": 0.0026200000000002888,
+          "stdout_bytes": 147,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "5fa781a1ee9a44aaa1ae6ef919e5cad840b3c35734c5cc9d9bac9711b2264d13",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 4,
+          "exit": 0,
+          "wall_seconds": 0.0033213869992323453,
+          "child_cpu_seconds": 0.002299000000000717,
+          "stdout_bytes": 147,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "5fa781a1ee9a44aaa1ae6ef919e5cad840b3c35734c5cc9d9bac9711b2264d13",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        },
+        {
+          "sample": 5,
+          "exit": 0,
+          "wall_seconds": 0.003175767999891832,
+          "child_cpu_seconds": 0.002154999999999241,
+          "stdout_bytes": 147,
+          "stderr_bytes": 0,
+          "stdout_normalized_sha256": "5fa781a1ee9a44aaa1ae6ef919e5cad840b3c35734c5cc9d9bac9711b2264d13",
+          "stdout_same_as": 1,
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_same_as": 1
+        }
+      ],
+      "median_wall_seconds": 0.0035720739997486817
+    },
+    {
+      "name": "marketplace",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/validate_marketplace.py"
+      ],
+      "cwd": "<repository>",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.030073066000113613,
+          "child_cpu_seconds": 0.029912999999999634,
+          "stdout_bytes": 51,
+          "stderr_bytes": 0,
+          "stdout": "marketplace ok: lookerjin-agent-market (3 plugins)\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "e922b41a9d5cf721a86cd86aa3329d8018d2269bd2933fb67097754634d5585a",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "median_wall_seconds": 0.030073066000113613
+    },
+    {
+      "name": "doctor",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "skills/harness-doctor/scripts/doctor.py",
+        "--root",
+        ".",
+        "--json"
+      ],
+      "cwd": "<repository>/plugins/lookerjin-harness",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.05868047200056026,
+          "child_cpu_seconds": 0.05848300000000006,
+          "stdout_bytes": 2334,
+          "stderr_bytes": 0,
+          "stdout": "{\n  \"status\": \"pass\",\n  \"errors\": [],\n  \"warnings\": [],\n  \"checks\": [\n    {\n      \"code\": \"CODEX_MANIFEST\",\n      \"message\": \".codex-plugin/plugin.json\"\n    },\n    {\n      \"code\": \"PLUGIN_NAME\",\n      \"message\": \"lookerjin-harness\"\n    },\n    {\n      \"code\": \"PLUGIN_VERSION\",\n      \"message\": \"0.3.0\"\n    },\n    {\n      \"code\": \"PLUGIN_PATH\",\n      \"message\": \"skills -> ./skills/\"\n    },\n    {\n      \"code\": \"PLUGIN_PATH\",\n      \"message\": \"mcpServers -> ./mcp.json\"\n    },\n    {\n      \"code\": \"PLUGIN_ASSET\",\n      \"message\": \"logo -> ./assets/logo.svg\"\n    },\n    {\n      \"code\": \"PLUGIN_ASSET\",\n      \"message\": \"composerIcon -> ./assets/composer-icon.svg\"\n    },\n    {\n      \"code\": \"MCP\",\n      \"message\": \"1 MCP server(s)\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"change-review\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"decision-dialogue\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"dependency-evaluation\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"design-explore\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"engineering-run\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-doctor\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-eval\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"harness-evolve\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"help\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"project-adopt\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"project-bootstrap\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"root-cause-debug\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"system-understand\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"verification-bootstrap\"\n    },\n    {\n      \"code\": \"SKILL\",\n      \"message\": \"verification-run\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"agent-core\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"experiment\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"go-library\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"go-service\"\n    },\n    {\n      \"code\": \"PROFILE\",\n      \"message\": \"web-app\"\n    },\n    {\n      \"code\": \"CI_PLACEHOLDER\",\n      \"message\": \"ci-go.yml keeps pin placeholders\"\n    },\n    {\n      \"code\": \"LAYOUT\",\n      \"message\": \"no deprecated top-level directories\"\n    }\n  ]\n}\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "19833410ef136e090a371f753fdd3a2371a04c0894978c501b6289e1f5697574",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "median_wall_seconds": 0.05868047200056026
+    },
+    {
+      "name": "self-test:change-review/scripts/preflight_test.py",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "skills/change-review/scripts/preflight_test.py"
+      ],
+      "cwd": "<repository>/plugins/lookerjin-harness",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.08183852399997704,
+          "child_cpu_seconds": 0.08171199999999956,
+          "stdout_bytes": 18,
+          "stderr_bytes": 0,
+          "stdout": "preflight_test ok\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "9cbbdd4d059615f3c1bab3f67087b87a23a7fdf5e7889e5aa86a37bb7b3bc46d",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "median_wall_seconds": 0.08183852399997704
+    },
+    {
+      "name": "self-test:project-bootstrap/scripts/check-placeholders_test.py",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "skills/project-bootstrap/scripts/check-placeholders_test.py"
+      ],
+      "cwd": "<repository>/plugins/lookerjin-harness",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.07469670699993003,
+          "child_cpu_seconds": 0.07452800000000082,
+          "stdout_bytes": 82,
+          "stderr_bytes": 0,
+          "stdout": "no REPLACE_WITH_FULL_COMMIT_SHA in generated workflows\ncheck-placeholders_test ok\n",
+          "stderr": "",
+          "stdout_normalized_sha256": "1aff22bb6b643edffa4e561193ea64060780ae3113263d09bb1eb07e0483b1aa",
+          "stderr_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "median_wall_seconds": 0.07469670699993003
+    },
+    {
+      "name": "self-test:harness-eval/scripts/prepare_test.py",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "skills/harness-eval/scripts/prepare_test.py"
+      ],
+      "cwd": "<repository>/plugins/lookerjin-harness",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.788302928000121,
+          "child_cpu_seconds": 0.804204000000001,
+          "stdout_bytes": 0,
+          "stderr_bytes": 104,
+          "stdout": "",
+          "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.726s\n\nOK\n",
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_normalized_sha256": "63df1ba59d9263d4697ee32d279ff1aefb41a9224b267b6b54bc3b023314d655"
+        }
+      ],
+      "median_wall_seconds": 0.788302928000121
+    },
+    {
+      "name": "self-test:engineering-run/scripts/check-plan_test.py",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "skills/engineering-run/scripts/check-plan_test.py"
+      ],
+      "cwd": "<repository>/plugins/lookerjin-harness",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.12376073099949281,
+          "child_cpu_seconds": 0.12370799999999926,
+          "stdout_bytes": 0,
+          "stderr_bytes": 107,
+          "stdout": "",
+          "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.058s\n\nOK\n",
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_normalized_sha256": "b88294b8d138fbc271cecda9651730cdfd8d54c22df35cd450afce2dcd4cb8e6"
+        }
+      ],
+      "median_wall_seconds": 0.12376073099949281
+    },
+    {
+      "name": "self-test:verification-run/scripts/check-evidence_test.py",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "skills/verification-run/scripts/check-evidence_test.py"
+      ],
+      "cwd": "<repository>/plugins/lookerjin-harness",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.15679238800021267,
+          "child_cpu_seconds": 0.1569110000000007,
+          "stdout_bytes": 0,
+          "stderr_bytes": 112,
+          "stdout": "",
+          "stderr": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.094s\n\nOK\n",
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_normalized_sha256": "52b7b4d1358d8e8d3b99a3bde3c5d11bd665c87ed34ab2571f8f7855a25d7f38"
+        }
+      ],
+      "median_wall_seconds": 0.15679238800021267
+    },
+    {
+      "name": "self-test:harness-doctor/scripts/doctor_test.py",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "skills/harness-doctor/scripts/doctor_test.py"
+      ],
+      "cwd": "<repository>/plugins/lookerjin-harness",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 0.45753872899967973,
+          "child_cpu_seconds": 0.4581449999999987,
+          "stdout_bytes": 0,
+          "stderr_bytes": 105,
+          "stdout": "",
+          "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.393s\n\nOK\n",
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_normalized_sha256": "185946f2568d07d2734d06bfb889657c53a4b4c2bd8b2f8258a2c581130b052b"
+        }
+      ],
+      "median_wall_seconds": 0.45753872899967973
+    },
+    {
+      "name": "self-test:system-understand/scripts/code-map_test.py",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "skills/system-understand/scripts/code-map_test.py"
+      ],
+      "cwd": "<repository>/plugins/lookerjin-harness",
+      "samples": [
+        {
+          "sample": 1,
+          "exit": 0,
+          "wall_seconds": 1.3563563289999365,
+          "child_cpu_seconds": 1.4961300000000008,
+          "stdout_bytes": 0,
+          "stderr_bytes": 3295,
+          "stdout": "",
+          "stderr": "test_added_caller_and_deleted_module_invalidate (__main__.NavigationTests.test_added_caller_and_deleted_module_invalidate) ... ok\ntest_budget_keeps_nearest_relationship_first (__main__.NavigationTests.test_budget_keeps_nearest_relationship_first) ... ok\ntest_capture_refuses_bytes_different_from_baseline (__main__.NavigationTests.test_capture_refuses_bytes_different_from_baseline) ... ok\ntest_changed_source_at_publication_refuses_result (__main__.NavigationTests.test_changed_source_at_publication_refuses_result) ... ok\ntest_cli_record_query_and_drawio_same_relations (__main__.NavigationTests.test_cli_record_query_and_drawio_same_relations) ... ok\ntest_concurrent_writers_publish_one_complete_winner (__main__.NavigationTests.test_concurrent_writers_publish_one_complete_winner) ... ok\ntest_depth_direction_cycles_and_truncation (__main__.NavigationTests.test_depth_direction_cycles_and_truncation) ... ok\ntest_disk_failure_does_not_publish_or_damage_existing_output (__main__.NavigationTests.test_disk_failure_does_not_publish_or_damage_existing_output) ... ok\ntest_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns (__main__.NavigationTests.test_extraction_reads_fixed_bytes_even_if_live_file_changes_and_returns) ... ok\ntest_failed_serialization_leaves_no_published_file (__main__.NavigationTests.test_failed_serialization_leaves_no_published_file) ... ok\ntest_git_commit_change_with_identical_scope_is_current (__main__.NavigationTests.test_git_commit_change_with_identical_scope_is_current) ... ok\ntest_invalid_relations_and_missing_citations_rejected (__main__.NavigationTests.test_invalid_relations_and_missing_citations_rejected) ... ok\ntest_killed_writer_never_exposes_staging_as_formal_output (__main__.NavigationTests.test_killed_writer_never_exposes_staging_as_formal_output) ... ok\ntest_missing_extractor_is_explicit_failure (__main__.NavigationTests.test_missing_extractor_is_explicit_failure) ... ok\ntest_modified_input_copy_or_live_source_rejects_extraction (__main__.NavigationTests.test_modified_input_copy_or_live_source_rejects_extraction) ... ok\ntest_no_overwrite_or_self_invalidating_output (__main__.NavigationTests.test_no_overwrite_or_self_invalidating_output) ... ok\ntest_outside_scope_edit_does_not_invalidate (__main__.NavigationTests.test_outside_scope_edit_does_not_invalidate) ... ok\ntest_real_extractor_finds_indirect_importers_without_string_false_positive (__main__.NavigationTests.test_real_extractor_finds_indirect_importers_without_string_false_positive) ... ok\ntest_real_extractor_reports_unresolved_import (__main__.NavigationTests.test_real_extractor_reports_unresolved_import) ... ok\ntest_record_rejects_nonexistent_source_line (__main__.NavigationTests.test_record_rejects_nonexistent_source_line) ... ok\ntest_symlink_and_path_escape_rejected (__main__.NavigationTests.test_symlink_and_path_escape_rejected) ... ok\ntest_uncommitted_edit_blocks_export_and_marks_query (__main__.NavigationTests.test_uncommitted_edit_blocks_export_and_marks_query) ... ok\ntest_unsupported_atomic_publication_fails_without_direct_write_fallback (__main__.NavigationTests.test_unsupported_atomic_publication_fails_without_direct_write_fallback) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 1.258s\n\nOK\n",
+          "stdout_normalized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_normalized_sha256": "642f169e8d8e0c1b9f2f6301247589bee1d824c3539b817c39182ee9533abbf2"
+        }
+      ],
+      "median_wall_seconds": 1.3563563289999365
+    }
+  ],
+  "recovery": {
+    "same_head": true,
+    "old_failure_artifacts_preserved": true,
+    "historical_artifact_count": 35,
+    "fixed_source_preserved": true,
+    "broken_server_sha256": "a2037a3f6ebd3e85c16edf60cb96b0b0b8a181f7105bb007c521d4c3f9b5b74c",
+    "fixed_server_sha256": "7d226e976cdda78548c41543cc19334d759b76f08c668f9f1c4e6016f7d8d207",
+    "verifier_sha256": "c5090ce6290c43fafd11149cfb7f3d53b428b5948f40910aaf84fabad6ba2d61"
+  },
+  "navigation": {
+    "scoped_files": 26,
+    "nodes": 33,
+    "edges": 99,
+    "query_nodes": 8,
+    "query_edges": 17,
+    "query_truncated": false,
+    "query_behavior_verified": false,
+    "query_contains_indirect_entry": true,
+    "direct_rg_contains_indirect_entry": false,
+    "equal_task_claim": false
+  },
+  "changed_instructions": {
+    "plugins/lookerjin-harness/skills/design-explore/SKILL.md": "927c564e347f556fd90721ca8e9bdb851993f44e978a3149a0177e2cd7d29338",
+    "plugins/lookerjin-harness/skills/engineering-run/SKILL.md": "a51a60e72d3444deacbec9662f43e08adba8fddfd445b58921e7c33eea91a440",
+    "plugins/lookerjin-harness/skills/harness-eval/SKILL.md": "24820c720f820139ce5a4595b06da9ce6fa426e5d637f3c5cf06b4289979768a",
+    "plugins/lookerjin-harness/skills/system-understand/SKILL.md": "18ef3af68aeea4266ab85bbff637f046e6d77ce3a9fc57ee9f99827996b9af8a",
+    "plugins/lookerjin-harness/skills/verification-run/SKILL.md": "03ce26443eee3ca4d489a79acd4f3b7438f8311d307c7e6394b776571358eeea",
+    "plugins/lookerjin-harness/skills/engineering-run/references/continuity.md": "1e41d15412cab2632243413c3f6b910279c7218590b61f6f28bb7a103f7598fe",
+    "plugins/lookerjin-harness/skills/harness-eval/references/protocol.md": "2019bd20b3c95df4ef672fbd5dd57aa545c420a1042d9f1bf5157c8fd2a55394",
+    "plugins/lookerjin-harness/skills/system-understand/references/code-navigation.md": "3a5f4e5fa0cbb6d6a99e7bed0ccbeb1ba0f8bd2b0d6f5dafd8a74495a7d37b2a"
+  },
+  "instruction_bytes": [
+    {
+      "skill": "engineering-run",
+      "before_bytes": 4197,
+      "after_bytes": 4437,
+      "increment_bytes": 240
+    },
+    {
+      "skill": "design-explore",
+      "before_bytes": 2382,
+      "after_bytes": 2974,
+      "increment_bytes": 592
+    },
+    {
+      "skill": "verification-run",
+      "before_bytes": 2898,
+      "after_bytes": 3510,
+      "increment_bytes": 612
+    },
+    {
+      "skill": "harness-eval",
+      "before_bytes": 3298,
+      "after_bytes": 3400,
+      "increment_bytes": 102
+    },
+    {
+      "skill": "system-understand",
+      "before_bytes": 3522,
+      "after_bytes": 3858,
+      "increment_bytes": 336
+    }
+  ],
+  "lazy_ui_reference_bytes": 2348,
+  "acceptance_mapping": [
+    {
+      "change": "server.py Handler.do_POST completion branch",
+      "entry": "POST /tasks/1/complete then GET /tasks",
+      "acceptance_id": "complete-http-read",
+      "behavior": "completion remains true on fresh read"
+    },
+    {
+      "change": "shared tasks file updated by HTTP",
+      "entry": "app.py --data <same-isolated-data> list",
+      "acceptance_id": "complete-cli-read",
+      "behavior": "CLI observes HTTP completion"
+    },
+    {
+      "change": "completion persistence",
+      "entry": "restart owned server with same isolated data then GET /tasks",
+      "acceptance_id": "complete-restart",
+      "behavior": "completion survives process restart"
+    }
+  ],
+  "instruction_effectiveness": "INCONCLUSIVE: controller already knew defect and expected results; no independent agent comparison of changed instructions.",
+  "source_fingerprints": {
+    "plugins/lookerjin-harness/skills/design-explore/SKILL.md": "927c564e347f556fd90721ca8e9bdb851993f44e978a3149a0177e2cd7d29338",
+    "plugins/lookerjin-harness/skills/engineering-run/SKILL.md": "a51a60e72d3444deacbec9662f43e08adba8fddfd445b58921e7c33eea91a440",
+    "plugins/lookerjin-harness/skills/harness-eval/SKILL.md": "24820c720f820139ce5a4595b06da9ce6fa426e5d637f3c5cf06b4289979768a",
+    "plugins/lookerjin-harness/skills/system-understand/SKILL.md": "18ef3af68aeea4266ab85bbff637f046e6d77ce3a9fc57ee9f99827996b9af8a",
+    "plugins/lookerjin-harness/skills/verification-run/SKILL.md": "03ce26443eee3ca4d489a79acd4f3b7438f8311d307c7e6394b776571358eeea",
+    "plugins/lookerjin-harness/skills/engineering-run/references/continuity.md": "1e41d15412cab2632243413c3f6b910279c7218590b61f6f28bb7a103f7598fe",
+    "plugins/lookerjin-harness/skills/engineering-run/references/ui-capabilities.md": "45cecd33d74f5c2ea493fa4489aa9d7f25fce5a3daa17e8ddcd56049f10f58f9",
+    "plugins/lookerjin-harness/skills/harness-eval/references/protocol.md": "2019bd20b3c95df4ef672fbd5dd57aa545c420a1042d9f1bf5157c8fd2a55394",
+    "plugins/lookerjin-harness/skills/system-understand/references/code-navigation.md": "3a5f4e5fa0cbb6d6a99e7bed0ccbeb1ba0f8bd2b0d6f5dafd8a74495a7d37b2a"
+  }
+}

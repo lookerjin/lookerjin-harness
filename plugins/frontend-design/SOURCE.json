@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/anthropics/claude-plugins-official",
+  "commit": "58267944f92187b7d6a1c822165c96c81c864806",
+  "path": "plugins/frontend-design",
+  "license": "Apache-2.0",
+  "files": {
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "skills/frontend-design/LICENSE.txt": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "skills/frontend-design/SKILL.md": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+  },
+  "changes": "Skill and license bytes unchanged. Local Codex manifest, README and source record added; original Claude manifest and README not redistributed."
+}

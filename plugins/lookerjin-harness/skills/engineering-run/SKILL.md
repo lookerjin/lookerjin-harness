@@ -7,6 +7,12 @@ description: Carry a software engineering goal through the shortest sufficient p
 
 以用户目标为主线，选择当前最有价值的动作。六阶段是内部状态模型，不是六项必做仪式，也不是六个 Skill。
 
+## 用户入口
+
+直接接收自然语言目标，结合已有对话识别“仅讨论”“给方案”“执行并验证”“继续当前任务”等范围，不要求先输入斜杠、选阶段或调用 Help。已能由窄技能完整处理的任务直接进入该技能；通用用法问题才交给 [help](../help/SKILL.md)。用户在执行中询问原因或进度时，简答后继续已授权工作，不把整个任务退回帮助流程。
+
+按当前宿主实际能力加载技能：有技能调用能力就使用；只有安装文件可读时直接读取对应 `SKILL.md` 及必要引用，按其说明执行。具体命令语法以宿主实际提供的为准，不依赖专属 alias、菜单隐藏或固定工具名称。资源存在、技能被发现和外部工具可用是三个独立事实。
+
 ## 建立任务契约
 
 读取适用项目规则与直接相关事实，沿用用户已有修改和授权。用一句目标加必要的范围、验收、验证入口、交付目标建立 [执行契约](references/execution-contract.md)。简单任务在当前会话表达即可；复杂任务复用项目计划，避免另外建立一份事实库。
@@ -21,6 +27,8 @@ description: Carry a software engineering goal through the shortest sufficient p
 | Capability：需要谁或什么 | 现有领域 Skill、专家能力、Human、MCP、工具 |
 
 按 [生命周期](references/lifecycle.md) 选择入口、跳过已满足的阶段并允许回退；按 [任务与执行方式](references/tracks-and-modes.md) 选择一个主 Track 和必要 Mode。只加载当前问题所需资源，不逐项调用整个目录。
+
+涉及页面、组件、视觉或交互时，按需使用 [UI 能力接入](references/ui-capabilities.md)，将设计、实现和真实界面验证交给适用能力；UI 沿用当前生命周期，不增加必经阶段或默认安装。
 
 ## 推进与切换
 

@@ -31,7 +31,7 @@
       "category": "Developer Tools"
     },
     {
-      "name": "open-code-review-codex",
+      "name": "open-code-review",
       "source": {
         "source": "git-subdir",
         "url": "alibaba/open-code-review",
